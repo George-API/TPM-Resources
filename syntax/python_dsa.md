@@ -1,7 +1,5 @@
-"""
-===========================================================
-Python DSA Quick Reference (Intermediate) — Syntax + Patterns
-===========================================================
+
+# Python DSA Quick Reference
 
 Goal:
 - High-signal templates you can copy/paste into problems.

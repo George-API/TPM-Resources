@@ -1,6 +1,6 @@
-# Programming Reference Guide
+# Programming Reference
 
-Quick reference for data engineering, cloud architecture, and programming syntax.
+Quick reference for data, cloud & software engineering concepts and programming syntax.
 
 ## Concepts
 
@@ -13,7 +13,7 @@ Quick reference for data engineering, cloud architecture, and programming syntax
 - [Data Management](concepts/data/management.md) - Operating models, security, privacy, quality, governance
 - [Data Engineering](concepts/data/engineering.md) - Pipeline patterns: ETL/ELT, orchestration, transformation
 - [Analytics Engineering](concepts/data/analytics_engineering.md) - Transformation layer, semantic layer, BI modeling
-- [Data Analytics Techniques](concepts/data/analytics.md) - Statistical analysis, EDA, forecasting, experimentation
+- [Data Analytics](concepts/data/analytics.md) - Statistical analysis, EDA, forecasting, experimentation
 
 ### Software
 - [Software Design](concepts/software/design.md) - Enterprise design patterns and best practices

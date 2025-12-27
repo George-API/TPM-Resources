@@ -1,4 +1,4 @@
-# Programming Reference Guide
+# Programming Reference
 
 Quick reference for data engineering, cloud architecture, and programming syntax.
 

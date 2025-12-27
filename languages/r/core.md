@@ -14,7 +14,6 @@
 - [Packages & Libraries](#packages--libraries)
 - [File I/O](#file-io)
 - [Common Built-in Functions](#common-built-in-functions)
-- [dplyr / Tidyverse Essentials](#dplyr--tidyverse-essentials)
 - [Useful Idioms](#useful-idioms)
 - [Common Patterns](#common-patterns)
 
@@ -124,7 +123,6 @@ as.integer(3.14)     # 3
 
 # Special operators
 %in%                 # membership test
-%>%                  # pipe operator (from magrittr/dplyr)
 ```
 
 ---
@@ -437,194 +435,6 @@ tapply(vector, factor, mean)  # apply by group
 
 ---
 
-## dplyr / Tidyverse Essentials
-
-**Install**: `install.packages(c("dplyr", "tidyr", "readr", "stringr", "lubridate", "forcats"))`
-
-```r
-library(dplyr)
-library(tidyr)
-```
-
-### Core dplyr Verbs
-
-```r
-# filter() - filter rows
-df %>% filter(age > 25)
-df %>% filter(age > 25 & name == "Alice")
-df %>% filter(age > 25 | score > 80)
-df %>% filter(!is.na(value))
-
-# select() - select columns
-df %>% select(id, name, age)
-df %>% select(-id)                    # exclude column
-df %>% select(starts_with("x_"))       # select by prefix
-df %>% select(ends_with("_id"))         # select by suffix
-df %>% select(contains("name"))        # select by substring
-df %>% select(matches("^x_"))          # select by regex
-
-# mutate() - create/modify columns
-df %>% mutate(total = a + b)
-df %>% mutate(total = a + b, 
-              avg = total / 2)
-df %>% mutate(across(c(a, b), ~ .x * 2))  # modify multiple columns
-
-# arrange() - sort rows
-df %>% arrange(age)
-df %>% arrange(desc(age))              # descending
-df %>% arrange(age, name)               # multiple columns
-
-# summarize() / summarise() - aggregate
-df %>% summarize(mean_age = mean(age))
-df %>% summarize(mean_age = mean(age, na.rm = TRUE),
-                 count = n())
-
-# group_by() - group operations
-df %>% group_by(category) %>%
-  summarize(mean_value = mean(value),
-            count = n())
-
-# distinct() - unique rows
-df %>% distinct()
-df %>% distinct(category, .keep_all = TRUE)
-
-# slice() - select rows by position
-df %>% slice(1:5)                       # first 5 rows
-df %>% slice_head(n = 10)               # first n rows
-df %>% slice_tail(n = 10)                # last n rows
-df %>% slice_sample(n = 10)              # random sample
-```
-
-### Joins
-
-```r
-# Inner join
-left_join(df1, df2, by = "id")
-inner_join(df1, df2, by = "id")
-left_join(df1, df2, by = c("id1" = "id2"))  # different key names
-
-# Other joins
-right_join(df1, df2, by = "id")
-full_join(df1, df2, by = "id")
-anti_join(df1, df2, by = "id")          # rows in df1 not in df2
-semi_join(df1, df2, by = "id")          # rows in df1 that match df2
-```
-
-### Pipe Operator
-
-```r
-# %>% pipe (forward pipe)
-df %>%
-  filter(age > 25) %>%
-  select(name, age) %>%
-  arrange(age)
-
-# |> pipe (base R 4.1+)
-df |>
-  filter(age > 25) |>
-  select(name, age) |>
-  arrange(age)
-```
-
-### Additional dplyr Functions
-
-```r
-# count() - count by group
-df %>% count(category)
-df %>% count(category, sort = TRUE)
-
-# rename() - rename columns
-df %>% rename(new_name = old_name)
-
-# relocate() - move columns
-df %>% relocate(new_col, .before = name)
-
-# case_when() - vectorized if-else
-df %>% mutate(status = case_when(
-  score >= 90 ~ "A",
-  score >= 80 ~ "B",
-  score >= 70 ~ "C",
-  TRUE ~ "F"
-))
-
-# across() - apply function to multiple columns
-df %>% mutate(across(c(a, b), ~ .x * 2))
-df %>% summarize(across(where(is.numeric), mean, na.rm = TRUE))
-```
-
-### tidyr Essentials
-
-```r
-# pivot_longer() - wide to long
-df %>% pivot_longer(cols = c(x, y, z), 
-                    names_to = "variable", 
-                    values_to = "value")
-
-# pivot_wider() - long to wide
-df %>% pivot_wider(names_from = variable, 
-                   values_from = value)
-
-# separate() - split column
-df %>% separate(name, into = c("first", "last"), sep = " ")
-
-# unite() - combine columns
-df %>% unite("full_name", first, last, sep = " ")
-
-# drop_na() - remove rows with NA
-df %>% drop_na()
-df %>% drop_na(age, score)              # specific columns
-
-# fill() - fill NA with previous value
-df %>% fill(value)
-```
-
-### stringr Essentials
-
-```r
-library(stringr)
-
-str_detect(string, "pattern")           # detect pattern
-str_extract(string, "pattern")         # extract first match
-str_extract_all(string, "pattern")      # extract all matches
-str_replace(string, "old", "new")       # replace first
-str_replace_all(string, "old", "new")   # replace all
-str_remove(string, "pattern")           # remove pattern
-str_sub(string, 1, 3)                  # substring
-str_length(string)                     # length
-str_to_upper(string)                   # uppercase
-str_to_lower(string)                   # lowercase
-str_trim(string)                       # trim whitespace
-str_split(string, ",")                 # split string
-str_c("a", "b", sep = "-")             # concatenate
-```
-
-### lubridate Essentials
-
-```r
-library(lubridate)
-
-# Parse dates
-ymd("2025-01-15")
-mdy("01/15/2025")
-dmy("15-01-2025")
-
-# Extract components
-year(date)
-month(date)
-day(date)
-wday(date)                              # day of week
-hour(datetime)
-minute(datetime)
-
-# Arithmetic
-date + days(1)
-date + months(1)
-date + years(1)
-date %--% date2                         # interval
-```
-
----
-
 ## Useful Idioms
 
 ```r
@@ -674,28 +484,10 @@ df[complete.cases(df), ]
 # Create sequence of dates
 seq(as.Date("2025-01-01"), as.Date("2025-12-31"), by = "day")
 
-# Split-apply-combine pattern
-df %>%
-  group_by(category) %>%
-  summarize(
-    mean_value = mean(value, na.rm = TRUE),
-    count = n(),
-    .groups = "drop"
-  )
+# Split-apply-combine pattern (base R)
+tapply(df$value, df$category, mean, na.rm = TRUE)
 
-# Conditional mutate
-df %>%
-  mutate(status = ifelse(score >= 60, "pass", "fail"))
-
-# Filter and summarize
-df %>%
-  filter(!is.na(value)) %>%
-  group_by(category) %>%
-  summarize(total = sum(value))
-
-# Join and mutate
-df1 %>%
-  left_join(df2, by = "id") %>%
-  mutate(new_col = col1 + col2)
+# Conditional assignment
+df$status <- ifelse(df$score >= 60, "pass", "fail")
 ```
 

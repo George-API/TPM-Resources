@@ -12,7 +12,8 @@ Quick reference for data engineering, cloud architecture, and programming syntax
 ### Data
 - [Data Management](concepts/data/management.md) - Operating models, security, privacy, quality, governance
 - [Data Engineering](concepts/data/engineering.md) - Pipeline patterns: ETL/ELT, orchestration, transformation
-- [Analytics Engineering](concepts/data/analytics.md) - Transformation layer, semantic layer, BI modeling
+- [Analytics Engineering](concepts/data/analytics_engineering.md) - Transformation layer, semantic layer, BI modeling
+- [Data Analytics Techniques](concepts/data/analytics.md) - Statistical analysis, EDA, forecasting, experimentation
 
 ### Software
 - [Software Design](concepts/software/design.md) - Enterprise design patterns and best practices
@@ -41,10 +42,14 @@ Quick reference for data engineering, cloud architecture, and programming syntax
 - [Visualization](languages/python/visualization.md) - Matplotlib and Seaborn plotting
 
 ### R
-- [R](languages/r/r.md) - dplyr/tidyverse essentials
+- [Core](languages/r/core.md) - Syntax: types, vectors, data frames, functions, base R
+- [Tidyverse](languages/r/tidyverse.md) - dplyr, tidyr, stringr, lubridate essentials
 
 ### SQL
 - [SQL](languages/sql/sql.md) - Core syntax, aggregations, joins, window functions
+
+### TypeScript
+- [Core](languages/typescript/typescript.md) - Syntax: types, interfaces, classes, generics, modules
 
 ### Terminal
 - [Terminal](languages/terminal/terminal.md) - Bash command reference

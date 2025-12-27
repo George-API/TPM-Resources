@@ -1,363 +1,279 @@
-# Analytics Engineering Patterns — Platform-Agnostic
+# Data Analytics Techniques
 
-**Scope**: Platform-agnostic patterns for analytics engineering: transformation layer, semantic layer, BI-ready modeling, and metric definitions.
+**Scope**: Analytical methods, statistical techniques, and data analysis patterns for extracting insights from data.
 
-**Purpose**: Use this when building the analytics/BI consumption layer. For pipeline patterns, see Data Engineering. For governance, see Data Management.
+**Purpose**: Use this when performing data analysis, building analytical models, or designing analytical workflows. For analytics engineering (transformation layer, semantic layer), see [Analytics Engineering](analytics.md). For pipeline patterns, see [Data Engineering](engineering.md).
 
 ## Table of Contents
 
-- [1. Transformation Layer](#1-transformation-layer)
-- [2. Semantic Layer](#2-semantic-layer)
-- [3. BI-Ready Modeling](#3-bi-ready-modeling)
-- [4. Metric Definitions & Calculations](#4-metric-definitions--calculations)
-- [5. Data Product Patterns](#5-data-product-patterns)
-- [6. Testing Patterns](#6-testing-patterns)
-- [7. Documentation & Lineage](#7-documentation--lineage)
-- [8. Version Control & CI/CD](#8-version-control--cicd)
+- [1. Exploratory Data Analysis (EDA)](#1-exploratory-data-analysis-eda)
+- [2. Statistical Analysis](#2-statistical-analysis)
+- [3. Time Series Analysis](#3-time-series-analysis)
+- [4. Segmentation & Clustering](#4-segmentation--clustering)
+- [5. Correlation & Causation](#5-correlation--causation)
+- [6. Hypothesis Testing](#6-hypothesis-testing)
+- [7. A/B Testing & Experimentation](#7-ab-testing--experimentation)
+- [8. Forecasting & Predictive Analytics](#8-forecasting--predictive-analytics)
+- [9. Anomaly Detection](#9-anomaly-detection)
+- [10. Root Cause Analysis](#10-root-cause-analysis)
 
 ---
 
-## 1. Transformation Layer
+## 1. Exploratory Data Analysis (EDA)
 
-### SQL-Based Transformations
+### Purpose
 
-- **dbt (data build tool)**: SQL-based transformation framework
-- **Pattern**: Write SQL, dbt compiles to executable transformations
-- **Benefits**: Version control, testing, documentation, modularity
-- **Best practices**:
-  - Modular SQL (models, macros, tests)
-  - Reusable macros for common patterns
-  - Incremental models for performance
+- Understand data structure, distributions, relationships
+- Identify patterns, outliers, missing data
+- Form hypotheses for further analysis
 
-### Transformation Patterns
+### Key Steps
 
-- **Staging models**: Raw data → cleaned staging tables
-- **Intermediate models**: Staging → intermediate transformations
-- **Marts**: Intermediate → business-ready marts (star schemas, wide tables)
-- **Pattern**: Staging → Intermediate → Marts (layered approach)
+- **Data profiling**: Shape, types, nulls, unique values
+- **Summary statistics**: Mean, median, mode, std dev, quartiles
+- **Distribution analysis**: Histograms, box plots, density plots
+- **Relationship exploration**: Scatter plots, correlation matrices
+- **Outlier detection**: Z-scores, IQR method, visual inspection
 
-### Incremental Models
+### Common Patterns
 
-- **Incremental strategy**: Only process new/changed records
-- **Patterns**:
-  - `append`: Add new records only
-  - `merge`: Upsert (insert or update)
-  - `delete+insert`: Replace partition
-- **Best practices**: Use unique keys, handle late arrivals, backfill strategy
-
-### Materialization Strategies
-
-- **Table**: Full table materialization (rebuild each run)
-- **View**: Virtual table (computed on query)
-- **Incremental**: Only process new/changed data
-- **Ephemeral**: CTE, not materialized (used in other models)
-- **Decision factors**: Query frequency, data volume, freshness requirements
-
-### Modular SQL
-
-- **Models**: Reusable SQL transformations
-- **Macros**: Parameterized SQL snippets (DRY principle)
-- **Sources**: Define source tables (single source of truth)
-- **Seeds**: CSV files for reference data
-- **Best practices**: Build models incrementally, test each layer
+- **Univariate analysis**: Single variable distributions
+- **Bivariate analysis**: Relationships between two variables
+- **Multivariate analysis**: Relationships among multiple variables
 
 ---
 
-## 2. Semantic Layer
+## 2. Statistical Analysis
 
-### Metrics Layer
+### Descriptive Statistics
 
-- **Metric definitions**: Centralized metric definitions (revenue, users, conversion rate)
-- **Pattern**: Define once, use everywhere
-- **Benefits**: Consistency, single source of truth, easier maintenance
-- **Tools**: dbt metrics, Looker LookML, Cube.dev, MetricFlow
+- **Central tendency**: Mean, median, mode
+- **Dispersion**: Range, variance, standard deviation, IQR
+- **Shape**: Skewness, kurtosis
+- **Percentiles**: Quartiles, deciles, percentiles
 
-### Metric Types
+### Inferential Statistics
 
-- **Simple metrics**: Count, sum, average, min, max
-- **Ratio metrics**: Division of two metrics (conversion rate, average order value)
-- **Derived metrics**: Calculated from other metrics
-- **Time-based metrics**: Metrics over time (daily active users, monthly revenue)
+- **Sampling**: Random sampling, stratified sampling, cluster sampling
+- **Confidence intervals**: Estimate population parameters from samples
+- **Statistical significance**: p-values, significance levels (α)
+- **Effect size**: Practical significance beyond statistical significance
 
-### Dimensions & Hierarchies
+### Common Distributions
 
-- **Dimensions**: Categorical attributes (date, product, customer, region)
-- **Hierarchies**: Roll-up relationships (country → region → city)
-- **Pattern**: Define dimensions once, use across metrics
-- **Best practices**: Consistent naming, clear hierarchies, time dimensions
-
-### Aggregations
-
-- **Pre-aggregation**: Pre-compute common aggregations (daily, monthly)
-- **On-the-fly aggregation**: Compute at query time
-- **Decision factors**: Query frequency, data volume, freshness needs
-- **Best practices**: Balance storage cost vs query performance
-
-### Metric Governance
-
-- **Ownership**: Assign metric owners (data stewards)
-- **Documentation**: Define metric, calculation, use cases, examples
-- **Validation**: Test metrics against source systems
-- **Versioning**: Track metric changes, deprecation lifecycle
+- **Normal distribution**: Bell curve, many natural phenomena
+- **Binomial distribution**: Success/failure outcomes
+- **Poisson distribution**: Count of events in fixed interval
+- **Exponential distribution**: Time between events
 
 ---
 
-## 3. BI-Ready Modeling
+## 3. Time Series Analysis
 
-### Star Schema
+### Components
 
-- **Fact tables**: Transactional data (sales, events, metrics)
-- **Dimension tables**: Descriptive attributes (products, customers, dates)
-- **Pattern**: Fact table (grain) + dimension tables (attributes)
-- **Benefits**: Fast queries, intuitive for analysts, BI tool friendly
-- **Best practices**: 
-  - Single grain per fact table
-  - Denormalized dimensions (fewer joins)
-  - Surrogate keys for dimensions
+- **Trend**: Long-term direction (increasing, decreasing, stable)
+- **Seasonality**: Regular patterns (daily, weekly, monthly, yearly)
+- **Cyclical**: Irregular cycles (business cycles, economic cycles)
+- **Noise**: Random variation
 
-### Snowflake Schema
+### Analysis Techniques
 
-- **Normalized dimensions**: Dimensions have sub-dimensions
-- **Pattern**: Fact → Dimension → Sub-dimension
-- **Use case**: When dimensions are large and normalized
-- **Trade-off**: More joins, less storage, more complex
+- **Decomposition**: Separate trend, seasonality, and residuals
+- **Moving averages**: Smooth out short-term fluctuations
+- **Autocorrelation**: Relationship between values at different time lags
+- **Stationarity**: Constant mean and variance over time
 
-### Wide Tables (One Big Table)
+### Common Patterns
 
-- **Single table**: All attributes in one denormalized table
-- **Pattern**: Flatten all dimensions into fact table
-- **Use case**: Simple analytics, small datasets, ad-hoc analysis
-- **Trade-off**: Simpler queries, but redundant data, harder to maintain
-
-### Aggregate Tables
-
-- **Pre-aggregated**: Pre-compute common aggregations
-- **Patterns**:
-  - Daily/monthly summaries
-  - Roll-ups by dimension (by product, by region)
-- **Benefits**: Faster queries, reduced compute cost
-- **Best practices**: Balance freshness vs performance, incremental updates
-
-### Slowly Changing Dimensions (SCD)
-
-- **Type 1**: Overwrite (no history)
-- **Type 2**: Full history (new row for each change)
-- **Type 3**: Limited history (previous value column)
-- **Use case**: Track dimension changes over time
-- **Best practices**: Choose SCD type based on business needs
-
----
-
-## 4. Metric Definitions & Calculations
-
-### Metric Naming
-
-- **Consistent naming**: `metric_name__time_grain` (e.g., `revenue__daily`)
-- **Pattern**: Clear, descriptive, consistent
-- **Best practices**: Avoid abbreviations, use business terminology
-
-### Calculation Patterns
-
-- **Simple aggregations**: SUM, COUNT, AVG, MIN, MAX
-- **Window functions**: Running totals, moving averages, rankings
-- **Conditional aggregations**: SUM(CASE WHEN ...), COUNT(DISTINCT ...)
-- **Ratio calculations**: Divide two metrics (with null handling)
-
-### Time-Based Metrics
-
-- **Period comparisons**: YoY, MoM, WoW (year-over-year, month-over-month)
+- **Trend analysis**: Identify long-term patterns
+- **Seasonal adjustment**: Remove seasonal effects
+- **Growth rates**: YoY, MoM, WoW comparisons
 - **Cumulative metrics**: Running totals, year-to-date
-- **Growth rates**: Percentage change, absolute change
-- **Best practices**: Handle time zones, business days, fiscal calendars
-
-### Metric Validation
-
-- **Source reconciliation**: Compare metrics to source systems
-- **Reasonableness checks**: Validate against expected ranges
-- **Trend analysis**: Detect anomalies, sudden changes
-- **Best practices**: Automated validation, alert on discrepancies
-
-### Metric Documentation
-
-- **Definition**: What the metric measures
-- **Calculation**: How it's calculated (formula, SQL)
-- **Use cases**: When to use this metric
-- **Examples**: Sample values, expected ranges
-- **Ownership**: Who owns this metric
 
 ---
 
-## 5. Data Product Patterns
+## 4. Segmentation & Clustering
 
-### Data Product Definition
+### Segmentation
 
-- **Self-contained**: Dataset with clear purpose, contract, documentation
-- **Components**:
-  - Data (tables, views, APIs)
-  - Schema (structure, types, constraints)
-  - Documentation (description, examples, changelog)
-  - Access model (permissions, roles, RLS)
-  - SLAs (freshness, availability, quality)
+- **Demographic**: Age, gender, location, income
+- **Behavioral**: Purchase patterns, engagement, usage
+- **Psychographic**: Attitudes, values, lifestyle
+- **RFM analysis**: Recency, Frequency, Monetary value
 
-### Data Product Types
+### Clustering Techniques
 
-- **Analytical datasets**: BI-ready tables, star schemas
-- **Operational datasets**: Real-time data products, APIs
-- **ML datasets**: Feature stores, training datasets
-- **Reference datasets**: Master data, lookup tables
+- **K-means**: Partition data into k clusters
+- **Hierarchical**: Build tree of clusters
+- **DBSCAN**: Density-based clustering
+- **Silhouette score**: Measure cluster quality
 
-### Data Product Lifecycle
+### Use Cases
 
-- **Draft**: Exploratory, not production-ready
-- **Verified**: Tested, limited SLA
-- **Certified**: Production-ready, full SLA, monitored
-- **Deprecated**: Being phased out, migration path provided
-
-### Data Product Contracts
-
-- **Schema contract**: Column names, types, constraints
-- **Semantic contract**: Business meaning, definitions
-- **SLA contract**: Freshness, availability, quality targets
-- **Versioning**: Backward compatibility, deprecation policy
-
-### Data Product Discovery
-
-- **Catalog**: Searchable catalog of data products
-- **Tags**: Domain tags, sensitivity labels, certification status
-- **Documentation**: Getting started guides, examples, changelog
-- **Lineage**: Upstream sources, downstream consumers
+- **Customer segmentation**: Group similar customers
+- **Product categorization**: Group similar products
+- **Anomaly detection**: Identify outliers from clusters
 
 ---
 
-## 6. Testing Patterns
+## 5. Correlation & Causation
 
-### Data Tests
+### Correlation
 
-- **Uniqueness**: Ensure unique keys, no duplicates
-- **Not null**: Required fields are not null
-- **Accepted values**: Values in expected set (enums)
-- **Relationships**: Foreign key integrity, referential integrity
-- **Custom tests**: Business rule validation
+- **Pearson correlation**: Linear relationships (-1 to +1)
+- **Spearman correlation**: Monotonic relationships (rank-based)
+- **Correlation matrix**: Visualize relationships between variables
+- **Cautions**: Correlation ≠ causation, spurious correlations
 
-### Schema Tests
+### Causation
 
-- **Column types**: Validate data types
-- **Column presence**: Required columns exist
-- **Column count**: Expected number of columns
-- **Best practices**: Test at each transformation layer
+- **Causal inference**: Establish cause-and-effect relationships
+- **Confounding variables**: Hidden factors affecting both variables
+- **Randomized experiments**: Gold standard for establishing causation
+- **Observational studies**: Use techniques to infer causation
 
-### Custom Tests
+### Common Pitfalls
 
-- **Business rules**: Custom validation logic
-- **Pattern**: Write SQL that returns failing records
-- **Examples**: 
-  - Revenue should be positive
-  - Dates should be in valid range
-  - Sums should reconcile to source
-
-### Test Coverage
-
-- **Unit tests**: Test individual models/transformations
-- **Integration tests**: Test end-to-end transformations
-- **Data quality tests**: Test data quality rules
-- **Best practices**: Test critical paths, automate in CI/CD
-
-### Test Execution
-
-- **Development**: Run tests locally during development
-- **CI/CD**: Run tests before deployment
-- **Production**: Monitor tests in production, alert on failures
-- **Best practices**: Fast feedback, clear error messages
+- **Spurious correlations**: Coincidental relationships
+- **Reverse causation**: Cause and effect reversed
+- **Omitted variable bias**: Missing confounding factors
 
 ---
 
-## 7. Documentation & Lineage
+## 6. Hypothesis Testing
 
-### Model Documentation
+### Framework
 
-- **Description**: What the model does, purpose, use cases
-- **Columns**: Column descriptions, data types, examples
-- **Dependencies**: Upstream models, downstream consumers
-- **Examples**: Sample queries, common use cases
-- **Best practices**: Keep documentation up-to-date, use markdown
+- **Null hypothesis (H₀)**: Default assumption (no effect, no difference)
+- **Alternative hypothesis (H₁)**: What we're testing for
+- **Test statistic**: Calculated from sample data
+- **p-value**: Probability of observing results if H₀ is true
+- **Significance level (α)**: Threshold for rejecting H₀ (typically 0.05)
 
-### Lineage Documentation
+### Common Tests
 
-- **Upstream lineage**: Where data comes from (sources, upstream models)
-- **Downstream lineage**: Where data goes (downstream models, BI tools)
-- **Column-level lineage**: Track column transformations
-- **Best practices**: Automated lineage where possible, document manually where needed
+- **t-test**: Compare means (one-sample, two-sample, paired)
+- **Chi-square test**: Test independence, goodness of fit
+- **ANOVA**: Compare means across multiple groups
+- **Mann-Whitney U**: Non-parametric alternative to t-test
 
-### Changelog
+### Decision Making
 
-- **Schema changes**: Column additions, removals, type changes
-- **Logic changes**: Calculation changes, business rule updates
-- **Deprecations**: Models being phased out, migration paths
-- **Best practices**: Version control, clear dates, migration guides
-
-### Getting Started Guides
-
-- **Quick start**: How to use this data product
-- **Sample queries**: Common query patterns
-- **Joins**: How to join with other tables
-- **Pitfalls**: Common mistakes, edge cases
-- **Best practices**: Make it easy for new users
+- **p < α**: Reject H₀ (statistically significant)
+- **p ≥ α**: Fail to reject H₀ (not statistically significant)
+- **Type I error**: False positive (reject H₀ when it's true)
+- **Type II error**: False negative (fail to reject H₀ when it's false)
 
 ---
 
-## 8. Version Control & CI/CD
+## 7. A/B Testing & Experimentation
 
-### Version Control
+### Experimental Design
 
-- **Git workflow**: Branch, commit, PR, merge
-- **Best practices**: 
-  - Small, focused commits
-  - Clear commit messages
-  - PR reviews before merge
-- **Pattern**: Feature branch → PR → Review → Merge to main
+- **Control group**: Baseline (no change)
+- **Treatment group**: New variant (change being tested)
+- **Randomization**: Random assignment to groups
+- **Sample size**: Calculate based on effect size, power, significance level
 
-### CI/CD Pipeline
+### Key Metrics
 
-- **Build**: Compile transformations, validate SQL
-- **Test**: Run data tests, schema tests, custom tests
-- **Deploy**: Deploy to staging, then production
-- **Best practices**: 
-  - Fast feedback (fail fast)
-  - Automated testing
-  - Staged deployments
+- **Conversion rate**: Percentage completing desired action
+- **Average order value**: Average transaction amount
+- **Engagement metrics**: Time on site, clicks, views
+- **Retention rate**: Percentage returning users
 
-### Environment Strategy
+### Analysis
 
-- **Development**: Local development, testing
-- **Staging**: Pre-production validation
-- **Production**: Live environment, users
-- **Best practices**: 
-  - Test in staging before production
-  - Use feature flags for gradual rollout
-  - Monitor production deployments
+- **Statistical significance**: p-value < 0.05
+- **Practical significance**: Effect size matters for business
+- **Confidence intervals**: Range of likely true effect
+- **Multiple comparisons**: Adjust for testing multiple variants
 
-### Deployment Patterns
+### Best Practices
 
-- **Full refresh**: Rebuild entire model (small tables)
-- **Incremental**: Only process new/changed data (large tables)
-- **Blue-green**: Deploy to new environment, switch traffic
-- **Rollback**: Ability to rollback to previous version
-- **Best practices**: 
-  - Test rollback procedures
-  - Monitor after deployment
-  - Gradual rollout for large changes
-
-### Change Management
-
-- **Breaking changes**: Schema changes, calculation changes
-- **Deprecation**: Announce → Dual-run → Cutover → Retire
-- **Communication**: Notify consumers of changes
-- **Best practices**: 
-  - Backward compatibility when possible
-  - Clear migration paths
-  - Sufficient notice period
+- **One variable at a time**: Isolate the effect being tested
+- **Sufficient sample size**: Ensure statistical power
+- **Run duration**: Long enough to capture full effect
+- **Guardrail metrics**: Monitor for unintended negative effects
 
 ---
 
-> **Note**: For pipeline patterns, see [Data Engineering](data_engineering.md). For governance and quality practices, see [Data Management](data_management.md). For Microsoft-specific implementation (Power BI, Fabric), see [Microsoft Data Platform Implementation](ms_architecture.md).
+## 8. Forecasting & Predictive Analytics
+
+### Forecasting Methods
+
+- **Time series forecasting**: ARIMA, exponential smoothing, Prophet
+- **Regression**: Linear, polynomial, logistic regression
+- **Machine learning**: Random forest, gradient boosting, neural networks
+- **Ensemble methods**: Combine multiple models
+
+### Evaluation Metrics
+
+- **MAE (Mean Absolute Error)**: Average absolute difference
+- **RMSE (Root Mean Squared Error)**: Penalizes large errors more
+- **MAPE (Mean Absolute Percentage Error)**: Percentage-based error
+- **R² (R-squared)**: Proportion of variance explained
+
+### Best Practices
+
+- **Train/validation/test split**: Separate data for training and evaluation
+- **Cross-validation**: K-fold cross-validation for robust evaluation
+- **Feature engineering**: Create relevant features for prediction
+- **Model selection**: Compare multiple models, choose best performer
+
+---
+
+## 9. Anomaly Detection
+
+### Types of Anomalies
+
+- **Point anomalies**: Individual data points that are outliers
+- **Contextual anomalies**: Normal in one context, abnormal in another
+- **Collective anomalies**: Collection of points that are anomalous together
+
+### Detection Methods
+
+- **Statistical methods**: Z-scores, IQR method, Grubbs' test
+- **Distance-based**: k-nearest neighbors, local outlier factor
+- **Density-based**: DBSCAN, isolation forest
+- **Time series**: Moving average, exponential smoothing with thresholds
+
+### Use Cases
+
+- **Fraud detection**: Unusual transaction patterns
+- **System monitoring**: Performance anomalies, errors
+- **Quality control**: Defective products, data quality issues
+- **Security**: Intrusion detection, suspicious activity
+
+---
+
+## 10. Root Cause Analysis
+
+### Framework
+
+- **Problem definition**: Clearly define the issue
+- **Data collection**: Gather relevant data
+- **Hypothesis generation**: Brainstorm possible causes
+- **Hypothesis testing**: Test each hypothesis with data
+- **Root cause identification**: Identify underlying cause
+- **Solution implementation**: Address root cause
+
+### Techniques
+
+- **5 Whys**: Ask "why" repeatedly to drill down
+- **Fishbone diagram**: Categorize potential causes
+- **Pareto analysis**: Focus on most significant causes (80/20 rule)
+- **Correlation analysis**: Identify factors correlated with problem
+
+### Best Practices
+
+- **Data-driven**: Base conclusions on evidence, not assumptions
+- **Multiple perspectives**: Include different viewpoints
+- **Systematic approach**: Follow structured methodology
+- **Actionable insights**: Identify solutions, not just problems
+
+---
+
+> **Note**: For analytics engineering (transformation layer, semantic layer, BI modeling), see [Analytics Engineering](analytics.md). For data pipeline patterns, see [Data Engineering](engineering.md). For data management practices, see [Data Management](management.md).
 

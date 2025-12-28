@@ -2,44 +2,49 @@
 
 ## Table of Contents
 
+- [Environment Setup](#environment-setup)
+- [Pandas Setup](#pandas-setup)
 - [Rapid Lookup](#rapid-lookup)
 - [Common Patterns](#common-patterns)
 
 ---
 
 ## Environment Setup
-- Create venv: `python -m venv "/path/to/new/virtual/environment"`
+- Create venv: `python -m venv`
 - Activate venv: `Scripts\activate`
-- Add packes to requirements.txt
+- Add packeges to requirements.txt
 - `pip install -r requirements.txt`
 
-#1. Setup/Activate Venv 
-#2. Set up requirements.txt 
-#3. pip install -r requirements.txt
-
+**Note:**  Double back slash required for absolute file path reference (windows)
 ---
 
 ## Pandas Setup
-
-`import pandas as pd` 
-- read external file (automatic dataframe setup)
+- read external file (automatic dataframe setup):
 ```python
-df =pd.read_csv
-("c:\\Users\\acer\\Desktop\\programming\\languages\\python\\playground\\customers-1000.csv")
+import pandas as pd
+df = pd.read_csv("c:\\path\\to\\your\\environment\\data.csv")
 ```
-- Double back slash required for absolute file path reference (windows)
 
--New data structure (Manual dataframe setup)
+- New data structure (Manual dataframe setup):
 ```python
 df = {'col1': [1, 2], 'col2': [3, 4]}
 pd.DataFrame(data = df) # required param
 # optional params: index, column d-type, copy
 ```
+
+-**Note:** Pandas requires value-reasignment for transforms
+`df = df.loc[df["col_name"] == some_value]` includes matches
+`df = df.loc[~df["col_name"] == some_value]`excludes matches
 ---
 
 ## Rapid Lookup
 
 **Quick Syntax Reference**: `df.method()` - DataFrame methods | `pd.function()` - pandas functions | `df["col"]` - column access | `df.loc[]` - label-based | `df.iloc[]` - position-based | `df.groupby()` - grouping | `df.merge()` - joins | `pd.read_csv()` - I/O
+
+**Comparison Operations**
+- Simple one-off compare → ==
+- Complex chained conditions / symmetry (eq/ne/gt/ge) → use .eq()
+- Comparing Series with alignment + missing handling via fill_value → .eq()
 
 ### Creation & Inspection
 - `pd.Series([1, 2, 3])` - create Series

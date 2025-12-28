@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+- [Environment Setup](#environment-setup)
 - [Built-In Syntax](#built-in-syntax)
 - [Variables & Basic Types](#variables--basic-types)
 - [Operators](#operators)
@@ -23,9 +24,9 @@
 
 ---
 ## Environment Setup
-- Create venv: `python -m venv "/path/to/new/virtual/environment"`
+- Create venv: `python -m venv`
 - Activate venv: `Scripts\activate`
-- Add packes to requirements.txt
+- Add packages to requirements.txt
 - `pip install -r requirements.txt`
 
 ---

@@ -49,8 +49,8 @@ Quick reference for data, cloud & software engineering concepts and programming 
 ### SQL
 - [SQL](languages/sql/sql.md) - Core syntax, aggregations, joins, window functions
 
-### TypeScript
-- [Core](languages/typescript/typescript.md) - Syntax: types, interfaces, classes, generics, modules
+### Typescript
+- [Typescript](languages/typescript/typescript.md) - Syntax: types, interfaces, classes, generics, modules
 
 ### Terminal
 - [Terminal](languages/terminal/terminal.md) - Bash command reference

@@ -22,6 +22,13 @@
 - [Common Patterns](#common-patterns)
 
 ---
+## Environment Setup
+- Create venv: `python -m venv "/path/to/new/virtual/environment"`
+- Activate venv: `Scripts\activate`
+- Add packes to requirements.txt
+- `pip install -r requirements.txt`
+
+---
 
 ## Built-In Syntax
 

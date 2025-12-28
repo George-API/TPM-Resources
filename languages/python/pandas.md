@@ -7,6 +7,36 @@
 
 ---
 
+## Environment Setup
+- Create venv: `python -m venv "/path/to/new/virtual/environment"`
+- Activate venv: `Scripts\activate`
+- Add packes to requirements.txt
+- `pip install -r requirements.txt`
+
+#1. Setup/Activate Venv 
+#2. Set up requirements.txt 
+#3. pip install -r requirements.txt
+
+---
+
+## Pandas Setup
+
+`import pandas as pd` 
+- read external file (automatic dataframe setup)
+```python
+df =pd.read_csv
+("c:\\Users\\acer\\Desktop\\programming\\languages\\python\\playground\\customers-1000.csv")
+```
+- Double back slash required for absolute file path reference (windows)
+
+-New data structure (Manual dataframe setup)
+```python
+df = {'col1': [1, 2], 'col2': [3, 4]}
+pd.DataFrame(data = df) # required param
+# optional params: index, column d-type, copy
+```
+---
+
 ## Rapid Lookup
 
 **Quick Syntax Reference**: `df.method()` - DataFrame methods | `pd.function()` - pandas functions | `df["col"]` - column access | `df.loc[]` - label-based | `df.iloc[]` - position-based | `df.groupby()` - grouping | `df.merge()` - joins | `pd.read_csv()` - I/O

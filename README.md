@@ -31,27 +31,37 @@ Quick reference for data, cloud & software engineering concepts and programming 
 ### C
 - [C](languages/c/c.md) - Systems programming, memory management, pointers, standard library
 
+### C#
+- [C#](languages/csharp/csharp.md) - Syntax: types, operators, control flow, OOP, LINQ, async/await
+- [ASP.NET Core](languages/csharp/aspnet.md) - REST, SOAP, GraphQL, DI, middleware, Azure/Fabric integration
+
 ### Excel
 - [Excel](languages/excel/excel.md) - Functions, lookups, formulas, data analysis
 
 ### Git
 - [Git](languages/git/git.md) - Command reference and workflows
+- [Best Practices](languages/git/best_practices.md) - Workflows, configuration, hooks, protocols
 
 ### Java
 - [Java](languages/java/java.md) - Collections, I/O, JSON, HTTP, SOAP, database access
+- [Patterns](languages/java/patterns.md) - Enterprise patterns, best practices
 
 ### Python
 - [Core](languages/python/core.md) - Syntax: types, operators, control flow, functions, classes
 - [DSA](languages/python/dsa.md) - Data structures and algorithms (Python syntax)
-- [FastAPI](languages/python/fastapi.md) - Routing, models, validation, auth, DB patterns
-- [Pandas](languages/python/pandas.md) - Quick reference and ETL patterns
+- [Patterns](languages/python/patterns.md) - Common patterns, idioms, best practices
+- [Django](languages/python/packages/django.md) - Models, views, URLs, forms, admin, ORM, auth
+- [FastAPI](languages/python/packages/fastapi.md) - Routing, models, validation, auth, DB patterns
+- [Pandas](languages/python/packages/pandas.md) - Quick reference and ETL patterns
 - [PySpark](languages/python/pyspark.md) - PySpark syntax for Fabric/Delta Lake
-- [Scikit-learn](languages/python/sklearn.md) - Machine learning: preprocessing, models, pipelines
-- [Visualization](languages/python/visualization.md) - Matplotlib and Seaborn plotting
+- [Scikit-learn](languages/python/packages/sklearn.md) - Machine learning: preprocessing, models, pipelines
+- [Visualization](languages/python/packages/visualization.md) - Matplotlib and Seaborn plotting
 
 ### R
 - [Core](languages/r/core.md) - Syntax: types, vectors, data frames, functions, base R
-- [Tidyverse](languages/r/tidyverse.md) - dplyr, tidyr, stringr, lubridate essentials
+- [Tidyverse](languages/r/tidyverse.md) - tidyr, stringr, lubridate, readr, forcats
+- [dplyr](languages/r/dplyr.md) - dplyr syntax reference for data manipulation
+- [Patterns](languages/r/patterns.md) - Common patterns, workflows, best practices
 
 ### SQL
 - [Core](languages/sql/core.md) - Core syntax, operation flow, basic queries, DDL/DML

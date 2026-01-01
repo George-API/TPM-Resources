@@ -1,8 +1,11 @@
-# Python Quick Reference Guide
+# Python Syntax Reference
+
+**Focus**: Tight syntax reference for Python 3 - keywords, operators, data types, control flow, functions, classes, exceptions, I/O.
 
 ## Table of Contents
 
 - [Environment Setup](#environment-setup)
+- [Type System & Memory](#type-system--memory)
 - [Built-In Syntax](#built-in-syntax)
 - [Variables & Basic Types](#variables--basic-types)
 - [Operators](#operators)
@@ -12,15 +15,14 @@
 - [Sets (mutable, unordered, unique elements)](#sets-mutable-unordered-unique-elements)
 - [Dictionaries (mutable, key-value pairs)](#dictionaries-mutable-key-value-pairs)
 - [Control Flow](#control-flow)
+- [Match Statement (Python 3.10+)](#match-statement-python-310)
 - [Functions](#functions)
+- [Type Hints & Annotations](#type-hints--annotations)
 - [Classes & OOP](#classes--oop)
 - [Exception Handling](#exception-handling)
 - [File I/O](#file-io)
 - [Modules & Packages](#modules--packages)
 - [Common Built-in Functions](#common-built-in-functions)
-- [Comprehensions Summary](#comprehensions-summary)
-- [Useful Idioms](#useful-idioms)
-- [Common Patterns](#common-patterns)
 
 ---
 ## Environment Setup
@@ -51,6 +53,7 @@
 - `if` - Conditional branch
 - `elif` - Else-if branch
 - `else` - Default branch
+- `match` - Pattern matching (Python 3.10+)
 
 ### Loops
 - `for` - Iterate over iterable
@@ -87,7 +90,12 @@
 ### Scope / memory
 - `global` - Declare global variable
 - `nonlocal` - Declare enclosing-scope variable
-- `del` - Delete reference
+- `del` - Delete reference (removes binding, object deleted by GC if no other references)
+
+### Type annotations (Python 3.5+)
+- `:` - Type annotation (variable, parameter)
+- `->` - Return type annotation
+- `type` - Type hints for static analysis
 
 
 ## Variables & Basic Types
@@ -275,191 +283,138 @@
 ## Control Flow
 
 ### If/Elif/Else
-
-```python
-if condition:
-    # code
-elif another_condition:
-    # code
-else:
-    # code
-
-# Ternary operator
-x = value_if_true if condition else value_if_false
-```
+- `if condition:` - conditional branch
+- `elif condition:` - else-if branch
+- `else:` - default branch
+- `x = value_if_true if condition else value_if_false` - ternary operator
+- `if 0 < x < 10:` - chained comparisons
 
 ### For Loops
-
-```python
-for item in iterable:
-    # code
-
-for i in range(5):          # 0, 1, 2, 3, 4
-    print(i)
-
-for i in range(2, 5):       # 2, 3, 4
-    print(i)
-
-for i in range(0, 10, 2):   # 0, 2, 4, 6, 8 (step=2)
-    print(i)
-
-# Enumerate (index + value)
-for i, val in enumerate(lst):
-    print(i, val)
-
-# Zip (parallel iteration)
-for x, y in zip(list1, list2):
-    print(x, y)
-
-# Loop control
-break       # exit loop
-continue    # skip to next iteration
-```
+- `for item in iterable:` - iterate over iterable
+- `for i in range(5):` - range(5) = 0,1,2,3,4
+- `for i in range(2, 5):` - range(2,5) = 2,3,4
+- `for i in range(0, 10, 2):` - range with step = 0,2,4,6,8
+- `for i, val in enumerate(lst):` - iterate with index and value
+- `for x, y in zip(list1, list2):` - parallel iteration
+- `break` - exit loop immediately
+- `continue` - skip to next iteration
 
 ### While Loops
+- `while condition:` - loop while condition true
+- `while condition: ... else:` - else runs if loop completes without break
 
-```python
-while condition:
-    # code
-    if exit_condition:
-        break
-```
+---
+
+## Match Statement (Python 3.10+)
+- `match value: case 1:` - match literal value
+- `case 2 | 3:` - match multiple values
+- `case int(x) if x > 10:` - match type with guard clause
+- `case [x, y]:` - match sequence pattern
+- `case {"name": str(name), "age": int(age)}:` - match dict pattern
+- `case Point(x=0, y=0):` - match class pattern
+- `case _:` - wildcard (default case)
 
 ## Functions
+- `def function_name(param1, param2):` - define function
+- `def func(param="default"):` - default arguments (mutable defaults dangerous - use None)
+- `def func(*args):` - variable positional args (tuple)
+- `def func(**kwargs):` - variable keyword args (dict)
+- `def func(a, b, *, kw_only):` - keyword-only args (Python 3+)
+- `def func(pos_only, /, normal, *, kw_only):` - positional-only args (Python 3.8+)
+- `lambda x: x * 2` - anonymous function
+- `map(func, iterable)`, `filter(func, iterable)`, `reduce(func, iterable)` - functional tools
 
-```python
-def function_name(param1, param2):
-    """Docstring describing function"""
-    # code
-    return result
+## Type Hints & Annotations (Python 3.5+)
+- `def func(name: str) -> str:` - basic type hints
+- `def func(value: Union[int, str]) -> Optional[str]:` - Union, Optional types
+- `def func(items: list[int]) -> dict[str, int]:` - generic types (Python 3.9+)
+- `UserId: TypeAlias = int` - type aliases
+- `class UserDict(TypedDict): name: str; age: int` - TypedDict (Python 3.8+)
+- `T = TypeVar('T'); def first(items: list[T]) -> T:` - type variables (generics)
+- **Common types**: `int`, `str`, `float`, `bool`, `list[T]`, `dict[K, V]`, `tuple[T, ...]`, `set[T]`, `Optional[T]`, `Union[A, B]`, `Any`
+- **Type checking**: Use `mypy` or `pyright` - types are hints, not enforced at runtime
 
-# Default arguments
-def greet(name, greeting="Hello"):
-    return f"{greeting}, {name}"
-
-# Variable arguments
-def sum_all(*args):         # args is a tuple
-    return sum(args)
-
-def print_info(**kwargs):   # kwargs is a dict
-    for key, val in kwargs.items():
-        print(f"{key}: {val}")
-
-# Lambda (anonymous function)
-square = lambda x: x * 2
-add = lambda x, y: x + y
-
-# Map, filter, reduce
-list(map(lambda x: x*2, [1,2,3]))       # [2, 4, 6]
-list(filter(lambda x: x>2, [1,2,3,4]))  # [3, 4]
-
-from functools import reduce
-reduce(lambda x,y: x+y, [1,2,3,4])      # 10
-```
+---
 
 ## Classes & OOP
 
-```python
-class ClassName:
-    """Class docstring"""
-    
-    # Class variable (shared by all instances)
-    class_var = 0
-    
-    def __init__(self, param1, param2):
-        """Constructor"""
-        self.param1 = param1      # instance variable
-        self.param2 = param2
-    
-    def method(self):
-        """Instance method"""
-        return self.param1
-    
-    @classmethod
-    def class_method(cls):
-        """Class method (receives class, not instance)"""
-        return cls.class_var
-    
-    @staticmethod
-    def static_method():
-        """Static method (no self or cls)"""
-        return "static"
-    
-    def __str__(self):
-        """String representation"""
-        return f"ClassName({self.param1})"
+### Class Definition
+- `class ClassName:` - define class
+- `class_var = 0` - class variable (shared by all instances)
+- `def __init__(self, param1: str, param2: int):` - constructor
+- `self.param1 = param1` - instance variable
 
-# Instantiation
-obj = ClassName("value1", "value2")
-obj.method()
-ClassName.class_method()
+### Methods
+- `def method(self) -> str:` - instance method
+- `@classmethod def class_method(cls) -> int:` - class method (receives class, not instance)
+- `@staticmethod def static_method() -> str:` - static method (no self or cls)
+- `@property def computed(self) -> int:` - property (accessed like attribute)
 
-# Inheritance
-class Child(Parent):
-    def __init__(self, param1, param2, param3):
-        super().__init__(param1, param2)  # call parent constructor
-        self.param3 = param3
-    
-    def method(self):
-        """Override parent method"""
-        return super().method() + " modified"
-```
+### Special Methods
+- `__init__()` - constructor
+- `__str__()` - string representation (user-friendly)
+- `__repr__()` - string representation (developer-friendly, should be valid Python)
+- `__eq__()`, `__lt__()`, `__len__()`, `__getitem__()`, `__setitem__()`, `__contains__()`, `__call__()` - other special methods
+
+### Instantiation & Usage
+- `obj = ClassName("value1", 42)` - create instance
+- `obj.method()` - call instance method
+- `ClassName.class_method()` - call class method
+- `obj.computed` - access property
+
+### Inheritance
+- `class Child(Parent):` - single inheritance
+- `class Child(Parent1, Parent2):` - multiple inheritance
+- `super().__init__(param1, param2)` - call parent constructor
+- `super().method()` - call parent method
+
+### Dataclasses (Python 3.7+)
+- `from dataclasses import dataclass` - import decorator
+- `@dataclass class Point: x: int; y: int; z: int = 0` - auto-generates `__init__`, `__repr__`, `__eq__`
+- Use for data containers
+
+### Slots (Memory Optimization)
+- `__slots__ = ('x', 'y')` - prevents `__dict__` creation, saves memory for many instances
 
 ## Exception Handling
 
-```python
-try:
-    # code that might raise exception
-    result = 10 / 0
-except ZeroDivisionError as e:
-    # handle specific exception
-    print(f"Error: {e}")
-except (TypeError, ValueError):
-    # handle multiple exceptions
-    print("Type or Value error")
-except Exception as e:
-    # catch all other exceptions
-    print(f"Unexpected error: {e}")
-else:
-    # executes if no exception raised
-    print("Success")
-finally:
-    # always executes
-    print("Cleanup")
+### Try/Except
+- `try: ... except Exception as e:` - catch exception
+- `except ZeroDivisionError as e:` - catch specific exception
+- `except (TypeError, ValueError) as e:` - catch multiple exceptions
+- `else:` - executes if no exception raised
+- `finally:` - always executes (cleanup code)
 
-# Raise exception
-raise ValueError("Invalid value")
-raise Exception("Custom error message")
+### Raising Exceptions
+- `raise ValueError("Invalid value")` - raise exception
+- `raise Exception("Custom error message")` - raise generic exception
+- `raise RuntimeError("Failed") from e` - exception chaining (Python 3+)
 
-# Common exceptions
-# ValueError, TypeError, KeyError, IndexError, AttributeError
-# FileNotFoundError, ZeroDivisionError, ImportError
-```
+### Exception Groups (Python 3.11+)
+- `except* ValueError as eg:` - catch multiple exceptions
+- `for exc in eg.exceptions:` - iterate over exceptions
+
+### Common Exceptions
+- `ValueError`, `TypeError`, `KeyError`, `IndexError`, `AttributeError`
+- `FileNotFoundError`, `ZeroDivisionError`, `ImportError`, `StopIteration`
+
+**Exception hierarchy**: `BaseException` → `Exception` → `RuntimeError`, `ValueError`, etc. - Catch `Exception`, not `BaseException`
 
 ## File I/O
 
-```python
-# Read file
-with open("file.txt", "r") as f:
-    content = f.read()              # read entire file
-    # or
-    lines = f.readlines()           # list of lines
-    # or
-    for line in f:                  # iterate line by line
-        print(line.strip())
+### Reading Files
+- `with open("file.txt", "r") as f: content = f.read()` - read entire file
+- `with open("file.txt", "r") as f: lines = f.readlines()` - read as list of lines
+- `with open("file.txt", "r") as f: for line in f:` - iterate line by line
 
-# Write file
-with open("file.txt", "w") as f:
-    f.write("Hello\n")
-    f.writelines(["line1\n", "line2\n"])
+### Writing Files
+- `with open("file.txt", "w") as f: f.write("Hello\n")` - write string
+- `with open("file.txt", "w") as f: f.writelines(["line1\n", "line2\n"])` - write multiple lines
+- `with open("file.txt", "a") as f: f.write("Appended\n")` - append to file
 
-# Append to file
-with open("file.txt", "a") as f:
-    f.write("Appended text\n")
-
-# Modes: "r" (read), "w" (write), "a" (append), "r+" (read/write)
-# Add "b" for binary mode: "rb", "wb"
-```
+### File Modes
+- `"r"` - read, `"w"` - write (overwrites), `"a"` - append, `"r+"` - read/write
+- `"rb"`, `"wb"` - binary mode
 
 ## Modules & Packages
 
@@ -514,82 +469,4 @@ with open("file.txt", "a") as f:
 - `abs(x)` - absolute value
 - `round(x, n)` - round to n decimals
 - `pow(x, y)` - x to power y
-- `divmod(x, y)` - return (x//y, x%y)
-
-## Comprehensions Summary
-
-### List Comprehension
-- `[expr for item in iterable if condition]` - create list
-
-### Dict Comprehension
-- `{key_expr: val_expr for item in iterable if condition}` - create dict
-
-### Set Comprehension
-- `{expr for item in iterable if condition}` - create set
-
-### Generator Expression
-- `(expr for item in iterable if condition)` - create generator (memory efficient)
-
-## Useful Idioms
-
-```python
-# Swap variables
-a, b = b, a
-
-# Chained comparison
-if 0 < x < 10:
-    pass
-
-# Multiple conditions with all/any
-if all([cond1, cond2, cond3]):
-    pass
-
-# Default dict value
-count = counts.get(key, 0)
-counts[key] = count + 1
-
-# Iterate with index
-for i, item in enumerate(items):
-    print(i, item)
-
-# Unpack with remainder
-first, *middle, last = [1, 2, 3, 4, 5]  # first=1, middle=[2,3,4], last=5
-
-# Dictionary merge (Python 3.9+)
-merged = dict1 | dict2
-
-# Walrus operator (Python 3.8+, assignment in expression)
-if (n := len(items)) > 10:
-    print(f"List has {n} items")
-
-# Check emptiness (Pythonic)
-if not lst:         # instead of if len(lst) == 0:
-    print("empty")
-```
-
-## Common Patterns
-
-```python
-# Safe dictionary access
-value = d.get(key, default_value)
-
-# Count occurrences
-from collections import Counter
-counts = Counter([1, 2, 2, 3, 3, 3])  # Counter({3: 3, 2: 2, 1: 1})
-
-# Default dictionary
-from collections import defaultdict
-dd = defaultdict(list)
-dd['key'].append(1)  # no KeyError
-
-# Named tuples
-from collections import namedtuple
-Point = namedtuple('Point', ['x', 'y'])
-p = Point(1, 2) 
-p.x  # 1
-
-# Context manager (with statement)
-with resource as r:
-    # resource automatically cleaned up
-    pass
-```  
+- `divmod(x, y)` - return (x//y, x%y)  

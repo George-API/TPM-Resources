@@ -19,6 +19,18 @@ library(dplyr)
 
 **Note**: dplyr is part of tidyverse. Use `library(tidyverse)` to load dplyr, tidyr, readr, and other packages together.
 
+**Pipe operators** (for chaining function calls, not assignment):
+- `%>%` (magrittr pipe) - Passes left side as first argument to right: `df %>% filter(age > 25)` = `filter(df, age > 25)`
+- `|>` (native R pipe, R 4.1+) - Base R pipe, same concept, no package needed
+- Both work with dplyr. Examples use `%>%` (traditional), but `|>` can be substituted
+- **Assignment**: Use `<-` or `=` separately: `result <- df %>% filter(age > 25)`
+
+**Why function calls instead of method notation?**
+- R is a **functional programming language** - functions are first-class objects, not methods attached to objects
+- dplyr functions are **regular functions** that take data frames as arguments: `filter(df, age > 25)`, not `df.filter(age > 25)`
+- R has OOP systems (S3, S4, R6) but uses generic function dispatch, not dot/bracket notation
+- Pipes provide method-like chaining syntax: `df %>% filter() %>% select()` reads like `df.filter().select()` but uses functions
+
 ---
 
 ## Rapid Lookup

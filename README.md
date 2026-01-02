@@ -5,7 +5,8 @@ Quick reference for data, cloud & software engineering concepts and programming 
 ## Concepts
 
 ### Cloud
-- [Cloud Architecture](concepts/cloud/architecture.md) - Identity, networking, APIs, messaging, reliability
+- [Cloud Architecture](concepts/cloud/architecture.md) - Identity, networking, APIs, messaging, reliability, multi-tenant patterns
+- [Cloud Infrastructure & Operations](concepts/cloud/infrastructure.md) - Containers, serverless, CI/CD, compliance, operations
 - [Azure Data Platform](concepts/cloud/azure_architecture.md) - ADF, ADLS, Synapse implementation
 - [Microsoft Fabric](concepts/cloud/fabric_architecture.md) - OneLake, Lakehouse, Warehouse implementation
 
@@ -31,19 +32,18 @@ Quick reference for data, cloud & software engineering concepts and programming 
 ### C
 - [C](languages/c/c.md) - Systems programming, memory management, pointers, standard library
 
+### C++
+- [C++](languages/cpp/cpp.md) - OOP, templates, STL, RAII, smart pointers, modern C++ features
+
 ### C#
 - [C#](languages/csharp/csharp.md) - Syntax: types, operators, control flow, OOP, LINQ, async/await
-- [ASP.NET Core](languages/csharp/aspnet.md) - REST, SOAP, GraphQL, DI, middleware, Azure/Fabric integration
-
-### Excel
-- [Excel](languages/excel/excel.md) - Functions, lookups, formulas, data analysis
-
-### Git
-- [Git](languages/git/git.md) - Command reference and workflows
-- [Best Practices](languages/git/best_practices.md) - Workflows, configuration, hooks, protocols
+- [ASP.NET Core](languages/csharp/aspnet.md) - REST, SOAP, GraphQL, DI, middleware, EF Core, authentication
+- [Azure & Fabric Integration](languages/csharp/azure.md) - Azure services, Managed Identity, Application Insights, Fabric API
 
 ### Java
 - [Java](languages/java/java.md) - Collections, I/O, JSON, HTTP, SOAP, database access
+- [Spring Boot](languages/java/springboot.md) - REST APIs, DI, security, JPA, testing, configuration
+- [JVM](languages/java/jvm.md) - Memory management, GC, performance tuning, monitoring, troubleshooting
 - [Patterns](languages/java/patterns.md) - Enterprise patterns, best practices
 
 ### Python
@@ -63,15 +63,36 @@ Quick reference for data, cloud & software engineering concepts and programming 
 - [dplyr](languages/r/dplyr.md) - dplyr syntax reference for data manipulation
 - [Patterns](languages/r/patterns.md) - Common patterns, workflows, best practices
 
+### Rust
+- [Rust](languages/rust/rust.md) - Ownership, borrowing, lifetimes, traits, error handling, concurrency
+
 ### SQL
 - [Core](languages/sql/core.md) - Core syntax, operation flow, basic queries, DDL/DML
 - [Patterns](languages/sql/patterns.md) - Common patterns, window functions, CTEs, data quality
 
-### Typescript
-- [Typescript](languages/typescript/typescript.md) - Syntax: types, interfaces, classes, generics, modules
+### TypeScript
+- [TypeScript](languages/typescript/typescript.md) - Syntax: types, interfaces, classes, generics, modules
+
+---
+
+## Utilities
+
+### Bicep
+- [Bicep](utilities/bicep/bicep.md) - Azure IaC: Bicep DSL syntax, resources, modules, deployment
+
+### Excel
+- [Excel](utilities/excel/excel.md) - Functions, lookups, formulas, data analysis
+- [Power Query](utilities/excel/powerquery.md) - M language, data transformation, ETL patterns
+
+### Git
+- [Git](utilities/git/git.md) - Command reference and workflows
+- [Best Practices](utilities/git/best_practices.md) - Workflows, configuration, hooks, protocols
+
+### Terraform
+- [Terraform](utilities/terraform/terraform.md) - Azure IaC: HCL syntax, resources, modules, state management
 
 ### Terminal
-- [Terminal](languages/terminal/terminal.md) - Bash command reference
+- [Terminal](utilities/terminal/terminal.md) - Bash command reference
 
 ---
 

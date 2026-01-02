@@ -2,7 +2,7 @@
 
 **Scope**: Design patterns and best practices for building cloud applications and platforms (not data-specific).
 
-**Purpose**: Use this when designing and building cloud solutions. For troubleshooting existing systems, see the OSI troubleshooting reference.
+**Purpose**: Use this when designing and building cloud solutions. For infrastructure deployment and operations, see [Cloud Infrastructure & Operations](infrastructure.md). For troubleshooting existing systems, see the OSI troubleshooting reference.
 
 ## Table of Contents
 
@@ -12,9 +12,7 @@
 - [4. Messaging & Workflow Patterns](#4-messaging--workflow-patterns)
 - [5. Multi-tenant SaaS Patterns](#5-multi-tenant-saas-patterns)
 - [6. Reliability Engineering (SRE)](#6-reliability-engineering-sre)
-- [7. Secrets & Keys](#7-secrets--keys)
-- [8. Operational Excellence](#8-operational-excellence)
-- [9. Reference Blueprints](#9-reference-blueprints)
+- [7. Reference Blueprints](#7-reference-blueprints)
 
 ---
 
@@ -172,50 +170,7 @@
 
 ---
 
-## 7. Secrets & Keys
-
-### Key management
-
-- Central keys/certs; app secrets only when unavoidable
-- Access via Managed Identity; rotate automatically
-- **Secret scanning**: Scan code repos for hardcoded secrets; pre-commit hooks; automated rotation windows
-
-### Confidential computing (when mandated)
-
-- Confidential VMs or confidential containers (use case dependent)
-- Always start with threat model + compliance requirement, not trend
-
----
-
-## 8. Operational Excellence
-
-### Runbooks + playbooks
-
-- DLQ handling, replay procedures, incident triage, rollback
-- **On-call rotation**: Clear escalation paths; incident severity classification; post-mortem culture
-
-### Audit trails
-
-- Immutable storage for critical logs/events (when required)
-
-### Change management
-
-- Schema changes, API deprecations, topic migrations with comms + timelines
-- **Infrastructure as Code**: Version control all infrastructure; GitOps for automated deployments
-- **Disaster recovery**: Define RTO/RPO; test failover regularly; automate recovery procedures
-- **Deployment strategies**: Blue-green or canary for zero-downtime; feature flags for gradual rollouts; automated rollback triggers
-
-### FinOps
-
-- Cost per tenant/request/pipeline run; budgets + anomaly detection
-- Reserved capacity for steady workloads; autoscale for burst
-- **Right-sizing**: Regular review of resource utilization; downsize over-provisioned resources
-- **Spot instances**: Use for fault-tolerant workloads (batch, dev/test); graceful shutdown handling
-- **Tagging strategy**: Consistent tags for cost allocation (team, environment, cost center)
-
----
-
-## 9. Reference Blueprints
+## 7. Reference Blueprints
 
 ### A) Global API (multi-region active-active)
 
@@ -234,3 +189,7 @@
 
 - CDC/Events → Stream ingest → processing (Functions/Container Apps)
 - Lake updates + serving store + freshness metrics + alerting
+
+---
+
+> **Note**: For infrastructure deployment, container orchestration, CI/CD, and operational practices, see [Cloud Infrastructure & Operations](infrastructure.md).

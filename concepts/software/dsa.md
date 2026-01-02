@@ -43,6 +43,17 @@
 **Heap**:
 - Insert/extract min: O(log n)
 - Peek: O(1)
+- Build heap from array: O(n)
+
+**Graph**:
+- BFS/DFS: O(V + E)
+- Dijkstra (with heap): O((V + E) log V)
+- Topological sort: O(V + E)
+
+**String**:
+- Substring search (naive): O(n*m)
+- KMP algorithm: O(n + m)
+- Rabin-Karp: O(n + m) average
 
 ---
 
@@ -80,6 +91,10 @@
 - **Use when**: Membership testing, duplicate removal, union/intersection operations
 - **Trade-offs**: O(1) membership test, but no ordering
 
+**Ordered Set/TreeMap**:
+- **Use when**: Need sorted order with dynamic insertions
+- **Operations**: Insert/delete/search O(log n), range queries O(log n + k)
+
 ### Tree Structures
 
 **Binary Tree**:
@@ -99,6 +114,10 @@
 **Trie** (Prefix Tree):
 - **Use when**: String prefix matching, autocomplete, word search
 - **Trade-offs**: O(m) search where m is string length, but high space usage
+
+**Balanced BST** (AVL, Red-Black):
+- **Use when**: Need guaranteed O(log n) operations, sorted order
+- **Trade-offs**: More complex than BST, but maintains balance automatically
 
 ### Graph Structures
 
@@ -163,6 +182,72 @@
 - **Pattern**: Order nodes such that all dependencies come before dependents
 - **Complexity**: O(V + E) time, O(V) space
 
+### Graph Shortest Path Algorithms
+
+**Dijkstra's** (non-negative weights):
+- **Use when**: Single-source shortest path, weighted graph
+- **Pattern**: Greedy, use min-heap, relax edges
+- **Complexity**: O((V + E) log V) with heap
+
+**Bellman-Ford** (negative weights allowed):
+- **Use when**: Negative edge weights, detect negative cycles
+- **Pattern**: Relax all edges V-1 times
+- **Complexity**: O(V * E) time
+
+**Floyd-Warshall** (all pairs):
+- **Use when**: Shortest path between all pairs of vertices
+- **Pattern**: Dynamic programming, consider intermediate vertices
+- **Complexity**: O(V³) time, O(V²) space
+
+### Minimum Spanning Tree
+
+**Kruskal's**:
+- **Use when**: MST for undirected graph
+- **Pattern**: Sort edges, add smallest that doesn't form cycle (Union-Find)
+- **Complexity**: O(E log E) time
+
+**Prim's**:
+- **Use when**: MST starting from specific vertex
+- **Pattern**: Greedy, grow tree from start vertex
+- **Complexity**: O((V + E) log V) with heap
+
+### Sorting Algorithms
+
+**Comparison-based**:
+- **Quick Sort**: O(n log n) average, O(n²) worst, in-place, unstable
+- **Merge Sort**: O(n log n) worst, stable, requires O(n) space
+- **Heap Sort**: O(n log n) worst, in-place, unstable
+- **Tim Sort**: O(n log n), stable, hybrid (merge + insertion)
+
+**Non-comparison**:
+- **Counting Sort**: O(n + k) where k is range, stable, requires range knowledge
+- **Radix Sort**: O(d * (n + k)) where d is digits, stable
+
+### String Algorithms
+
+**KMP (Knuth-Morris-Pratt)**:
+- **Use when**: Pattern matching in text
+- **Pattern**: Precompute failure function, avoid re-checking matched characters
+- **Complexity**: O(n + m) time, O(m) space
+
+**Rabin-Karp**:
+- **Use when**: Multiple pattern matching, rolling hash
+- **Pattern**: Hash-based, check hash before full comparison
+- **Complexity**: O(n + m) average, O(n*m) worst
+
+### Backtracking
+- **Use when**: Constraint satisfaction, permutations, combinations, N-Queens
+- **Pattern**: Try choice, recurse, undo choice (backtrack)
+- **Optimization**: Pruning invalid paths early
+- **Complexity**: Often exponential, but pruning reduces search space
+
+### Dynamic Programming Patterns
+
+**1D DP**: `dp[i]` depends on previous states - Fibonacci, climbing stairs
+**2D DP**: `dp[i][j]` depends on previous rows/columns - LCS, edit distance
+**Knapsack**: 0/1 knapsack, unbounded knapsack, fractional knapsack (greedy)
+**State machine**: Multiple states per position - buy/sell stock with cooldown
+
 ---
 
 ## 4. Problem-Solving Strategies
@@ -212,4 +297,10 @@
 **Working with sorted array?** → Consider binary search
 **Working with subarray/substring?** → Consider sliding window
 **Need to track connected components?** → Union-Find
+**Need shortest path in weighted graph?** → Dijkstra (non-negative) or Bellman-Ford (negative allowed)
+**Need all pairs shortest path?** → Floyd-Warshall
+**Need minimum spanning tree?** → Kruskal or Prim
+**Working with constraints/permutations?** → Backtracking
+**Pattern matching in strings?** → KMP or Rabin-Karp
+**Need guaranteed O(log n) operations?** → Balanced BST (AVL, Red-Black)
 

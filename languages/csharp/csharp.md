@@ -10,6 +10,11 @@
 - [Operators](#operators)
 - [Control Flow](#control-flow)
 - [Functions & Methods](#functions--methods)
+- [Generics](#generics)
+- [Extension Methods](#extension-methods)
+- [Attributes](#attributes)
+- [Events & Delegates](#events--delegates)
+- [Tuples](#tuples)
 - [Classes & OOP](#classes--oop)
 - [Collections & LINQ](#collections--linq)
 - [Exception Handling](#exception-handling)
@@ -150,12 +155,116 @@
 
 ---
 
+## Generics
+
+**Generic classes**: `public class Repository<T> { public T GetById(int id) { } }` - Type parameter `T` can be any type
+
+**Generic methods**: `public T Process<T>(T item) { return item; }` - Type inference: `Process(42)` (T = int)
+
+**Generic constraints**: `where T : class` (reference type), `where T : struct` (value type), `where T : new()` (has constructor), `where T : IService` (implements interface)
+
+**Common generics**: `List<T>`, `Dictionary<TKey, TValue>`, `Task<T>`, `Nullable<T>` (T?), `Func<T, TResult>`, `Action<T>`
+
+**Generic interfaces**: `IEnumerable<T>`, `IComparable<T>`, `IEquatable<T>` - Type-safe collections and comparisons
+
+**Variance**: `IEnumerable<out T>` (covariant), `Action<in T>` (contravariant) - C# 4+
+
+---
+
+## Extension Methods
+
+**Extension method syntax**:
+```csharp
+public static class StringExtensions
+{
+    public static bool IsNullOrEmpty(this string? str) => string.IsNullOrEmpty(str);
+}
+
+// Usage: "".IsNullOrEmpty() - Extends string type
+```
+
+**Extension method pattern**: `public static ReturnType MethodName(this ExtendedType obj, params...)` - Must be in static class, first parameter uses `this`
+
+**Common use cases**: Fluent APIs, adding methods to sealed types, LINQ-style operations
+
+**LINQ as extensions**: `Where()`, `Select()`, `First()` are extension methods on `IEnumerable<T>`
+
+---
+
+## Attributes
+
+**Attribute syntax**: `[Obsolete("Use NewMethod instead")]`, `[Serializable]`, `[Authorize]` - Metadata for types, members, parameters
+
+**Custom attributes**:
+```csharp
+[AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
+public class LogAttribute : Attribute
+{
+    public string Level { get; set; }
+}
+
+[Log(Level = "Info")]
+public void Method() { }
+```
+
+**Common attributes**: `[Obsolete]`, `[Serializable]`, `[Conditional]`, `[DllImport]`, `[AttributeUsage]` - Framework and custom metadata
+
+**Reflection**: `typeof(MyClass).GetCustomAttributes()`, `methodInfo.GetCustomAttribute<LogAttribute>()` - Access attributes at runtime
+
+**ASP.NET Core attributes**: `[HttpGet]`, `[Authorize]`, `[FromBody]`, `[ApiController]` - Framework-specific attributes
+
+---
+
+## Events & Delegates
+
+**Delegate**: `public delegate void EventHandler(object sender, EventArgs e);` - Type-safe function pointer
+
+**Action/Func**: `Action<string> print = s => Console.WriteLine(s);`, `Func<int, int, int> add = (a, b) => a + b;` - Built-in delegate types
+
+**Events**:
+```csharp
+public event EventHandler<CustomEventArgs> SomethingHappened;
+
+protected virtual void OnSomethingHappened(CustomEventArgs e)
+{
+    SomethingHappened?.Invoke(this, e);
+}
+```
+
+**Event pattern**: Declare event, raise via protected method, subscribe with `+=`, unsubscribe with `-=`
+
+**Event handler**: `obj.SomethingHappened += (sender, e) => { };` - Subscribe to events
+
+**Use cases**: Observer pattern, UI events, pub/sub patterns, decoupled communication
+
+---
+
+## Tuples
+
+**Tuple syntax**: `(int x, string y) = (1, "hello");`, `var point = (X: 1, Y: 2);` - Lightweight grouping of values
+
+**Named tuples**: `(string Name, int Age) person = ("John", 30);` - Access via `person.Name`, `person.Age`
+
+**Tuple return**: `(string, int) GetPerson() => ("John", 30);` - Multiple return values without custom type
+
+**Tuple deconstruction**: `var (name, age) = GetPerson();` - Unpack tuple into variables
+
+**Tuple types**: `ValueTuple<T1, T2>` (value type, C# 7+), `Tuple<T1, T2>` (reference type, legacy)
+
+**Use cases**: Multiple return values, temporary grouping, avoiding custom DTOs for simple cases
+
+---
+
 ## Classes & OOP
 
 - **Class** (reference type): `public class User { private string _name; public User(string name) => _name = name; public string Name { get; set; } }`
 - **Struct** (value type): `public struct Point { public int X; public int Y; }` - Stack-allocated, no inheritance, use for small data (typically < 16 bytes)
 - **Properties**: `public string Name { get; set; }` (auto-property), `public string Name { get; private set; }` (private setter), `public int Age { get; init; }` (init-only, C# 9+), `public string Name { get { return _name; } set { _name = value; } }` (custom)
 - **Records** (C# 9+): `public record UserEvent(string UserId, string Action, DateTime Timestamp);` (immutable, value equality, reference type on heap)
+
+**Required members** (C# 11+): `public required string Name { get; set; }` - Must be initialized
+
+**Primary constructors** (C# 12+): `public class User(string name, string email) { }` - Constructor parameters available throughout class
 - **Inheritance**: `public class Admin : User { public Admin(string name) : base(name) { } public override void Greet() { base.Greet(); } }` - Single inheritance only (unlike C++)
 - **Interface**: `public interface IService { void Execute(); }` (default implementations C# 8+), `void Method() { }` (default implementation)
 - **Abstract class**: `public abstract class BaseHandler { public abstract void Handle(); protected virtual void Validate() { } }` - Cannot instantiate, can have implementation
@@ -193,6 +302,7 @@
 - **ConfigureAwait**: `await task.ConfigureAwait(false);` (avoid context capture)
 - **Parallel**: `await Task.WhenAll(tasks);`, `await Task.WhenAny(tasks);`
 - **Cancellation**: `CancellationTokenSource cts = new();`, `await MethodAsync(cts.Token);`
+- **IAsyncEnumerable** (async streams, C# 8+): `public async IAsyncEnumerable<int> GetNumbersAsync() { yield return i; }`, `await foreach (var item in GetNumbersAsync()) { }`
 
 ---
 
@@ -236,6 +346,10 @@
 **Pattern matching** (C# 7+): `if (obj is string s) { }`, `switch (obj) { case string s: break; case int i when i > 0: break; }`
 
 **Deconstruction**: `var (x, y) = point;` (tuple deconstruction), `var (name, age) = GetPerson();`
+
+**IEnumerable/IEnumerator**: `IEnumerable<T>` (iterable), `IEnumerator<T>` (iterator) - Core interfaces for collections, enables `foreach`
+
+**Yield return**: `yield return item;` (lazy evaluation), `yield break;` (exit) - Custom iterators without full IEnumerator implementation
 
 ---
 

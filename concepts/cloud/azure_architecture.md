@@ -1,4 +1,4 @@
-# Azure Data Platform Implementation
+# Azure Data Architecture Patterns
 
 **Scope**: Azure-centric enterprise data platform implementation (ingest → lake → serving → BI).
 

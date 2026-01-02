@@ -296,6 +296,15 @@
 - **Read-after-write**: Route reads to primary for immediate consistency
 - **Stale reads acceptable**: Route reads to replicas for better performance
 
+### CAP Theorem
+
+- **CAP Theorem**: In distributed systems, can only guarantee 2 of 3: Consistency, Availability, Partition tolerance
+- **CP systems**: Strong consistency, partition tolerance (e.g., distributed databases with quorum)
+- **AP systems**: High availability, partition tolerance, eventual consistency (e.g., DynamoDB, Cassandra)
+- **CA systems**: Consistency and availability (single-node systems, not truly distributed)
+- **Trade-offs**: Choose based on use case - strong consistency (CP) vs high availability (AP)
+- **Practical implications**: Most distributed databases choose AP (eventual consistency) or CP (strong consistency with availability trade-offs)
+
 ---
 
 ## 10. Database Maintenance

@@ -1,544 +1,444 @@
-# ASP.NET Core for Azure & Microsoft Fabric
+# ASP.NET Core
 
-**Focus**: Modern enterprise patterns for Azure/Fabric environments - Minimal APIs, DI, auth, Azure services, EF Core, monitoring.
+**Focus**: Core ASP.NET Core patterns and concepts - Minimal APIs, Controllers, DI, middleware, EF Core, authentication, logging, error handling.
 
 ## Table of Contents
 
 - [1. Minimal APIs & Controllers](#1-minimal-apis--controllers)
 - [2. Dependency Injection](#2-dependency-injection)
-- [3. Configuration & Azure Key Vault](#3-configuration--azure-key-vault)
-- [4. Authentication (Azure AD)](#4-authentication-azure-ad)
+- [3. Configuration](#3-configuration)
+- [4. Authentication & Authorization](#4-authentication--authorization)
 - [5. Middleware Pipeline](#5-middleware-pipeline)
-- [6. Entity Framework Core](#6-entity-framework-core)
-- [7. Azure Services](#7-azure-services)
-- [8. Microsoft Fabric Integration](#8-microsoft-fabric-integration)
-- [9. Logging & Monitoring](#9-logging--monitoring)
-- [10. Error Handling](#10-error-handling)
+- [6. CORS](#6-cors)
+- [7. API Versioning](#7-api-versioning)
+- [8. Rate Limiting](#8-rate-limiting)
+- [9. Validation](#9-validation)
+- [10. Caching](#10-caching)
+- [11. Swagger/OpenAPI](#11-swaggeropenapi)
+- [12. Entity Framework Core](#12-entity-framework-core)
+- [13. Logging](#13-logging)
+- [14. Error Handling](#14-error-handling)
 
 ---
 
 ## 1. Minimal APIs & Controllers
 
-**REST - Minimal APIs** (modern default):
+**Minimal APIs** (modern default):
 ```csharp
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+var app = WebApplication.CreateBuilder(args).Build();
 
 app.MapGet("/users/{id}", async (int id, IUserService service) => 
     await service.GetByIdAsync(id) is { } user ? Results.Ok(user) : Results.NotFound());
+// Pattern matching: `is { }` checks for non-null (see csharp.md)
 
-app.MapPost("/users", async (CreateUserDto dto, IUserService service, IValidator<CreateUserDto> validator) =>
-{
-    if (!(await validator.ValidateAsync(dto)).IsValid) return Results.BadRequest();
-    var user = await service.CreateAsync(dto);
-    return Results.Created($"/users/{user.Id}", user);
-});
+app.MapPost("/users", async (CreateUserDto dto, IUserService service) =>
+    await service.CreateAsync(dto) is { } user ? Results.Created($"/users/{user.Id}", user) : Results.BadRequest());
 
-var usersGroup = app.MapGroup("/api/users").WithTags("Users");
-usersGroup.MapGet("/", async (IUserService service) => Results.Ok(await service.GetAllAsync()));
+var group = app.MapGroup("/api/users").WithTags("Users");
 ```
 
-**REST - Controllers** (complex scenarios):
+**Controllers** (complex scenarios):
 ```csharp
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
 {
-    private readonly IUserService _service;
-    public UsersController(IUserService service) => _service = service;
-
     [HttpGet("{id}")]
     public async Task<ActionResult<User>> GetUser(int id) =>
         await _service.GetByIdAsync(id) is { } user ? Ok(user) : NotFound();
-
-    [HttpPost]
-    public async Task<ActionResult<User>> CreateUser([FromBody] CreateUserDto dto)
-    {
-        var user = await _service.CreateAsync(dto);
-        return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
-    }
 }
 ```
 
-**SOAP - WCF Service** (legacy integration):
-```csharp
-// Service contract
-[ServiceContract]
-public interface IUserService
-{
-    [OperationContract]
-    Task<User> GetUserAsync(int id);
-    
-    [OperationContract]
-    Task<User> CreateUserAsync(CreateUserRequest request);
-}
-
-// Service implementation
-[ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
-public class UserService : IUserService
-{
-    private readonly IUserRepository _repository;
-    public UserService(IUserRepository repository) => _repository = repository;
-    
-    public async Task<User> GetUserAsync(int id) => await _repository.GetByIdAsync(id);
-    public async Task<User> CreateUserAsync(CreateUserRequest request) => 
-        await _repository.CreateAsync(new User { Name = request.Name, Email = request.Email });
-}
-
-// Program.cs - Add SOAP endpoint
-builder.Services.AddServiceModelServices();
-builder.Services.AddServiceModelMetadata();
-var app = builder.Build();
-app.UseServiceModel(serviceBuilder =>
-{
-    serviceBuilder.AddService<UserService>();
-    serviceBuilder.AddServiceEndpoint<UserService, IUserService>(
-        new BasicHttpBinding(), "/UserService.svc");
-});
-```
-
-**GraphQL - Hot Chocolate** (modern GraphQL):
-```csharp
-// Install: HotChocolate.AspNetCore
-
-// Query type
-public class Query
-{
-    public async Task<User?> GetUser(int id, [Service] IUserService service) =>
-        await service.GetByIdAsync(id);
-    
-    public async Task<List<User>> GetUsers([Service] IUserService service) =>
-        await service.GetAllAsync();
-}
-
-// Mutation type
-public class Mutation
-{
-    public async Task<User> CreateUser(CreateUserInput input, [Service] IUserService service) =>
-        await service.CreateAsync(new CreateUserDto { Name = input.Name, Email = input.Email });
-}
-
-// Program.cs - Add GraphQL
-builder.Services
-    .AddGraphQLServer()
-    .AddQueryType<Query>()
-    .AddMutationType<Mutation>()
-    .AddType<User>()
-    .AddAuthorization();
-
-var app = builder.Build();
-app.MapGraphQL();  // Endpoint: /graphql
-```
+**Request mapping**: `@HttpGet`, `@HttpPost`, `@HttpPut`, `@HttpDelete`, `@HttpPatch`
 
 **Results**: `Results.Ok()`, `Results.Created()`, `Results.NoContent()`, `Results.NotFound()`, `Results.BadRequest()`, `Results.Problem()`
 
 **Model binding**: `[FromBody]`, `[FromQuery]`, `[FromRoute]`, `[FromHeader]` - Automatic in Minimal APIs
 
+**Validation**: `[Valid]` attribute triggers validation, `ModelState.IsValid` checks validation state
+
+**SOAP (WCF)**: `[ServiceContract]`, `[OperationContract]`, `[ServiceBehavior]` - Legacy integration pattern
+
+**GraphQL (Hot Chocolate)**: `AddGraphQLServer()`, `AddQueryType<T>()`, `AddMutationType<T>()`, `MapGraphQL()` - Endpoint: `/graphql`
+
 ---
 
 ## 2. Dependency Injection
 
+**Service registration**:
 ```csharp
-// Program.cs
-var builder = WebApplication.CreateBuilder(args);
-
-// Service lifetimes
 builder.Services.AddScoped<IUserService, UserService>();      // Per request
 builder.Services.AddSingleton<ICacheService, CacheService>(); // One instance
 builder.Services.AddTransient<IEmailService, EmailService>();  // New each time
+```
 
-// Options pattern (Azure config)
-builder.Services.Configure<AzureOptions>(builder.Configuration.GetSection("Azure"));
-// Inject: IOptions<AzureOptions> (singleton) or IOptionsSnapshot<AzureOptions> (scoped, reloads)
+**Lifetimes**: `AddSingleton` (shared), `AddScoped` (per HTTP request), `AddTransient` (new instance)
 
-// HttpClientFactory (enterprise pattern)
+**Options pattern**:
+```csharp
+builder.Services.Configure<AppOptions>(builder.Configuration.GetSection("App"));
+// Inject: IOptions<AppOptions> (singleton) or IOptionsSnapshot<AppOptions> (scoped, reloads)
+```
+
+**HttpClientFactory** (enterprise pattern):
+```csharp
 builder.Services.AddHttpClient<IExternalApiService, ExternalApiService>(client =>
 {
     client.BaseAddress = new Uri("https://api.example.com");
     client.Timeout = TimeSpan.FromSeconds(30);
 });
-
-// Service implementation
-public class UserService : IUserService
-{
-    private readonly ILogger<UserService> _logger;
-    private readonly IUserRepository _repository;
-    
-    public UserService(ILogger<UserService> logger, IUserRepository repository) =>
-        (_logger, _repository) = (logger, repository);
-    
-    public async Task<User> GetByIdAsync(int id)
-    {
-        _logger.LogInformation("Getting user {UserId}", id);
-        return await _repository.GetByIdAsync(id);
-    }
-}
 ```
 
-**Lifetimes**: `AddSingleton` (shared), `AddScoped` (per HTTP request), `AddTransient` (new instance)
+**Constructor injection** (preferred): Dependencies injected via constructor, framework manages lifecycle
 
-**HttpClientFactory**: Prevents socket exhaustion, supports Polly retry policies
+**HttpClientFactory benefits**: Prevents socket exhaustion, supports Polly retry policies, manages connection pooling
 
 ---
 
-## 3. Configuration & Azure Key Vault
+## 3. Configuration
 
-```csharp
-// Program.cs - Configuration precedence (later overrides earlier)
-var builder = WebApplication.CreateBuilder(args);
-
-// Automatic: appsettings.json, appsettings.{Environment}.json, environment variables, command-line
-// Add Azure Key Vault (production only)
-if (!builder.Environment.IsDevelopment())
-{
-    var keyVaultUrl = builder.Configuration["Azure:KeyVault:VaultUrl"];
-    if (!string.IsNullOrEmpty(keyVaultUrl))
-    {
-        builder.Configuration.AddAzureKeyVault(
-            new Uri(keyVaultUrl), 
-            new DefaultAzureCredential());
-    }
-}
-
-// Access: builder.Configuration["ConnectionStrings:DefaultConnection"]
-// Options pattern
-public class AzureOptions
-{
-    public string KeyVaultUrl { get; set; }
-    public string StorageAccount { get; set; }
-}
-builder.Services.Configure<AzureOptions>(builder.Configuration.GetSection("Azure"));
-```
+**Configuration sources** (automatic): `appsettings.json`, `appsettings.{Environment}.json`, environment variables, command-line
 
 **Precedence**: Command-line > Environment > User secrets (dev) > appsettings.{Environment}.json > appsettings.json
 
-**Azure Key Vault**: Use `Azure.Extensions.AspNetCore.Configuration.Secrets` - Add conditionally (not in dev)
+**Access**: `builder.Configuration["ConnectionStrings:DefaultConnection"]`
+
+**Options pattern**:
+```csharp
+public class AppOptions { public string ApiKey { get; set; } }
+builder.Services.Configure<AppOptions>(builder.Configuration.GetSection("App"));
+```
+
+**Configuration files**: JSON-based (`appsettings.json`), supports nested objects, environment-specific overrides
 
 ---
 
-## 4. Authentication (Azure AD)
+## 4. Authentication & Authorization
 
+**JWT Bearer authentication**:
 ```csharp
-// Program.cs - Azure AD / Entra ID
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        options.Authority = $"https://login.microsoftonline.com/{tenantId}";
-        options.Audience = clientId;
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-        };
+        options.Authority = "https://auth.example.com";
+        options.Audience = "api";
+        options.TokenValidationParameters = new TokenValidationParameters { ... };
     });
+```
 
+**Authorization policies**:
+```csharp
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
     options.AddPolicy("RequireScope", policy => policy.RequireClaim("scope", "api.read"));
 });
-
-// In controller/Minimal API
-[Authorize] // or app.MapGet("/protected", [Authorize] () => ...)
-[Authorize(Roles = "Admin")]
-[Authorize(Policy = "RequireScope")]
-public class UsersController : ControllerBase { }
 ```
 
-**Azure AD**: Use `Microsoft.Identity.Web` for easier integration
+**Authorization attributes**: `[Authorize]`, `[Authorize(Roles = "Admin")]`, `[Authorize(Policy = "RequireScope")]`
 
-**Managed Identity**: `DefaultAzureCredential` for service-to-service auth (Azure services)
+**Claims access**: `User.Claims`, `User.FindFirst(ClaimTypes.NameIdentifier)?.Value`, `User.IsInRole("Admin")`
 
-**Claims**: `User.Claims`, `User.FindFirst(ClaimTypes.NameIdentifier)?.Value`, `User.IsInRole("Admin")`
+**Cookie authentication**: `AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie()`
+
+**Authentication vs Authorization**: Authentication (who you are), Authorization (what you can do)
 
 ---
 
 ## 5. Middleware Pipeline
 
+**Middleware concept**: Request pipeline components that process HTTP requests/responses in sequence
+
+**Custom middleware**:
 ```csharp
-// Custom middleware (enterprise pattern)
 public class CorrelationIdMiddleware
 {
     private readonly RequestDelegate _next;
-    public CorrelationIdMiddleware(RequestDelegate next) => _next = next;
-    
     public async Task InvokeAsync(HttpContext context)
     {
-        var correlationId = context.Request.Headers["X-Correlation-Id"].FirstOrDefault() 
-            ?? Guid.NewGuid().ToString();
-        context.Items["CorrelationId"] = correlationId;
-        context.Response.Headers["X-Correlation-Id"] = correlationId;
+        context.Items["CorrelationId"] = Guid.NewGuid().ToString();
         await _next(context);
     }
 }
-
-// Program.cs - Middleware order matters
-var app = builder.Build();
-
-app.UseExceptionHandler();      // First: catch all exceptions
-app.UseHttpsRedirection();
-app.UseResponseCompression();    // Compress responses
-app.UseStaticFiles();
-app.UseRouting();
-app.UseCors("AllowSpecificOrigin");
-app.UseAuthentication();         // Before authorization
-app.UseAuthorization();
-app.UseCorrelationId();         // Custom
-app.MapControllers();           // or app.MapEndpoints() for Minimal APIs
 ```
 
-**Order**: Exception handler → HTTPS → Compression → Static files → Routing → CORS → Auth → Authorization → Endpoints
+**Middleware order** (critical): Exception handler → HTTPS → Compression → Static files → Routing → CORS → Auth → Authorization → Endpoints
 
-**Built-in**: `UseExceptionHandler()`, `UseHttpsRedirection()`, `UseResponseCompression()`, `UseCors()`, `UseAuthentication()`, `UseAuthorization()`
+**Built-in middleware**: `UseExceptionHandler()`, `UseHttpsRedirection()`, `UseResponseCompression()`, `UseCors()`, `UseAuthentication()`, `UseAuthorization()`
+
+**Registration**: `app.UseMiddleware<CorrelationIdMiddleware>()` or extension method `app.UseCorrelationId()`
+
+**Request pipeline**: Each middleware can short-circuit (not call `_next`) or modify request/response
 
 ---
 
-## 6. Entity Framework Core
+## 6. CORS
 
+**CORS configuration**:
 ```csharp
-// Program.cs - EF Core with connection resilience
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlOptions => sqlOptions.EnableRetryOnFailure(
-            maxRetryCount: 5, 
-            maxRetryDelay: TimeSpan.FromSeconds(30), 
-            errorNumbersToAdd: null)));
-
-// DbContext
-public class AppDbContext : DbContext
+builder.Services.AddCors(options =>
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-    public DbSet<User> Users { get; set; }
-    
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    options.AddPolicy("AllowSpecificOrigin", policy =>
     {
-        modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
+        policy.WithOrigins("https://example.com")
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+              .AllowCredentials();
+    });
+});
+
+app.UseCors("AllowSpecificOrigin");
+```
+
+**CORS policy options**: `WithOrigins()`, `AllowAnyOrigin()`, `AllowAnyMethod()`, `AllowAnyHeader()`, `AllowCredentials()`
+
+**CORS middleware order**: Must be after `UseRouting()`, before `UseAuthorization()`
+
+**Use cases**: Allow frontend applications to call APIs from different origins, required for browser-based clients
+
+---
+
+## 7. API Versioning
+
+**API versioning** (package: `Microsoft.AspNetCore.Mvc.Versioning`):
+```csharp
+builder.Services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.ReportApiVersions = true;
+});
+
+// URL-based versioning
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/[controller]")]
+public class UsersController : ControllerBase { }
+
+// Header-based versioning
+[ApiVersion("2.0")]
+[Route("api/[controller]")]
+public class UsersV2Controller : ControllerBase { }
+```
+
+**Versioning strategies**: URL path (`/api/v1/users`), Query string (`?api-version=1.0`), Header (`api-version: 1.0`)
+
+**Version selection**: `[ApiVersion("1.0")]`, `[MapToApiVersion("2.0")]` - Multiple versions per controller
+
+---
+
+## 8. Rate Limiting
+
+**Rate limiting** (.NET 7+):
+```csharp
+builder.Services.AddRateLimiter(options =>
+{
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: context.User.Identity?.Name ?? context.Request.Headers.Host.ToString(),
+            factory: partition => new FixedWindowRateLimiterOptions
+            {
+                AutoReplenishment = true,
+                PermitLimit = 100,
+                Window = TimeSpan.FromMinutes(1)
+            }));
+});
+
+app.UseRateLimiter();
+```
+
+**Rate limiter types**: `FixedWindowRateLimiter`, `SlidingWindowRateLimiter`, `TokenBucketRateLimiter`, `ConcurrencyLimiter`
+
+**Endpoint-specific limits**:
+```csharp
+app.MapGet("/api/users", [EnableRateLimiting("CustomPolicy")] () => { });
+```
+
+**Rate limiting policies**: Configure named policies, apply per endpoint or globally
+
+---
+
+## 9. Validation
+
+**Data annotations** (records for DTOs - see csharp.md for record syntax):
+```csharp
+public record CreateUserDto(
+    [Required] [StringLength(100)] string Name,
+    [Required] [EmailAddress] string Email,
+    [Range(18, 120)] int Age
+) {}
+```
+
+**Validation attributes**: `[Required]`, `[StringLength]`, `[Range]`, `[EmailAddress]`, `[RegularExpression]`, `[Compare]`, `[Url]`, `[Phone]`
+
+**FluentValidation** (advanced):
+```csharp
+public class CreateUserDtoValidator : AbstractValidator<CreateUserDto>
+{
+    public CreateUserDtoValidator()
+    {
+        RuleFor(x => x.Email).EmailAddress().NotEmpty();
+        RuleFor(x => x.Age).InclusiveBetween(18, 120);
     }
 }
 
-// Repository pattern
-public class UserRepository : IUserRepository
+builder.Services.AddScoped<IValidator<CreateUserDto>, CreateUserDtoValidator>();
+```
+
+**Validation in Minimal APIs**: `[Valid]` attribute, `Results.ValidationProblem(ModelState)` for errors
+
+**Custom validation**: `IValidatableObject`, custom validation attributes (see csharp.md for attribute syntax), `ValidationAttribute`
+
+---
+
+## 10. Caching
+
+**Response caching**:
+```csharp
+builder.Services.AddResponseCaching();
+app.UseResponseCaching();
+
+[ResponseCache(Duration = 60, VaryByQueryKeys = new[] { "page" })]
+[HttpGet]
+public IActionResult GetUsers(int page) { }
+```
+
+**Output caching** (.NET 7+):
+```csharp
+builder.Services.AddOutputCache();
+app.UseOutputCache();
+
+app.MapGet("/users", [OutputCache(Duration = 60)] () => { });
+```
+
+**Cache attributes**: `[ResponseCache]`, `[OutputCache]` - Control caching behavior per endpoint
+
+**Cache invalidation**: Tag-based invalidation, time-based expiration, cache keys
+
+**Memory cache**:
+```csharp
+builder.Services.AddMemoryCache();
+// Inject IMemoryCache for programmatic caching
+```
+
+---
+
+## 11. Swagger/OpenAPI
+
+**Swagger/OpenAPI** (API documentation):
+```csharp
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
 {
-    private readonly AppDbContext _context;
-    public UserRepository(AppDbContext context) => _context = context;
-    
-    public async Task<User> GetByIdAsync(int id) =>
-        await _context.Users
-            .AsNoTracking()  // Read-only optimization
-            .FirstOrDefaultAsync(u => u.Id == id);
-    
-    public async Task<User> CreateAsync(User user)
+    options.SwaggerDoc("v1", new OpenApiInfo 
+    { 
+        Title = "My API", 
+        Version = "v1" 
+    });
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        _context.Users.Add(user);
-        await _context.SaveChangesAsync();
-        return user;
-    }
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer"
+    });
+});
+
+app.UseSwagger();
+app.UseSwaggerUI();
+```
+
+**Swagger endpoints**: `/swagger` (JSON), `/swagger/ui` (UI) - Auto-generated from controllers/Minimal APIs
+
+**OpenAPI annotations**: `[ProducesResponseType]`, `[Produces]`, `[Consumes]`, `[SwaggerOperation]` - Enhance documentation
+
+**API documentation**: Auto-generated from code, includes request/response schemas, authentication requirements
+
+---
+
+## 12. Entity Framework Core
+
+**DbContext registration**:
+```csharp
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(connectionString, sqlOptions => 
+        sqlOptions.EnableRetryOnFailure(maxRetryCount: 5)));
+```
+
+**DbContext pattern**:
+```csharp
+public class AppDbContext : DbContext
+{
+    public DbSet<User> Users { get; set; }
+    protected override void OnModelCreating(ModelBuilder modelBuilder) { }
 }
 ```
 
-**Methods**: `FirstOrDefaultAsync()`, `ToListAsync()`, `AnyAsync()`, `Include()`, `AsNoTracking()` (read-only), `Where()`, `Select()`
+**Repository pattern**: Abstraction over DbContext, encapsulates data access logic
 
-**Resilience**: `EnableRetryOnFailure()` for transient SQL failures (Azure SQL)
+**Query methods**: `FirstOrDefaultAsync()`, `ToListAsync()`, `AnyAsync()`, `Include()` (eager loading), `AsNoTracking()` (read-only)
 
-**Pooling**: `AddDbContextPool<>()` for high-throughput scenarios
+**Resilience**: `EnableRetryOnFailure()` for transient SQL failures
+
+**Pooling**: `AddDbContextPool<>()` for high-throughput scenarios (reuses DbContext instances)
 
 **Migrations**: `dotnet ef migrations add Name`, `dotnet ef database update`
 
+**Change tracking**: EF Core tracks entity changes automatically, `SaveChangesAsync()` persists changes
+
 ---
 
-## 7. Azure Services
+## 13. Logging
 
+**Structured logging** (ASP.NET Core ILogger<T>):
 ```csharp
-// Azure Key Vault (secrets)
-using Azure.Security.KeyVault.Secrets;
-using Azure.Identity;
-
-var credential = new DefaultAzureCredential(); // Managed Identity in Azure
-var client = new SecretClient(new Uri("https://myvault.vault.azure.net/"), credential);
-var secret = await client.GetSecretAsync("my-secret");
-
-// Azure Storage Blobs
-using Azure.Storage.Blobs;
-
-var blobClient = new BlobServiceClient(connectionString);
-var container = blobClient.GetBlobContainerClient("container");
-var blob = container.GetBlobClient("file.txt");
-await blob.UploadAsync(stream);
-
-// Azure Service Bus (messaging)
-using Azure.Messaging.ServiceBus;
-
-var client = new ServiceBusClient(connectionString);
-var sender = client.CreateSender("queue");
-await sender.SendMessageAsync(new ServiceBusMessage(json));
-
-var receiver = client.CreateReceiver("queue");
-var message = await receiver.ReceiveMessageAsync();
-await receiver.CompleteMessageAsync(message);
-
-// Azure App Configuration (settings)
-builder.Configuration.AddAzureAppConfiguration(options =>
-    options.Connect(new Uri("https://myappconfig.azconfig.io"), new DefaultAzureCredential()));
+_logger.LogInformation("Getting user {UserId}", id);
+_logger.LogError(ex, "Error retrieving user {UserId}", id);
 ```
 
-**Managed Identity**: `DefaultAzureCredential` automatically uses Managed Identity in Azure (no secrets needed)
+**Log levels**: `Trace`, `Debug`, `Information`, `Warning`, `Error`, `Critical`
 
-**Service registration**: Register Azure clients as singletons: `builder.Services.AddSingleton(sp => new SecretClient(...))`
+**Structured logging**: Use `{PropertyName}` placeholders for queryable logs (not string interpolation) - Framework automatically formats
 
----
-
-## 8. Microsoft Fabric Integration
-
+**Health checks**:
 ```csharp
-// Fabric REST API client (enterprise pattern)
-public class FabricApiClient
-{
-    private readonly HttpClient _httpClient;
-    private readonly ILogger<FabricApiClient> _logger;
-    
-    public FabricApiClient(HttpClient httpClient, ILogger<FabricApiClient> logger) =>
-        (_httpClient, _logger) = (httpClient, logger);
-    
-    public async Task<FabricWorkspace> GetWorkspaceAsync(string workspaceId)
-    {
-        var response = await _httpClient.GetAsync($"/v1/workspaces/{workspaceId}");
-        response.EnsureSuccessStatusCode();
-        return await response.Content.ReadFromJsonAsync<FabricWorkspace>();
-    }
-    
-    public async Task<FabricItem> CreateItemAsync(string workspaceId, FabricItem item)
-    {
-        var response = await _httpClient.PostAsJsonAsync($"/v1/workspaces/{workspaceId}/items", item);
-        response.EnsureSuccessStatusCode();
-        return await response.Content.ReadFromJsonAsync<FabricItem>();
-    }
-}
-
-// Program.cs - Register with Managed Identity
-builder.Services.AddHttpClient<FabricApiClient>(async (sp, client) =>
-{
-    client.BaseAddress = new Uri("https://api.fabric.microsoft.com");
-    var credential = new DefaultAzureCredential();
-    var token = await credential.GetTokenAsync(new TokenRequestContext(new[] { "https://analysis.windows.net/powerbi/api/.default" }));
-    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Token);
-});
-```
-
-**Authentication**: Use `DefaultAzureCredential` with Fabric API scope for Managed Identity
-
-**REST API**: Fabric REST API endpoints for workspaces, items, datasets, reports
-
----
-
-## 9. Logging & Monitoring
-
-```csharp
-// Structured logging (enterprise pattern)
-public class UserService
-{
-    private readonly ILogger<UserService> _logger;
-    public UserService(ILogger<UserService> logger) => _logger = logger;
-    
-    public async Task<User> GetUserAsync(int id)
-    {
-        _logger.LogInformation("Getting user {UserId}", id);
-        try
-        {
-            var user = await _repository.GetByIdAsync(id);
-            _logger.LogInformation("User {UserId} retrieved successfully", id);
-            return user;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error retrieving user {UserId}", id);
-            throw;
-        }
-    }
-}
-
-// Program.cs - Application Insights (Azure monitoring)
-builder.Services.AddApplicationInsightsTelemetry();
-
-// Health checks (enterprise pattern)
-builder.Services.AddHealthChecks()
-    .AddCheck<DatabaseHealthCheck>("database")
-    .AddAzureKeyVault(options => ...)
-    .AddAzureServiceBusQueue("connection", "queue");
-
+builder.Services.AddHealthChecks().AddCheck<DatabaseHealthCheck>("database");
 app.MapHealthChecks("/health");
-app.MapHealthChecks("/health/ready", new HealthCheckOptions { Predicate = check => check.Tags.Contains("ready") });
+app.MapHealthChecks("/health/ready", new HealthCheckOptions { ... });
 ```
 
-**Structured logging**: Use `{PropertyName}` placeholders for queryable logs
+**Health check endpoints**: `/health` (liveness), `/health/ready` (readiness) - Kubernetes/container orchestration
 
-**Application Insights**: Automatic telemetry, custom events, dependency tracking, performance counters
-
-**Health checks**: Separate `/health` (liveness) and `/health/ready` (readiness) endpoints
+**Logging providers**: Console, Debug, EventSource, Application Insights (Azure), Serilog, NLog
 
 ---
 
-## 10. Error Handling
+## 14. Error Handling
 
+**Global exception handler** (middleware pattern):
 ```csharp
-// Global exception handler (enterprise pattern)
 public class GlobalExceptionMiddleware
 {
-    private readonly RequestDelegate _next;
-    private readonly ILogger<GlobalExceptionMiddleware> _logger;
-    
-    public GlobalExceptionMiddleware(RequestDelegate next, ILogger<GlobalExceptionMiddleware> logger) =>
-        (_next, _logger) = (next, logger);
-    
     public async Task InvokeAsync(HttpContext context)
     {
-        try
-        {
-            await _next(context);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Unhandled exception {CorrelationId}", 
-                context.Items["CorrelationId"]?.ToString());
-            await HandleExceptionAsync(context, ex);
-        }
-    }
-    
-    private static Task HandleExceptionAsync(HttpContext context, Exception exception)
-    {
-        var statusCode = exception switch
-        {
-            ArgumentException => 400,
-            UnauthorizedAccessException => 401,
-            NotFoundException => 404,
-            _ => 500
-        };
-        
-        context.Response.StatusCode = statusCode;
-        context.Response.ContentType = "application/json";
-        
-        var response = new ProblemDetails
-        {
-            Status = statusCode,
-            Title = exception.GetType().Name,
-            Detail = exception.Message,
-            Instance = context.Request.Path
-        };
-        
-        return context.Response.WriteAsJsonAsync(response);
+        try { await _next(context); }
+        catch (Exception ex) { await HandleExceptionAsync(context, ex); }
     }
 }
+// Exception handling syntax covered in csharp.md
+```
 
-// Program.cs - Problem Details (RFC 7807)
+**Problem Details** (RFC 7807):
+```csharp
 builder.Services.AddProblemDetails();
 app.UseExceptionHandler(); // Uses Problem Details automatically
 ```
 
-**Problem Details**: Standard RFC 7807 error format (automatic with `UseExceptionHandler()`)
+**Exception mapping**: Map exceptions to HTTP status codes (400 Bad Request, 401 Unauthorized, 404 Not Found, 500 Internal Server Error)
 
-**Correlation IDs**: Include in error responses for traceability
+**Correlation IDs**: Include in error responses for traceability across distributed systems
+
+**Error response format**: Standard Problem Details format with `status`, `title`, `detail`, `instance`
+
+**Exception handling strategy**: Catch at middleware level, log with context, return standardized error format
 
 ---
 
-> **Note**: Modern ASP.NET Core (.NET 6+) uses `Program.cs` with Minimal APIs by default. Enterprise patterns: Managed Identity for Azure services, structured logging with Application Insights, health checks, Problem Details for errors, EF Core with connection resilience. Use `DefaultAzureCredential` for all Azure service authentication (no secrets needed in Azure).
-
+> **Note**: Modern ASP.NET Core (.NET 6+) uses `Program.cs` with Minimal APIs by default. Core patterns: constructor injection for DI, middleware pipeline for cross-cutting concerns, Options pattern for configuration, structured logging, Problem Details for errors, EF Core for data access. Use HttpClientFactory for HTTP clients, health checks for monitoring, and repository pattern for data access abstraction.

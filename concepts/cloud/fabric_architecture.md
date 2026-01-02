@@ -1,4 +1,4 @@
-# Microsoft Fabric Data Platform Implementation
+# Fabric Data Architecture Patterns
 
 **Scope**: Microsoft Fabric-centric enterprise data platform implementation (ingest → lakehouse → serving → BI).
 

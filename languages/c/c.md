@@ -73,6 +73,8 @@
 
 **Qualifiers**: `const` (read-only), `volatile` (may change externally), `restrict` (C99, optimization hint)
 
+**Memory Model**: C has no automatic memory management - variables on stack (automatic), heap requires manual `malloc()`/`free()`. No garbage collection, no bounds checking. Stack variables destroyed when scope ends; heap memory persists until `free()`.
+
 ---
 
 ## Operators
@@ -113,16 +115,20 @@
 
 ## Pointers & Memory
 
-- **Declaration**: `int *ptr;` (pointer to int), `int **pptr;` (pointer to pointer)
-- **Address**: `int *p = &x;` (get address of x)
-- **Dereference**: `int val = *p;` (get value), `*p = 20;` (modify)
-- **Null**: `int *ptr = NULL;` (use NULL, not 0); check `if (ptr != NULL)` before dereference
-- **Arithmetic**: `p++` (next element), `*(p + 2) = 100;` (offset), `p += 5;` (advance)
-- **Comparison**: `if (p1 < p2)` (compare addresses)
-- **Void pointer**: `void *ptr;` (generic), cast: `int *p = (int*)ptr;`
-- **Const pointers**: `const int *p` (pointer to const), `int *const p` (const pointer)
+**Why pointers?** C passes arguments by value (copied). Pointers allow: passing large data efficiently, modifying caller's variables, dynamic memory allocation, implementing data structures.
 
-**Best Practices**: Initialize to NULL, check NULL before dereference, don't dereference freed pointers
+- **Declaration**: `int *ptr;` (pointer to int), `int **pptr;` (pointer to pointer)
+- **Address**: `int *p = &x;` (get address of x) - `&` gets memory address
+- **Dereference**: `int val = *p;` (get value), `*p = 20;` (modify) - `*` accesses value at address
+- **Null**: `int *ptr = NULL;` (use NULL, not 0); check `if (ptr != NULL)` before dereference - **Dereferencing NULL crashes**
+- **Arithmetic**: `p++` (next element, advances by `sizeof(int)`), `*(p + 2) = 100;` (offset), `p += 5;` (advance)
+- **Comparison**: `if (p1 < p2)` (compare addresses, not values)
+- **Void pointer**: `void *ptr;` (generic, can point to any type), cast: `int *p = (int*)ptr;` - Must cast before use
+- **Const pointers**: `const int *p` (pointer to const - can't modify value), `int *const p` (const pointer - can't change address)
+
+**Common pitfalls**: Dereferencing NULL/uninitialized pointer (crash), dereferencing freed pointer (undefined behavior), pointer arithmetic out of bounds (undefined behavior)
+
+**Best Practices**: Initialize to NULL, check NULL before dereference, don't dereference freed pointers, be aware of pointer arithmetic bounds
 
 ---
 
@@ -131,10 +137,11 @@
 ### Arrays
 
 - **Declaration**: `int arr[10];` (fixed size), `int arr[] = {1, 2, 3};` (initialized), `int arr[5] = {0};` (zeros)
-- **Access**: `arr[0] = 100;`, `int val = arr[5];`
-- **Size**: `sizeof(arr) / sizeof(arr[0])` (number of elements)
+- **Access**: `arr[0] = 100;`, `int val = arr[5];` - **No bounds checking** (accessing `arr[10]` on size-10 array is undefined behavior)
+- **Size**: `sizeof(arr) / sizeof(arr[0])` (number of elements) - Only works in same scope as declaration
 - **Multi-dimensional**: `int matrix[3][4];`, `matrix[0][0] = 1;`
-- **Function param**: `void process(int arr[], int size);` (decays to `int *arr`)
+- **Function param**: `void process(int arr[], int size);` (decays to `int *arr`) - **Arrays decay to pointers when passed to functions** - size information lost, must pass size separately
+- **Array vs pointer**: `int arr[10]` (array, `sizeof(arr)` = 40), `int *ptr` (pointer, `sizeof(ptr)` = 8) - Arrays are not pointers, but decay to pointers in most contexts
 
 ### Strings (`<string.h>`)
 
@@ -202,12 +209,16 @@
 
 ## Memory Management (`<stdlib.h>`)
 
-- **Allocate**: `int *arr = malloc(10 * sizeof(int));` (check for NULL)
-- **Zero-init**: `int *arr = calloc(10, sizeof(int));` (allocate and zero)
-- **Reallocate**: `arr = realloc(arr, 20 * sizeof(int));` (may move memory, check NULL)
-- **Free**: `free(arr); arr = NULL;` (prevent dangling pointer)
+**Manual memory management**: C requires explicit allocation/deallocation. No garbage collection - memory leaks if not freed. Heap memory persists until `free()`.
 
-**Best Practices**: Always check NULL return, always free, set to NULL after free, don't free twice, don't dereference freed pointers, use `calloc()` for zero-init
+- **Allocate**: `int *arr = malloc(10 * sizeof(int));` (check for NULL) - Returns NULL on failure, **always check**
+- **Zero-init**: `int *arr = calloc(10, sizeof(int));` (allocate and zero) - All bytes set to 0
+- **Reallocate**: `arr = realloc(arr, 20 * sizeof(int));` (may move memory, check NULL) - **May return different address**, old pointer invalid if moved
+- **Free**: `free(arr); arr = NULL;` (prevent dangling pointer) - **Freeing NULL is safe** (no-op), freeing twice is undefined behavior
+
+**Common pitfalls**: Memory leaks (forgot to free), use-after-free (dereference freed pointer), double-free (free same pointer twice), buffer overflow (write past allocated memory)
+
+**Best Practices**: Always check NULL return, always free, set to NULL after free, don't free twice, don't dereference freed pointers, use `calloc()` for zero-init, match every `malloc()` with `free()`
 
 ---
 
@@ -270,5 +281,23 @@
 
 ---
 
-> **Note**: C is a low-level language. Always validate inputs, check return values, manage memory carefully, and be aware of undefined behavior. For higher-level abstractions, consider C++ or other languages.
+---
+
+## Undefined Behavior
+
+**Critical concept**: C allows operations that have undefined behavior - program may crash, produce wrong results, or appear to work. Common causes:
+
+- **Dereferencing NULL/uninitialized pointer**: Crash or corruption
+- **Buffer overflow**: Writing past array/allocated memory bounds
+- **Use after free**: Accessing freed memory
+- **Double free**: Freeing same pointer twice
+- **Uninitialized variables**: Reading before assignment (may contain garbage)
+- **Signed integer overflow**: Arithmetic that exceeds type limits
+- **Accessing out-of-bounds array**: `arr[10]` on size-10 array
+
+**No runtime checks**: C trusts the programmer - no automatic bounds checking, no null pointer checks, no type safety at runtime. Compiler may not warn about all issues.
+
+---
+
+> **Note**: C is a low-level language with manual memory management and no runtime safety checks. Always validate inputs, check return values, manage memory carefully, and be aware of undefined behavior. For higher-level abstractions with automatic memory management, consider C++ or other languages.
 

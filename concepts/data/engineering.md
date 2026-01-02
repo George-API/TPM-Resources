@@ -38,6 +38,14 @@
   - Exactly-once semantics (idempotent processing)
   - Backpressure handling (throttle producers when consumers lag)
 
+### Distributed Systems Trade-offs
+
+- **CAP Theorem**: In distributed systems, can only guarantee 2 of 3: Consistency, Availability, Partition tolerance
+- **Streaming systems**: Typically choose AP (availability + partition tolerance) with eventual consistency
+- **Data lake architectures**: Often AP - prioritize availability and partition tolerance over immediate consistency
+- **Pipeline design**: Accept eventual consistency for better throughput and fault tolerance
+- **Consistency models**: At-least-once (default), exactly-once (idempotent processing), at-most-once (rare)
+
 ### Change Data Capture (CDC)
 
 - **Log-based CDC**: Read database transaction logs (Debezium, AWS DMS)

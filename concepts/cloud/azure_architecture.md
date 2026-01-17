@@ -1,23 +1,27 @@
-# Azure Data Architecture Patterns
+# Azure Architecture Patterns
 
-**Scope**: Azure-centric enterprise data platform implementation (ingest → lake → serving → BI).
+**Scope**: Azure-centric enterprise architecture patterns covering data platforms (ingest → lake → serving → BI) and general Azure compute, networking, and hosting services.
+
+**Purpose**: Use this for Azure architecture design and implementation. For Microsoft Fabric patterns, see [Fabric Architecture](fabric_architecture.md). For Databricks patterns, see [Databricks Architecture](databricks_architecture.md). For optimization practices, see [Cloud Optimization](optimization.md).
 
 ## Table of Contents
 
 - [Core Stack](#core-stack)
 - [1. Reference Architecture (Medallion Lakehouse)](#1-reference-architecture-medallion-lakehouse)
 - [2. Azure Data Platform Patterns](#2-azure-data-platform-patterns)
-- [3. Security & Governance](#3-security--governance)
-- [4. Reliability & Data Freshness](#4-reliability--data-freshness)
-- [5. Data Modeling & Serving](#5-data-modeling--serving)
-- [6. Cost & Performance](#6-cost--performance)
-- [7. Default Controls Checklist](#7-default-controls-checklist)
+- [3. Enterprise Resource Organization](#3-enterprise-resource-organization)
+- [4. Azure Compute & Hosting](#4-azure-compute--hosting)
+- [5. Security & Governance](#5-security--governance)
+- [6. Reliability & Data Freshness](#6-reliability--data-freshness)
+- [7. Data Modeling & Serving](#7-data-modeling--serving)
+- [8. Cost & Performance](#8-cost--performance)
+- [9. Default Controls Checklist](#9-default-controls-checklist)
 
 ---
 
 ## Core Stack
 
-**Typical Azure stack:**
+**Typical Azure data stack:**
 
 - **Ingestion/Orchestration**: Azure Data Factory (ADF)
 - **Streaming**: Event Hubs (telemetry/streams), Event Grid (events), Service Bus (commands/queues), Stream Analytics (real-time processing)
@@ -27,6 +31,14 @@
 - **Semantic/BI**: Power BI
 - **Governance**: Microsoft Purview
 - **Security/Monitoring**: Entra ID, Key Vault, Defender for Cloud, Azure Monitor/App Insights
+
+**Typical Azure application stack:**
+
+- **Compute**: App Service (web/API), Azure Functions (serverless), AKS (containers), Virtual Machines (IaaS)
+- **Networking**: Application Gateway, Front Door, Load Balancer, Virtual Network
+- **Integration**: API Management, Logic Apps, Service Bus, Event Grid
+- **Storage**: Blob Storage, Azure Files, Azure Tables, Cosmos DB
+- **Security/Monitoring**: Entra ID, Key Vault, Defender for Cloud, Application Insights
 
 ---
 
@@ -90,63 +102,146 @@
 
 ### Azure Data Factory Patterns
 
-- **Copy activities**: efficient data movement between sources and ADLS
+- **Copy activities**: Efficient data movement, parallel copy, compression
 - **Data flows**: Spark-based transformations (mapping data flows)
-- **Power Query**: self-service data preparation (preview/GA status varies)
-- **Linked services**: connection management with Managed Identity
-- **Triggers**: schedule-based, event-based (Event Grid), tumbling window
-- **Integration runtime**: Azure IR, self-hosted IR for on-prem sources
-- **Pipeline parameters**: parameterize pipelines for reusability
+- **Linked services**: Managed Identity connections, parameterized connections
+- **Triggers**: Schedule-based, event-based (Event Grid), tumbling window
+- **Integration runtime**: Azure IR (cloud), self-hosted IR (on-prem), Azure-SSIS IR
+- **Best practices**: Git integration (version control, CI/CD), private endpoints, error handling (try-catch, retry policies), Log Analytics monitoring
 
 ### Synapse Analytics
 
-- **Synapse SQL (dedicated)**: provisioned SQL pools for data warehousing (pause/resume for cost optimization)
-- **Synapse SQL (serverless)**: serverless SQL for ad-hoc queries on lake (pay per query)
-- **Synapse Spark**: Spark pools for data engineering and ML (auto-scale, auto-pause)
-- **Workspace integration**: unified experience for SQL, Spark, and pipelines
-- **Lake database**: unified metadata layer across lake and warehouse
+- **Synapse SQL (dedicated)**: Provisioned SQL pools, pause/resume for cost optimization
+- **Synapse SQL (serverless)**: Serverless SQL for ad-hoc queries on lake (pay per query)
+- **Synapse Spark**: Spark pools for data engineering and ML, auto-scale, auto-pause
+- **Lake database**: Unified metadata layer across lake and warehouse
+- **Security**: Row-level security, column-level security, Always Encrypted
+- **Best practices**: Git integration, Managed Identity, private endpoints, workspace-level RBAC
 
 ### Data Networking (Azure)
 
-- **Private endpoints**: Private endpoints for ADLS Gen2, Synapse, SQL, ADF
-- **Private Link**: secure connectivity without public internet
-- **VNet integration**: Synapse managed VNet, ADF VNet integration
-- **Data plane isolation**: separate subnets for data ingestion vs serving
-- **Egress control**: NAT Gateway for stable outbound IPs (source systems allowlists)
-- **Service endpoints**: use service endpoints for PaaS services when private endpoints not available
+- **Private endpoints**: Use for all PaaS services (ADLS, Synapse, SQL, ADF, Key Vault); Private DNS Zones for resolution
+- **Disable public access**: Deny public network access on all data stores by default
+- **VNet integration**: Synapse managed VNet, ADF VNet integration, App Service VNet integration
+- **Network segmentation**: Separate subnets for ingestion vs serving; NSGs (deny by default); Azure Firewall for centralized security
+- **Egress control**: NAT Gateway for stable outbound IPs; monitor outbound traffic for anomalies
 
 > **Note**: For general networking patterns, see [Cloud Architecture](architecture.md). For OSI troubleshooting, see [OSI Model](../software/osi.md).
 
 ---
 
-## 3. Security & Governance
+## 3. Enterprise Resource Organization
 
-### Identity
+### Management Groups & Subscriptions
 
-- Entra ID everywhere; Managed Identity for ADF/Synapse/Functions where available
-- PIM for privileged roles; scoped RBAC per subscription/resource group
+- **Management groups**: Organize subscriptions hierarchically (root → department → environment); apply policies at scale
+- **Subscription strategy**: Separate subscriptions for dev/test/prod, workloads, compliance requirements
+- **Resource groups**: Group by application/environment/lifecycle; consistent naming; RBAC at resource group level
 
-### Data access controls
+### Tagging Strategy
 
-- **Storage**: RBAC + ACLs (ADLS Gen2) carefully designed (least privilege)
-- **Serving**: RLS (SQL) for business-driven partitioning; CLS for sensitive columns
-- **Keys/secrets**: Key Vault (CMK when required); rotate certificates
+- **Tag categories**: Environment, cost center, owner, compliance, application
+- **Tag governance**: Azure Policy to enforce required tags; standardize tag values; use for cost allocation
 
-### Governance
+### Cost Management
 
-- **Purview**:
-  - catalog + lineage for pipelines and lakehouse assets
-  - classification labels for sensitive fields
-  - data contracts enforcement (schema validation)
-- **Azure Policy**:
-  - deny public endpoints on data stores, enforce private link, enforce tagging, restrict regions/SKUs
-- **Resource locks**: prevent accidental deletion of critical resources
+- **Budget & forecasting**: Budget alerts per subscription/resource group; Azure Cost Management for forecasting
+- **Reserved Instances/Savings Plans**: Use for predictable workloads (1-3 year commitments)
+- **Cost optimization**: Right-size resources; auto-scale down during off-peak; automate resource cleanup; review Azure Advisor recommendations
+
+---
+
+## 4. Azure Compute & Hosting
+
+### Azure App Service
+
+- **Platform**: Fully managed PaaS for web applications, APIs, mobile backends (.NET, Node.js, Python, Java, etc.)
+- **Features**: Auto-scaling, staging slots, Managed Identity, custom domains, SSL/TLS
+- **Best practices**: Staging slots for blue-green deployments, auto-scaling, health checks, Application Insights
+
+### Azure Functions (Serverless)
+
+- **Triggers**: HTTP, Timer, Queue, Blob, Event Grid, Event Hubs, Cosmos DB
+- **Hosting plans**: Consumption (pay-per-execution), Premium (always warm), Dedicated (App Service)
+- **Durable Functions**: Stateful workflows, orchestrations, long-running processes
+- **Best practices**: Managed Identity, concurrency limits, Durable Functions for complex workflows, monitor cold starts, idempotency
+
+### Container Services
+
+- **Azure Container Instances (ACI)**: Simple container workloads, batch jobs, dev/test (fast startup, per-second billing)
+- **Azure Kubernetes Service (AKS)**: Managed Kubernetes, auto-scaling, rolling updates, service mesh support
+- **Best practices**: Managed node pools, cluster autoscaler, Azure CNI for advanced networking, pod security standards, Azure Policy, Container Insights
+
+### Virtual Machines
+
+- **Use cases**: Lift-and-shift, legacy applications, specialized workloads
+- **Availability**: Availability Zones, Virtual Machine Scale Sets, managed disks
+- **Best practices**: Availability Zones for HA, Scale Sets for auto-scaling, managed disks, Azure Backup, Azure Monitor, Azure Policy
+
+### Networking Services
+
+- **Application Gateway**: Layer 7 load balancer, WAF, URL-based routing (multi-tier apps, API gateways)
+- **Azure Front Door**: Global load balancer, CDN, DDoS protection (global apps, multi-region)
+- **Azure Load Balancer**: Layer 4 load balancer (TCP/UDP), public/internal (non-HTTP traffic, internal load balancing)
+- **Best practices**: WAF enabled, health probes, Standard SKU for production, Application Insights integration
+
+### Integration Services
+
+- **API Management (APIM)**: Centralized API management, versioning, rate limiting, caching (App Service, Functions, Logic Apps backends)
+- **Logic Apps**: Serverless workflows, 400+ connectors (enterprise integration, B2B workflows, automation)
+- **Best practices**: APIM policies and caching, Logic Apps Managed Identity, Application Insights monitoring
+
+### Messaging Services
+
+- **Service Bus**: Enterprise messaging (queues, topics/subscriptions), at-least-once delivery, dead-letter queues, sessions (decoupled microservices, reliable messaging)
+- **Event Grid**: Serverless event routing, pub/sub (event-driven architectures, reactive systems)
+- **Best practices**: Service Bus dead-letter queues and message TTL; Event Grid event filters and idempotency
+
+> **Note**: For container orchestration patterns, see [Cloud Infrastructure & Operations](infrastructure.md). For serverless patterns, see [Cloud Infrastructure & Operations - Serverless](infrastructure.md#3-serverless-patterns).
+
+---
+
+## 5. Security & Governance
+
+### Identity & Access Management
+
+- **Managed Identity**: Use for all Azure resources (no secrets); preferred over service principals
+- **Conditional Access**: Enforce MFA, device compliance, location-based access, risk-based policies
+- **PIM**: Just-in-time access, time-bound roles, approval workflows for privileged access
+- **RBAC**: Least privilege access, role-based assignments, deny assignments
+- **Zero Trust**: Verify explicitly, least privilege, assume breach; continuous validation
+- **Key Vault**: Store secrets when necessary; use Managed Identity for access; automated rotation
+
+### Network Security
+
+- **Private endpoints**: Use for all PaaS services; Private DNS Zones for resolution; deny public access on data stores
+- **Network segmentation**: Separate subnets (ingestion vs serving); NSGs (deny by default); Azure Firewall for centralized security
+- **DDoS Protection**: Enable DDoS Protection Standard for production
+- **Zero Trust**: Authenticate all service-to-service (Managed Identity); Conditional Access for user access; monitor network traffic
+
+### Data Access Controls
+
+- **Storage**: RBAC + ACLs (ADLS Gen2); encryption at rest (Azure-managed or CMK) and in transit (TLS); appropriate access tiers
+- **Database**: Row-Level Security (RLS), Column-Level Security (CLS), Always Encrypted, TDE
+- **Key Vault**: Centralized key/secret management, CMK for compliance, automated rotation, RBAC access
+
+### Governance & Compliance
+
+- **Microsoft Purview**: Data catalog, lineage, classification, data contracts, access policies
+- **Azure Policy**: Enforce standards (deny public endpoints, require tagging, restrict regions/SKUs); policy initiatives; automatic remediation
+- **Resource locks**: Delete/read-only locks on critical resources
+- **Compliance**: ISO 27001, SOC 2, GDPR, HIPAA, NIST, FedRAMP; Azure Compliance Manager; audit logs in Log Analytics; activity logs
+
+### Threat Protection
+
+- **Microsoft Defender for Cloud**: Continuous security assessment, threat detection, vulnerability management, security alerts
+- **Microsoft Sentinel (SIEM)**: Centralized security information, threat hunting, incident response, compliance reporting
 
 > **Note**: For data management concepts (operating model, quality, integrity), see [Data Governance](../data/governance.md), [Data Operations](../data/operations.md), and [Data Security](../data/security.md).
 
 ---
 
-## 4. Reliability & Data Freshness
+## 6. Reliability & Data Freshness
 
 > **Note**: For data SLO concepts (what they are, why they matter), see [Data Operations - Reliability](../data/operations.md#8-reliability--data-sre).
 
@@ -174,7 +269,7 @@
 
 ---
 
-## 5. Data Modeling & Serving
+## 7. Data Modeling & Serving
 
 ### Gold Layer Design
 
@@ -193,7 +288,7 @@
 
 ---
 
-## 6. Cost & Performance
+## 8. Cost & Performance
 
 - **Partitioning strategy**:
   - by date (and sometimes tenant/source) for lake
@@ -214,35 +309,33 @@
 
 ### Disaster Recovery & High Availability
 
-- **ADLS Gen2**: geo-redundant storage (GRS/RA-GRS) for cross-region backup; soft delete for point-in-time recovery
-- **Synapse SQL**: automated backups (7-35 days retention); geo-restore to paired region; active geo-replication for critical workloads
-- **ADF pipelines**: store definitions in Git (Azure DevOps/GitHub); parameterize connection strings for DR failover
-- **Event Hubs**: geo-disaster recovery (paired namespaces) for streaming workloads
-- **RTO/RPO targets**: define recovery objectives per workload tier; test DR procedures regularly
+- **Storage**: ADLS Gen2 geo-redundant storage (GRS/RA-GRS), soft delete, immutable storage (WORM)
+- **Compute**: Synapse SQL automated backups (7-35 days), geo-restore; Azure SQL geo-replication, failover groups; App Service multi-region; AKS multi-region clusters
+- **Pipelines**: ADF in Git, parameterized for DR; Event Hubs/Service Bus geo-disaster recovery
+- **Recovery planning**: Define RTO/RPO per workload tier; test DR regularly; validate backups; monitor DR readiness
 
 ### CI/CD for Data Pipelines
 
-- **Source control**: ADF pipelines in Git (ARM templates); Synapse artifacts in Git
-- **Deployment**: Azure DevOps pipelines or GitHub Actions for automated deployment
-- **Environment promotion**: dev → test → prod with parameterized linked services
-- **Testing**: unit tests for data transformations; integration tests for pipeline runs; data quality tests in staging
-- **Approval gates**: manual approvals for production deployments; automated quality gates
+- **Source control**: Git integration (ADF, Synapse); Infrastructure as Code (ARM, Bicep, Terraform)
+- **Deployment**: Azure DevOps/GitHub Actions; environment promotion (dev → test → prod); approval gates
+- **Testing**: Unit tests (transformations, SQL), integration tests (pipeline runs), data quality tests, performance tests
+- **Best practices**: Key Vault for secrets, Managed Identity, infrastructure validation, rollback strategy, deployment monitoring
 
 ### Monitoring & Alerting
 
-- **Pipeline monitoring**: ADF run metrics in Log Analytics; custom metrics via Application Insights
-- **Data freshness alerts**: alert when pipeline completion exceeds SLA; monitor partition update timestamps
-- **Cost alerts**: budget alerts per subscription/resource group; cost anomaly detection
-- **Performance monitoring**: query performance insights (Synapse SQL); Spark job metrics (Synapse Spark)
-- **Health dashboards**: Azure Monitor workbooks for custom dashboards; Power BI for operational reporting
+- **Pipeline monitoring**: ADF run metrics in Log Analytics; custom metrics via Application Insights; data freshness alerts; backlog monitoring
+- **Cost management**: Budget alerts, cost analysis, Azure Advisor recommendations, FinOps practices
+- **Performance monitoring**: Query performance insights (Synapse SQL), Spark metrics, Application Insights, database performance insights
+- **Dashboards**: Azure Monitor workbooks, Power BI dashboards, Grafana, Azure Service Health
+- **Alerting**: Configure alerts for critical metrics; group alerts; multiple channels (Teams, PagerDuty, ITSM); runbook automation
 
 ### Error Handling & Retry Strategies
 
-- **ADF retry policies**: configure retry count and interval per activity; exponential backoff for transient failures
-- **Dead letter queues**: Event Hubs capture failed messages; Service Bus dead-letter queues for processing failures
-- **Pipeline error handling**: try-catch blocks in ADF; conditional activities for error paths
-- **Idempotent operations**: use merge/upsert patterns; watermark-based incremental loads prevent duplicates on retry
-- **Notification**: email/Slack alerts on pipeline failures; integration with ITSM tools (ServiceNow)
+- **ADF retry policies**: Retry count and interval per activity; exponential backoff for transient failures
+- **Dead letter queues**: Event Hubs/Service Bus dead-letter queues for failed messages
+- **Pipeline error handling**: Try-catch blocks, conditional activities for error paths
+- **Idempotency**: Merge/upsert patterns; watermark-based incremental loads prevent duplicates
+- **Notification**: Email/Slack/ITSM alerts on pipeline failures
 
 ### Data Lifecycle & Archiving
 
@@ -254,36 +347,67 @@
 
 ---
 
-## 7. "Default Controls" Checklist
+## 9. "Default Controls" Checklist
 
-### Network
+### Network Security
 
-- Private endpoints + Private DNS Zones
-- Deny public network access for data stores
-- Central egress via Firewall/NAT
+- [ ] Private endpoints for all PaaS services + Private DNS Zones
+- [ ] Deny public network access for all data stores
+- [ ] Central egress via Firewall/NAT Gateway
+- [ ] Network Security Groups (NSGs) with deny-by-default rules
+- [ ] Azure Firewall for centralized network security
+- [ ] DDoS Protection Standard enabled for production
 
-### Identity
+### Identity & Access
 
-- Managed Identity everywhere possible
-- Least privilege RBAC + PIM for admins
+- [ ] Managed Identity everywhere possible (no connection strings)
+- [ ] Least privilege RBAC + PIM for admins
+- [ ] Conditional Access policies (MFA, device compliance, risk-based)
+- [ ] Regular access reviews, remove unused access
+- [ ] Key Vault for secrets, automated rotation
+- [ ] Zero Trust principles: verify explicitly, least privilege, assume breach
 
-### Data hygiene
+### Data Security
 
-- Bronze append-only; Silver validated; Gold curated
-- Schema validation + quarantine
-- Watermarks + idempotent reruns
+- [ ] Encryption at rest (Azure-managed or customer-managed keys)
+- [ ] Encryption in transit (TLS 1.2+)
+- [ ] Row-Level Security (RLS) and Column-Level Security (CLS) where applicable
+- [ ] Data classification and sensitivity labels (Purview)
+- [ ] Access logging and audit trails enabled
+- [ ] Customer-Managed Keys (CMK) for compliance requirements
+
+### Data Hygiene
+
+- [ ] Bronze append-only; Silver validated; Gold curated
+- [ ] Schema validation + quarantine bad records
+- [ ] Watermarks + idempotent reruns
+- [ ] Data quality checks in pipelines
+- [ ] Retention policies per zone (Bronze/Silver/Gold)
 
 ### Observability
 
-- Pipeline run telemetry + alerts (Log Analytics)
-- Freshness + backlog dashboards
-- Cost per pipeline + anomaly alerts
-- Application Insights for custom telemetry and dependency tracking
-- Azure Monitor workbooks for custom dashboards
+- [ ] Pipeline run telemetry + alerts (Log Analytics)
+- [ ] Freshness + backlog dashboards
+- [ ] Cost per pipeline + anomaly alerts
+- [ ] Application Insights for custom telemetry and dependency tracking
+- [ ] Azure Monitor workbooks for custom dashboards
+- [ ] Security alerts (Defender for Cloud, Sentinel)
 
 ### Governance
 
-- Purview catalog + lineage
-- Data contracts + versioning policy (see [Data Governance](../data/governance.md))
-- Retention policies per zone (Bronze/Silver/Gold)
+- [ ] Purview catalog + lineage
+- [ ] Data contracts + versioning policy (see [Data Governance](../data/governance.md))
+- [ ] Azure Policy initiatives applied (compliance, security, cost)
+- [ ] Resource tagging strategy (cost allocation, compliance)
+- [ ] Management groups for subscription organization
+- [ ] Resource locks on critical production resources
+- [ ] Compliance monitoring and reporting
+
+### Backup & Disaster Recovery
+
+- [ ] Automated backups configured (appropriate retention)
+- [ ] Cross-region replication for critical data
+- [ ] DR runbooks documented and tested
+- [ ] RTO/RPO targets defined per workload tier
+- [ ] Backup validation and restore testing
 

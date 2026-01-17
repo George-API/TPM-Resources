@@ -1,21 +1,20 @@
-# DevOps & Azure DevOps — Enterprise Practices
+# DevOps — Enterprise Practices
 
-**Scope**: DevOps practices, CI/CD pipelines, infrastructure as code, and Azure DevOps implementation for enterprise development.
+**Scope**: DevOps principles, practices, CI/CD patterns, infrastructure as code, and enterprise DevOps methodologies (tool-agnostic).
 
-**Purpose**: Best practices and patterns for implementing DevOps in enterprise environments using Azure DevOps.
+**Purpose**: Best practices and patterns for implementing DevOps in enterprise environments. For Azure DevOps platform-specific features and usage, see [Azure DevOps](azure_devops.md).
 
 ## Table of Contents
 
 - [1. DevOps Principles](#1-devops-principles)
-- [2. Azure DevOps Overview](#2-azure-devops-overview)
-- [3. Source Control Strategy](#3-source-control-strategy)
-- [4. CI/CD Pipeline Patterns](#4-cicd-pipeline-patterns)
-- [5. Infrastructure as Code (IaC)](#5-infrastructure-as-code-iac)
-- [6. Deployment Strategies](#6-deployment-strategies)
-- [7. Testing in Pipelines](#7-testing-in-pipelines)
-- [8. Security & Compliance](#8-security--compliance)
-- [9. Monitoring & Observability](#9-monitoring--observability)
-- [10. Enterprise DevOps Patterns](#10-enterprise-devops-patterns)
+- [2. Source Control Strategy](#2-source-control-strategy)
+- [3. CI/CD Pipeline Patterns](#3-cicd-pipeline-patterns)
+- [4. Infrastructure as Code (IaC)](#4-infrastructure-as-code-iac)
+- [5. Deployment Strategies](#5-deployment-strategies)
+- [6. Testing in Pipelines](#6-testing-in-pipelines)
+- [7. Security & Compliance](#7-security--compliance)
+- [8. Monitoring & Observability](#8-monitoring--observability)
+- [9. Enterprise DevOps Patterns](#9-enterprise-devops-patterns)
 
 ---
 
@@ -45,34 +44,7 @@
 
 ---
 
-## 2. Azure DevOps Overview
-
-### Core Services
-
-- **Azure Repos**: Git repositories (private, cloud-hosted)
-- **Azure Pipelines**: CI/CD pipelines (YAML or classic)
-- **Azure Boards**: Work item tracking, sprint planning
-- **Azure Artifacts**: Package management (NuGet, npm, Maven, etc.)
-- **Azure Test Plans**: Test management and execution
-
-### Organization Structure
-
-- **Organization**: Top-level container (e.g., `contoso.visualstudio.com`)
-- **Project**: Collection of repos, pipelines, boards, artifacts
-- **Team**: Group of users working on related work items
-- **Area Paths**: Organize work items by product/feature
-- **Iteration Paths**: Sprint/iteration planning
-
-### Authentication & Authorization
-
-- **Azure AD Integration**: Single sign-on, group management
-- **Project Permissions**: Reader, Contributor, Build Administrator, Project Administrator
-- **Pipeline Permissions**: Service connections, variable groups, secure files
-- **Branch Policies**: Require PR reviews, build validation, status checks
-
----
-
-## 3. Source Control Strategy
+## 2. Source Control Strategy
 
 ### Git Workflow Patterns
 
@@ -97,7 +69,7 @@
 - **Short-lived feature branches**: Merge quickly (< 1 day)
 - **Feature flags**: Enable/disable features without branching
 
-### Branch Policies
+### Branch Protection Policies
 
 - **Require PR reviews**: Minimum reviewers, required reviewers
 - **Build validation**: Run pipeline before merge
@@ -113,51 +85,14 @@
 
 ---
 
-## 4. CI/CD Pipeline Patterns
+## 3. CI/CD Pipeline Patterns
 
 ### Pipeline Structure
 
-```yaml
-# Example Azure Pipelines YAML structure
-trigger:
-  branches:
-    include:
-      - main
-      - develop
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-stages:
-  - stage: Build
-    jobs:
-      - job: Build
-        steps:
-          - task: DotNetCoreCLI@2
-            inputs:
-              command: 'build'
-  
-  - stage: Test
-    dependsOn: Build
-    jobs:
-      - job: UnitTests
-        steps:
-          - task: DotNetCoreCLI@2
-            inputs:
-              command: 'test'
-  
-  - stage: Deploy
-    dependsOn: Test
-    condition: succeeded()
-    jobs:
-      - deployment: DeployStaging
-        environment: 'staging'
-        strategy:
-          runOnce:
-            deploy:
-              steps:
-                - script: echo "Deploy to staging"
-```
+**Typical Pipeline Stages**:
+- **Build**: Compile, package artifacts
+- **Test**: Unit tests, integration tests, code quality
+- **Deploy**: Dev → Test → Staging → Production
 
 ### Pipeline Patterns
 
@@ -176,9 +111,9 @@ stages:
 #### Pipeline Variables
 
 - **Variable groups**: Shared variables across pipelines
-- **Library variables**: Secure, encrypted variables
+- **Secure variables**: Encrypted, masked in logs
 - **Runtime variables**: Set at queue time
-- **Secret variables**: Encrypted, masked in logs
+- **Environment variables**: Per-environment configuration
 
 ### CI Patterns
 
@@ -197,68 +132,31 @@ stages:
 
 ---
 
-## 5. Infrastructure as Code (IaC)
+## 4. Infrastructure as Code (IaC)
 
-### Azure Resource Manager (ARM) Templates
+### Overview
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageAccountName": {
-      "type": "string"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2021-09-01",
-      "name": "[parameters('storageAccountName')]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "StorageV2"
-    }
-  ]
-}
-```
+**Infrastructure as Code (IaC)** defines and manages infrastructure through declarative configuration files, enabling version control, repeatability, and automation. Instead of manually configuring resources, infrastructure is described in code and deployed consistently across environments.
 
-### Terraform
+**Key Benefits**:
+- **Version Control**: Track infrastructure changes in Git
+- **Consistency**: Same infrastructure across dev, test, and production
+- **Automation**: Deploy infrastructure as part of CI/CD pipelines
+- **Documentation**: Infrastructure code serves as living documentation
+- **Disaster Recovery**: Recreate entire environments from code
 
-```hcl
-# Example Terraform configuration
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
-  location = "West Europe"
-}
+**Common IaC Tools**:
+- **Terraform**: Multi-cloud IaC tool (state management, module ecosystem)
+- **Ansible**: Configuration management and automation
+- **Pulumi**: Infrastructure as code using general-purpose languages
+- **Cloud-specific**: AWS CloudFormation, Azure ARM/Bicep, Google Deployment Manager
 
-resource "azurerm_storage_account" "example" {
-  name                     = "examplestorageaccount"
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-}
-```
+**Tool Selection**:
+- **Terraform**: Best for multi-cloud or when you need advanced state management features
+- **Cloud-native tools**: Best for single-cloud environments, native integration
+- **Ansible**: Best for configuration management and orchestration
 
-### Bicep
-
-```bicep
-// Example Bicep template
-param storageAccountName string
-param location string = resourceGroup().location
-
-resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
-  name: storageAccountName
-  location: location
-  kind: 'StorageV2'
-  sku: {
-    name: 'Standard_LRS'
-  }
-}
-```
+> **Note**: For detailed Azure IaC syntax and examples, see [Bicep Syntax Reference](../../programming/bicep/bicep.md) and [Terraform Syntax Reference](../../programming/terraform/terraform.md).
 
 ### IaC Best Practices
 
@@ -267,11 +165,11 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
 - **Modularization**: Break large templates into modules
 - **Validation**: Test templates before deployment
 - **Idempotency**: Templates should be safe to run multiple times
-- **State management**: Track deployed resources (Terraform state)
+- **State management**: Track deployed resources (Terraform state, cloud provider state)
 
 ---
 
-## 6. Deployment Strategies
+## 5. Deployment Strategies
 
 ### Deployment Patterns
 
@@ -296,28 +194,28 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
 
 ### Deployment Methods
 
-#### Azure App Service
+#### Application Deployment
 
-- **Zip Deploy**: Upload and extract zip file
-- **Git Deploy**: Push to deployment slot
+- **Package Deploy**: Upload and deploy application packages
 - **Container Deploy**: Deploy Docker containers
-- **Deployment Slots**: Blue-green deployment
+- **Source Control**: Direct deployment from Git
+- **Deployment Slots**: Blue-green deployment patterns
 
-#### Azure Kubernetes Service (AKS)
+#### Container Orchestration
 
-- **kubectl apply**: Apply Kubernetes manifests
+- **Kubernetes**: Apply Kubernetes manifests
 - **Helm Charts**: Package and deploy applications
 - **GitOps**: ArgoCD, Flux for declarative deployments
 
-#### Azure Functions
+#### Serverless Deployment
 
-- **Zip Deploy**: Upload function code
+- **Function Deploy**: Upload function code
 - **Container Deploy**: Deploy function containers
 - **Source Control**: Direct deployment from Git
 
 ---
 
-## 7. Testing in Pipelines
+## 6. Testing in Pipelines
 
 ### Test Types
 
@@ -339,60 +237,43 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
 - **Production-like**: Use staging environment
 - **Smoke tests**: Critical path validation
 
-### Test Execution
+### Test Execution Strategy
 
-```yaml
-# Example test stage
-- stage: Test
-  jobs:
-    - job: UnitTests
-      steps:
-        - task: DotNetCoreCLI@2
-          displayName: 'Run Unit Tests'
-          inputs:
-            command: 'test'
-            projects: '**/*Tests.csproj'
-    
-    - job: IntegrationTests
-      dependsOn: DeployTest
-      steps:
-        - task: DotNetCoreCLI@2
-          displayName: 'Run Integration Tests'
-          inputs:
-            command: 'test'
-            projects: '**/*IntegrationTests.csproj'
-```
+- **Test Pyramid**: Many unit tests, fewer integration tests, minimal E2E tests
+- **Parallel Execution**: Run tests in parallel for faster feedback
+- **Test Isolation**: Each test should be independent
+- **Test Data Management**: Use test fixtures, seed data, cleanup
 
 ### Code Quality
 
-- **Static Analysis**: SonarQube, CodeQL, ESLint
-- **Code Coverage**: Measure test coverage
+- **Static Analysis**: SonarQube, CodeQL, ESLint, Pylint
+- **Code Coverage**: Measure test coverage, set coverage thresholds
 - **Security Scanning**: Dependency scanning, SAST/DAST
 - **License Compliance**: Check open-source licenses
 
 ---
 
-## 8. Security & Compliance
+## 7. Security & Compliance
 
 ### Security Practices
 
 #### Secrets Management
 
-- **Azure Key Vault**: Store secrets, certificates, keys
-- **Variable Groups**: Encrypted pipeline variables
-- **Service Connections**: Secure connections to Azure resources
-- **Never commit secrets**: Use Key Vault or secure variables
+- **Secret Stores**: Centralized secret management (Vault, Key Vault, Secrets Manager)
+- **Encrypted Variables**: Secure pipeline variables
+- **Service Connections**: Secure connections to external services
+- **Never commit secrets**: Use secret stores or secure variables
 
 #### Pipeline Security
 
 - **Least Privilege**: Minimum permissions for pipelines
-- **Service Principals**: Managed identities for Azure resources
+- **Managed Identities**: Use managed identities for cloud resources
 - **Audit Logging**: Track pipeline executions and changes
 - **Branch Protection**: Require PR reviews, prevent force push
 
 #### Compliance
 
-- **Policy Enforcement**: Azure Policy for resource compliance
+- **Policy Enforcement**: Enforce compliance policies
 - **Security Scanning**: Vulnerability scanning in pipelines
 - **Compliance Gates**: Block deployment if compliance checks fail
 - **Audit Trails**: Track all changes and deployments
@@ -406,7 +287,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
 
 ---
 
-## 9. Monitoring & Observability
+## 8. Monitoring & Observability
 
 ### Pipeline Monitoring
 
@@ -417,9 +298,9 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
 
 ### Application Monitoring
 
-- **Application Insights**: Application performance monitoring
-- **Log Analytics**: Centralized logging and querying
-- **Azure Monitor**: Metrics, alerts, dashboards
+- **Application Performance Monitoring (APM)**: Track application performance
+- **Centralized Logging**: Aggregate logs from all services
+- **Metrics & Alerts**: Monitor key metrics, set up alerts
 - **Distributed Tracing**: Track requests across services
 
 ### Deployment Monitoring
@@ -431,7 +312,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
 
 ---
 
-## 10. Enterprise DevOps Patterns
+## 9. Enterprise DevOps Patterns
 
 ### Multi-Tenant Pipelines
 
@@ -443,7 +324,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
 ### Governance Patterns
 
 - **Pipeline Approval**: Require approvals for production deployments
-- **Change Management**: Link deployments to work items
+- **Change Management**: Link deployments to work items/tickets
 - **Compliance Gates**: Enforce security and compliance checks
 - **Audit Requirements**: Maintain audit trails
 
@@ -459,7 +340,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
 - **Pipeline Optimization**: Reduce build times, parallel execution
 - **Resource Tagging**: Track costs by project/team
 - **Budget Alerts**: Monitor and alert on spending
-- **Right-Sizing**: Use appropriate VM sizes for agents
+- **Right-Sizing**: Use appropriate resources for agents/workers
 
 ### Best Practices Summary
 
@@ -474,5 +355,4 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
 
 ---
 
-> **Note**: For cloud-specific deployment patterns and architecture, see [Architecture](cloud_architecture.md). For troubleshooting deployment issues, see [OSI Model - Troubleshooting Lens](cloud_osi.md).
-
+> **Note**: For Azure DevOps platform-specific features and usage, see [Azure DevOps](azure_devops.md). For cloud-specific deployment patterns and architecture, see [Cloud Architecture](../cloud/architecture.md).

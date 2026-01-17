@@ -16,8 +16,8 @@ Reference material organized into four directories:
 ### [Concepts](concepts/)
 Core concepts, patterns, and practices for cloud architecture, data engineering, software development, and project management.
 
-- **[Cloud](concepts/cloud/)** - Architecture, infrastructure, operations, Azure data platform, Microsoft Fabric, Azure Databricks
-- **[Data](concepts/data/)** - Analytics engineering, data engineering (ETL/ELT), governance, operations, security, database management
+- **[Cloud](concepts/cloud/)** - Architecture, infrastructure, operations, Azure data platform, Fabric, Databricks
+- **[Data](concepts/data/)** - Analytics engineering, data engineering, governance, operations, security, database management
 - **[Software](concepts/software/)** - Architecture patterns, design principles, DevOps, Azure DevOps, SDLC, DSA, OSI model
 - **[Project Management](concepts/project_management/)** - General PM, ITPM, methodologies, roadmaps, stakeholder engagement, reporting, tools
 
@@ -31,14 +31,14 @@ Syntax references and patterns for programming languages and utilities.
 Reference resources, standards, frameworks, tools, and terminology.
 
 - **[Terminology](resources/TERMINOLOGY.md)** - Key terminology across all domains
-- **[Research & Standards](resources/RESEARCH.md)** - Security standards, compliance frameworks, governance, industry research
+- **[Research & Standards](resources/RESEARCH.md)** - Security standards, compliance frameworks, governance, research
 - **[Enterprise Tools](resources/TOOLS.md)** - Microsoft-centric enterprise tools and platforms
 
 ### [Trends](trends/)
 Industry analysis and strategic technology trends.
 
-- **[IT 2026 Executive Analysis](trends/TRENDS_ANALYSIS.md)** - Strategic technology trends, cybersecurity, AI transformation
-- **[State of IT 2026 Report](trends/TRENDS.MD)** - Comprehensive industry analysis and risk assessment
+- **[IT 2026 Executive Analysis](trends/TRENDS_ANALYSIS.md)** - Strategic trends, cybersecurity, AI transformation
+- **[State of IT 2026 Report](trends/TRENDS.MD)** - Industry analysis and risk assessment
 
 ---
 

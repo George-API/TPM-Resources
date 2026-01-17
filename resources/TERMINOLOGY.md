@@ -2,7 +2,7 @@
 
 **Purpose**: Quick reference for key terminology across cloud, data, software, and project management concepts.
 
-**Related Documentation**: See [README.md](README.md) for full documentation structure.
+**Related Documentation**: See [README.md](../README.md) for full documentation structure.
 
 ---
 
@@ -26,6 +26,14 @@
 - **WAF (Web Application Firewall)**: Firewall protecting web applications from attacks
 - **Zero Trust**: Security model requiring verification for every access request
 
+### AI & Machine Learning
+
+- **LLM (Large Language Model)**: AI model trained on large text datasets for natural language tasks
+- **Prompt Engineering**: Crafting effective prompts to get desired outputs from AI models
+- **RAG (Retrieval Augmented Generation)**: AI pattern combining retrieval with generation for accurate responses
+- **Model Fine-tuning**: Adapting pre-trained models for specific tasks or domains
+- **AI Governance**: Framework for managing AI systems responsibly and ethically
+
 ### Infrastructure & Operations
 
 - **CI/CD**: Continuous Integration / Continuous Deployment
@@ -35,6 +43,7 @@
 - **Kubernetes**: Container orchestration platform
 - **Serverless**: Cloud computing model where cloud provider manages infrastructure
 - **VNet (Virtual Network)**: Isolated network environment in cloud
+- **Platform Engineering**: Practice of building internal developer platforms and tooling
 
 ### Azure Data Platform
 
@@ -115,6 +124,13 @@
 - **Row-Level Security (RLS)**: Restricting access to specific rows based on user
 - **PII (Personally Identifiable Information)**: Data that can identify individuals
 
+### Data Architecture Patterns
+
+- **Data Fabric**: Architecture pattern providing unified data access across environments
+- **Data Mesh**: Decentralized data architecture with domain-oriented ownership
+- **Data Observability**: Monitoring data health, quality, and lineage across systems
+- **Data Reliability Engineering**: Practice of ensuring data systems meet quality and availability targets
+
 ---
 
 ## Software Concepts
@@ -140,6 +156,13 @@
 - **Canary Deployment**: Gradual rollout to subset of users
 - **Feature Flag**: Toggle enabling/disabling features without code deployment
 - **MTTR (Mean Time To Recovery)**: Average time to recover from failure
+- **MTTD (Mean Time To Detection)**: Average time to detect a failure or incident
+- **MTTF (Mean Time To Failure)**: Average time until first failure
+- **MTBF (Mean Time Between Failures)**: Average time between consecutive failures
+- **Observability**: Ability to understand system state from external outputs (logs, metrics, traces)
+- **Platform Engineering**: Practice of building internal developer platforms and tooling
+- **Shift Left**: Moving testing, security, and quality earlier in development lifecycle
+- **Shift Right**: Testing and monitoring in production environments
 
 ### SDLC
 
@@ -147,6 +170,18 @@
 - **Scrum**: Agile framework with sprints, roles, ceremonies
 - **Waterfall**: Sequential software development methodology
 - **Sprint**: Time-boxed iteration in Agile development
+- **Epic**: Large body of work that can be broken down into smaller stories
+- **User Story**: Short description of feature from user perspective
+- **Story Points**: Relative estimation unit for story complexity
+- **Velocity**: Measure of work completed per sprint
+- **Burndown Chart**: Visual representation of work remaining over time
+- **Acceptance Criteria**: Conditions that must be met for story to be considered complete
+- **Definition of Done**: Shared understanding of when work is complete
+- **Backlog Refinement**: Process of reviewing and updating product backlog
+- **Sprint Planning**: Meeting to plan work for upcoming sprint
+- **Daily Standup**: Brief daily team synchronization meeting
+- **Sprint Review**: Meeting to demonstrate completed work to stakeholders
+- **Sprint Retrospective**: Meeting to reflect on team process and improve
 
 ### Networking
 
@@ -154,6 +189,18 @@
 - **DNS (Domain Name System)**: System translating domain names to IP addresses
 - **Load Balancer**: Distributes traffic across multiple servers
 - **NAT (Network Address Translation)**: Translating private IPs to public IPs
+
+### Security Testing
+
+- **SAST (Static Application Security Testing)**: Analyzing source code for security vulnerabilities
+- **DAST (Dynamic Application Security Testing)**: Testing running applications for security vulnerabilities
+- **SCA (Software Composition Analysis)**: Identifying vulnerabilities in open-source dependencies
+- **SBOM (Software Bill of Materials)**: Inventory of components and dependencies in software
+- **Supply Chain Security**: Protecting software supply chain from vulnerabilities and attacks
+- **CSPM (Cloud Security Posture Management)**: Continuous monitoring and management of cloud security
+- **CWPP (Cloud Workload Protection Platform)**: Security platform protecting cloud workloads
+- **SIEM (Security Information and Event Management)**: Centralized security event monitoring and analysis
+- **SOAR (Security Orchestration, Automation and Response)**: Automating security operations and incident response
 
 ---
 
@@ -295,20 +342,34 @@
 ### Software
 - **API**: Application Programming Interface
 - **CQRS**: Command Query Responsibility Segregation
+- **CSPM**: Cloud Security Posture Management
+- **CWPP**: Cloud Workload Protection Platform
+- **DAST**: Dynamic Application Security Testing
 - **DDD**: Domain-Driven Design
 - **DNS**: Domain Name System
+- **MTBF**: Mean Time Between Failures
+- **MTTD**: Mean Time To Detection
+- **MTTF**: Mean Time To Failure
 - **MTTR**: Mean Time To Recovery
 - **OSI**: Open Systems Interconnection
+- **RAG**: Retrieval Augmented Generation
+- **SAST**: Static Application Security Testing
+- **SBOM**: Software Bill of Materials
+- **SCA**: Software Composition Analysis
 - **SDLC**: Software Development Life Cycle
+- **SIEM**: Security Information and Event Management
+- **SOAR**: Security Orchestration, Automation and Response
 
 ### Project Management
 - **ADKAR**: Awareness, Desire, Knowledge, Ability, Reinforcement (change management model)
 - **EVM**: Earned Value Management
 - **KPI**: Key Performance Indicator
+- **LLM**: Large Language Model
 - **PMO**: Project Management Office
 - **RFP**: Request for Proposal
 - **RFQ**: Request for Quote
 - **SLA**: Service Level Agreement
+- **SLI**: Service Level Indicator
 - **SLO**: Service Level Objective
 - **SMART**: Specific, Measurable, Achievable, Relevant, Time-bound (goal setting)
 - **SOW**: Statement of Work
@@ -326,5 +387,5 @@
 
 ---
 
-> **Note**: For detailed explanations and implementation patterns, see the respective concept documentation in [concepts/](concepts/).
+> **Note**: For detailed explanations and implementation patterns, see the respective concept documentation in [concepts/](../concepts/).
 

@@ -1,8 +1,8 @@
-# IT Project Management — Reference Resources
+# IT Project Management — Research & Standards
 
 **Purpose**: Authoritative resources, standards, frameworks, assessments, and guidelines for IT project management topics. Use this as a reference guide for further learning and compliance requirements.
 
-**Related Documentation**: See [IT Project Management](concepts/project_management/itpm.md) for implementation patterns and practices.
+**Related Documentation**: See [IT Project Management](../concepts/project_management/itpm.md) for implementation patterns and practices. For enterprise tools, see [TOOLS.md](TOOLS.md).
 
 ---
 
@@ -16,8 +16,7 @@
 - [6. Project Management Standards](#6-project-management-standards)
 - [7. Software Security Resources](#7-software-security-resources)
 - [8. Cloud Security & Architecture](#8-cloud-security--architecture)
-- [9. Annual Reports & Industry Resources](#9-annual-reports--industry-resources)
-- [10. Assessment Tools & Templates](#10-assessment-tools--templates)
+- [9. Industry Research & Reports](#9-industry-research--reports)
 
 ---
 
@@ -65,6 +64,7 @@
 
 - **OWASP Top 10** - Application Security Risks
   - [OWASP Top 10 - 2021](https://owasp.org/www-project-top-ten/)
+  - [OWASP Top 10 - 2025](https://owasp.org/www-project-top-ten/)
   - [OWASP Top 10 API Security Risks](https://owasp.org/www-project-api-security/)
 
 ---
@@ -210,25 +210,6 @@
 - **LeSS (Large-Scale Scrum)**
   - [LeSS Framework](https://less.works/)
 
-### Project Management Tools & Platforms
-
-- **Microsoft 365 Project Management**
-  - [Microsoft Project](https://www.microsoft.com/microsoft-365/project/project-management-software)
-  - [Microsoft Planner](https://www.microsoft.com/microsoft-365/business/task-management-software)
-  - [Microsoft Teams](https://www.microsoft.com/microsoft-teams/group-chat-software)
-  - [SharePoint](https://www.microsoft.com/microsoft-365/sharepoint/collaboration)
-  - [Power BI](https://powerbi.microsoft.com/)
-
-- **Agile & Development Tools**
-  - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-  - [Jira](https://www.atlassian.com/software/jira)
-  - [Confluence](https://www.atlassian.com/software/confluence)
-
-- **Product Management Tools**
-  - [ProductPlan](https://www.productplan.com/)
-  - [Aha!](https://www.aha.io/)
-  - [Roadmunk](https://roadmunk.com/)
-
 ---
 
 ## 7. Software Security Resources
@@ -237,6 +218,7 @@
 
 - **OWASP Top 10**
   - [OWASP Top 10 - 2021](https://owasp.org/www-project-top-ten/)
+  - [OWASP Top 10 - 2025](https://owasp.org/www-project-top-ten/)
   - [OWASP Top 10 API Security Risks - 2023](https://owasp.org/www-project-api-security/)
 
 - **OWASP Application Security Verification Standard (ASVS)**
@@ -282,9 +264,20 @@
 
 ---
 
-## 9. Annual Reports & Industry Resources
+## 9. Industry Research & Reports
 
-### Security Reports
+### Ongoing Industry Research
+
+- **Gartner Research**
+  - [Gartner IT Research](https://www.gartner.com/en/information-technology)
+
+- **Forrester Research**
+  - [Forrester IT Research](https://www.forrester.com/research/)
+
+- **Deloitte Research**
+  - [Deloitte Technology Research](https://www2.deloitte.com/us/en/insights/focus/tech-trends.html)
+
+### Annual Security Reports
 
 - **Verizon Data Breach Investigations Report (DBIR)**
   - [Verizon DBIR](https://www.verizon.com/business/resources/reports/dbir/)
@@ -298,43 +291,26 @@
 - **CISA Cybersecurity Alerts**
   - [CISA Alerts](https://www.cisa.gov/uscert/ncas/alerts)
 
-### Industry Research
+### 2025/2026 Annual Reports
 
-- **Gartner Research**
-  - [Gartner IT Research](https://www.gartner.com/en/information-technology)
+- **World Economic Forum**
+  - [WEF Global Cybersecurity Outlook 2026](https://www.weforum.org/reports/global-cybersecurity-outlook-2026/)
 
-- **Forrester Research**
-  - [Forrester IT Research](https://www.forrester.com/research/)
+- **Gartner**
+  - [Gartner 2026 Planning Guide for Software Engineering](https://www.gartner.com/en/documents)
+  - [Gartner Top Strategic Technology Trends for 2026](https://www.gartner.com/en/articles)
 
----
+- **Forrester**
+  - [Forrester 2026 Technology & Security Predictions](https://www.forrester.com/research/)
 
-## 10. Assessment Tools & Templates
+- **Deloitte**
+  - [Deloitte Tech Trends 2026](https://www2.deloitte.com/us/en/insights/focus/tech-trends.html)
 
-### Security Assessment Tools
+- **MNP Consulting**
+  - [MNP Risk Trends: 2026 and Beyond](https://www.mnp.ca/en/insights)
 
-- **OWASP ZAP (Zed Attack Proxy)**
-  - [OWASP ZAP](https://www.zaproxy.org/)
-
-- **NIST Cybersecurity Framework Self-Assessment**
-  - [NIST CSF Self-Assessment](https://www.nist.gov/cyberframework)
-
-### Risk Assessment Tools
-
-- **FAIR Risk Assessment Tools**
-  - [FAIR Tools](https://www.fairinstitute.org/tools)
-
-### Privacy Assessment Tools
-
-- **GDPR Compliance Assessment**
-  - [GDPR Assessment Tools](https://gdpr.eu/checklist/)
-
-### Project Management Templates
-
-- **PMI Templates**
-  - [PMI Templates](https://www.pmi.org/learning/library/project-management-templates-9900)
-
-- **PRINCE2 Templates**
-  - [PRINCE2 Templates](https://www.axelos.com/certifications/prince2)
+- **dbt Labs**
+  - [The 2025 State of Analytics Engineering](https://www.getdbt.com/state-of-analytics-engineering)
 
 ---
 
@@ -347,7 +323,6 @@
 - **Governance**: [COBIT](https://www.isaca.org/resources/cobit) | [ITIL](https://www.axelos.com/certifications/itil-service-management) | [NIST Privacy Framework](https://www.nist.gov/privacy-framework)
 - **Risk Management**: [ISO 31000](https://www.iso.org/standard/43170) | [NIST SP 800-30](https://csrc.nist.gov/publications/detail/sp/800-30/rev-1/final) | [FAIR](https://www.fairinstitute.org/)
 - **Project Management**: [PMBOK Guide](https://www.pmi.org/pmbok-guide-standards) | [Scrum Guide](https://scrumguides.org/scrum-guide.html) | [PRINCE2](https://www.axelos.com/certifications/prince2) | [SAFe](https://scaledagileframework.com/)
-- **PM Tools**: [Microsoft 365](https://www.microsoft.com/microsoft-365) | [Azure DevOps](https://azure.microsoft.com/services/devops/) | [Jira](https://www.atlassian.com/software/jira)
 
 ---
 
@@ -360,5 +335,5 @@
 
 ---
 
-> **Related Documentation**: See [IT Project Management](concepts/project_management/itpm.md) for implementation patterns and best practices.
+> **Related Documentation**: See [IT Project Management](../concepts/project_management/itpm.md) for implementation patterns and best practices. For enterprise tools, see [TOOLS.md](TOOLS.md).
 

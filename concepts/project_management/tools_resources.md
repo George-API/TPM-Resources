@@ -16,6 +16,7 @@
 - [8. Reporting & Analytics Tools](#8-reporting--analytics-tools)
 - [9. Resource Management Tools](#9-resource-management-tools)
 - [10. Tool Selection Criteria](#10-tool-selection-criteria)
+- [11. Assessment Tools & Templates](#11-assessment-tools--templates)
 
 ---
 
@@ -269,5 +270,35 @@ Additional resources needed for IT projects beyond core PM resources:
 
 ---
 
-> **Note**: For methodology frameworks, see [Project Management Methodologies](methodologies.md). For general PM concepts, see [General Project Management](general.md). For IT-specific patterns, see [IT Project Management](itpm.md).
+## 11. Assessment Tools & Templates
+
+### Security Assessment Tools
+
+- **OWASP ZAP (Zed Attack Proxy)**
+  - [OWASP ZAP](https://www.zaproxy.org/)
+
+- **NIST Cybersecurity Framework Self-Assessment**
+  - [NIST CSF Self-Assessment](https://www.nist.gov/cyberframework)
+
+### Risk Assessment Tools
+
+- **FAIR Risk Assessment Tools**
+  - [FAIR Tools](https://www.fairinstitute.org/tools)
+
+### Privacy Assessment Tools
+
+- **GDPR Compliance Assessment**
+  - [GDPR Assessment Tools](https://gdpr.eu/checklist/)
+
+### Project Management Templates
+
+- **PMI Templates**
+  - [PMI Templates](https://www.pmi.org/learning/library/project-management-templates-9900)
+
+- **PRINCE2 Templates**
+  - [PRINCE2 Templates](https://www.axelos.com/certifications/prince2)
+
+---
+
+> **Note**: For methodology frameworks, see [Project Management Methodologies](methodologies.md). For general PM concepts, see [General Project Management](general.md). For IT-specific patterns, see [IT Project Management](itpm.md). For standards and research resources, see [Research & Standards](../../resources/RESEARCH.md).
 

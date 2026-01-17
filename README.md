@@ -1,32 +1,38 @@
 
 # Overview
 
-This repository provides a comprehensive reference for IT project management, designed to support your work across multiple domains:
-
-**Core Areas Covered:**
-- Cloud architecture and infrastructure
-- Data engineering and analytics
-- Software development patterns and practices
-- Programming language syntax
-- Project management methodologies
-- Security standards and compliance
-- Enterprise tools
-- Industry trends
-
-**What's Included:**
-Modern best practices, design patterns, quick reference guides, and curated resources to accelerate your work. This repository serves as a secondary reference for quick lookups and context.
+Comprehensive IT project management reference covering cloud architecture, data engineering, software development, programming syntax, project management, security standards, enterprise tools, and industry trends. Includes modern best practices, design patterns, and quick reference guides. Serves as a secondary reference for quick lookups and context.
 
 ---
 
 ## Directory Structure
 
-- **[Concepts](concepts/README.md)** - Core concepts, patterns, and practices for cloud architecture (Azure, Fabric, Databricks), data engineering (ETL/ELT, governance, analytics), software development (architecture patterns, DevOps, SDLC), and project management (methodologies, roadmaps, stakeholder engagement)
+### [Concepts](concepts/README.md)
+Core concepts, patterns, and practices for cloud architecture, data engineering, software development, and project management.
 
-- **[Programming](programming/README.md)** - Syntax references and patterns for programming languages (C/C++, C#, Go, Java, JavaScript, Python, R, Rust, SQL, TypeScript) and utilities (Bicep, Excel, Git, Terraform, Terminal) used in IT project management
+- **[Cloud](concepts/cloud/)** - Architecture, infrastructure, operations, Azure data platform (ADF, ADLS, Synapse), Microsoft Fabric, Azure Databricks
+- **[Data](concepts/data/)** - Analytics engineering, data engineering (ETL/ELT), governance, operations, security, database management
+- **[Software](concepts/software/)** - Architecture patterns, design principles, DevOps, Azure DevOps, SDLC, DSA, OSI model
+- **[Project Management](concepts/project_management/)** - General PM, ITPM, methodologies (Agile, Scrum, Kanban), roadmaps, stakeholder engagement, reporting, tools
 
-- **[Resources](resources/README.md)** - Reference resources including terminology definitions, security standards and compliance frameworks (ISO, NIST, OWASP), governance frameworks (COBIT, ITIL, TOGAF), industry research reports, and Microsoft-centric enterprise tools
+### [Programming](programming/README.md)
+Syntax references and patterns for programming languages and utilities.
 
-- **[Trends](trends/README.md)** - Industry analysis and strategic technology trends including executive summaries and comprehensive reports on cybersecurity, AI transformation, and technology strategy for 2026
+- **Languages**: [C/C++](programming/c/), [C#](programming/csharp/), [Go](programming/go/), [Java](programming/java/), [JavaScript](programming/javascript/), [Python](programming/python/), [R](programming/r/), [Rust](programming/rust/), [SQL](programming/sql/), [TypeScript](programming/typescript/)
+- **Utilities**: [Bicep](programming/bicep/), [Excel](programming/excel/), [Git](programming/git/), [Terraform](programming/terraform/), [Terminal](programming/terminal/)
+
+### [Resources](resources/README.md)
+Reference resources, standards, frameworks, tools, and terminology.
+
+- **[Terminology](resources/TERMINOLOGY.md)** - Key terminology across all domains
+- **[Research & Standards](resources/RESEARCH.md)** - Security standards (ISO, NIST, OWASP), compliance frameworks, governance (COBIT, ITIL, TOGAF), industry research
+- **[Enterprise Tools](resources/TOOLS.md)** - Microsoft-centric enterprise tools and platforms
+
+### [Trends](trends/README.md)
+Industry analysis and strategic technology trends.
+
+- **[IT 2026 Executive Analysis](trends/TRENDS_ANALYSIS.md)** - Strategic technology trends, cybersecurity, AI transformation
+- **[State of IT 2026 Report](trends/TRENDS.MD)** - Comprehensive industry analysis and risk assessment
 
 ---
 

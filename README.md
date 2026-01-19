@@ -1,6 +1,6 @@
 
 # Overview
-A curated collection of IT reference material covering core concepts and best practices across IT project management, software development, and data disciplines. 
+A curated collection of IT reference material covering IT project management, software development, and data disciplines. 
 
 > ⚠️ **Disclaimer**  
 > This repository contains AI-generated content and is not an authoritative resource.  

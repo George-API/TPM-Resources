@@ -2,13 +2,13 @@
 # Overview
 A curated collection of IT reference material covering IT project management, software development, and data disciplines. 
 
-**Disclaimer**: This repository contains AI-generated content is not an authoritative resource. 
-
-Always refer to official documentation and internal resources when making decisions or implementing solutions, and ensure alignment with the following:
-
-- **Enterprise guidance** — Organizational policies, architecture standards, governance frameworks, and approved practices  
-- **Project conventions** — Established code patterns, coding standards, architectural guidelines, and team workflows  
-- **Authoritative external sources** — Vendor documentation, standards bodies (e.g., ISO, NIST, OWASP), and applicable regulatory requirements
+> ⚠️ **Disclaimer**  
+> This repository contains AI-generated content and is not an authoritative resource.  
+>  
+> Always refer to official documentation and internal resources when making decisions or implementing solutions, and ensure alignment with:  
+> - **Enterprise guidance** — Organizational policies, architecture standards, governance frameworks, and approved practices  
+> - **Project conventions** — Established code patterns, coding standards, architectural guidelines, and team workflows  
+> - **Authoritative external sources** — Vendor documentation, standards bodies (e.g., ISO, NIST, OWASP), and applicable regulatory requirements
 
 ---
 

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "exceldb/SUMMARY.csv",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1770489151439,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1770489151439,
+            "name": "Commit-0",
+            "content": "Section,Item,Value,Notes\nOVERVIEW,Workbook,Technical Project Management Knowledge Base,Personal reference for enterprise IT terminology\nOVERVIEW,Total Terms,760,Across all categories\nOVERVIEW,Categories,9 L1 domains,37 L2 subcategories\nOVERVIEW,Priority System,2-tier (Core/Advanced),With -N niche modifier\nOVERVIEW,Last Updated,2026-02,Update when CSV refreshed\nSTATS,Core,379,49.9% - Must know\nSTATS,Core-N,52,6.8% - Must know (niche)\nSTATS,Advanced,268,35.3% - Learn when needed\nSTATS,Advanced-N,61,8.0% - Specialist niche\nSTATS,Total Niche (-N),113,14.9% of all terms\nCATEGORY,DATA,281,Platform Architecture Quality Processing BI Governance Streaming\nCATEGORY,SOFTWARE,101,Architecture Patterns Principles\nCATEGORY,CLOUD,57,Infrastructure Networking Services Resilience\nCATEGORY,DEVOPS,53,Deployment Observability Reliability Automation\nCATEGORY,SECURITY,51,Access Encryption Testing Compliance\nCATEGORY,AI/ML,45,Models Training Evaluation Operations GenAI\nCATEGORY,PM,76,Project Product Agile Change Stakeholder\nCATEGORY,PROGRAMMING,53,Structures Algorithms Complexity\nCATEGORY,BUSINESS,43,Finance Contracts Metrics\nSHEET,MASTER,Hidden,Locked source of truth - do not edit directly\nSHEET,INDEX,Dashboard,Slicers for L1 L2 Type Priority + filtered table\nSHEET,DATA,Category,Static copy of DATA terms\nSHEET,SOFTWARE,Category,Static copy of SOFTWARE terms\nSHEET,CLOUD,Category,Static copy of CLOUD terms\nSHEET,DEVOPS,Category,Static copy of DEVOPS terms\nSHEET,SECURITY,Category,Static copy of SECURITY terms\nSHEET,AI_ML,Category,Static copy of AI/ML terms\nSHEET,PM,Category,Static copy of PM terms\nSHEET,PROGRAMMING,Category,Static copy of PROGRAMMING terms\nSHEET,BUSINESS,Category,Static copy of BUSINESS terms\nPRIORITY,Core,Must know,Should know without looking up\nPRIORITY,Advanced,Learn when needed,Look up when specifically required\nPRIORITY,Core-N,Must know (niche),Essential within specific platform only\nPRIORITY,Advanced-N,Specialist (niche),Deep expertise in narrow domain\nTYPE,Technology,Tool/platform/component,Azure Event Hubs DAX Docker\nTYPE,Pattern,Reusable design solution,Medallion Architecture SCD Saga\nTYPE,Practice,Methodology/way of working,ETL DataOps CI/CD\nTYPE,Concept,Theoretical idea/principle,ACID Grain CAP Theorem\nTYPE,Metric,Measurement/KPI,MTTR Precision ROI\nTYPE,Role,Job function,Data Steward Analytics Engineer\nTYPE,Framework,Structured approach,DAMA-DMBOK Kimball SAFe\nTYPE,Protocol,Communication standard,HTTP mTLS OIDC gRPC\nTYPE,Process,Defined workflow,Sprint Planning Code Review\n"
+        }
+    ]
+}

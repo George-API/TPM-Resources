@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Governance, Architecture & Delivery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #111827;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .diagram-frame {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    #sunburst {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .legend-container {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      padding: 0.75rem 2rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .legend-color {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+    }
+
+    .legend-label {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      font-weight: 400;
+    }
+
+    .center-label {
+      font-family: 'IBM Plex Sans', sans-serif;
+      fill: var(--text-primary);
+      text-anchor: middle;
+      pointer-events: none;
+    }
+
+    .export-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .export-btn {
+      padding: 0.6rem 1.5rem;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: 8px;
+      color: #c7d2fe;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .export-btn:hover {
+      background: rgba(99, 102, 241, 0.3);
+      border-color: rgba(129, 140, 248, 0.6);
+      color: #e0e7ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="diagram-frame">
+    <div id="sunburst"></div>
+    <div class="legend-container" id="legend"></div>
+    <div class="export-container">
+      <button class="export-btn" onclick="exportPNG()">Download PNG</button>
+      <button class="export-btn" onclick="exportSVG()">Download SVG</button>
+    </div>
+  </div>
+
+  <script>
+    // Governance data
+    const data = {
+      "name": "Enterprise Governance, Architecture & Delivery",
+      "children": [
+        {
+          "name": "Policy",
+          "children": [
+            {
+              "name": "Legislative & Regulatory",
+              "children": [
+                { "name": "Statutory Requirements" },
+                { "name": "Compliance Mapping" },
+                { "name": "Policy Obligations" },
+                { "name": "Legislative Tracking" }
+              ]
+            },
+            {
+              "name": "Policy Frameworks",
+              "children": [
+                { "name": "Policy Development" },
+                { "name": "Policy Communication" },
+                { "name": "Exception Management" },
+                { "name": "Review Cycles" }
+              ]
+            },
+            {
+              "name": "Strategic Mandates",
+              "children": [
+                { "name": "Priority Alignment" },
+                { "name": "Mandate Mapping" },
+                { "name": "Digital Strategy" },
+                { "name": "Modernization Goals" }
+              ]
+            },
+            {
+              "name": "Risk & Compliance",
+              "children": [
+                { "name": "Risk Appetite" },
+                { "name": "Compliance Design" },
+                { "name": "Audit & Accountability" },
+                { "name": "Control Environment" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Standards",
+          "children": [
+            {
+              "name": "Go-ITS Standards",
+              "children": [
+                { "name": "Technical Conformance" },
+                { "name": "Platform Adoption" },
+                { "name": "Security Baseline" },
+                { "name": "Standard Lifecycle" }
+              ]
+            },
+            {
+              "name": "Architecture Patterns",
+              "children": [
+                { "name": "Reference Architectures" },
+                { "name": "Pattern Catalogue" },
+                { "name": "Technology Stacks" },
+                { "name": "Integration Patterns" }
+              ]
+            },
+            {
+              "name": "Security & Privacy",
+              "children": [
+                { "name": "Security Requirements" },
+                { "name": "Privacy by Design" },
+                { "name": "Identity & Access" },
+                { "name": "Threat Modeling" }
+              ]
+            },
+            {
+              "name": "Data Standards",
+              "children": [
+                { "name": "Data Classification" },
+                { "name": "Metadata Standards" },
+                { "name": "Data Quality" },
+                { "name": "Retention Standards" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Enablement",
+          "children": [
+            {
+              "name": "Shared Platforms",
+              "children": [
+                { "name": "Platform Adoption" },
+                { "name": "Managed Services" },
+                { "name": "Infrastructure Reuse" },
+                { "name": "Cloud Enablement" }
+              ]
+            },
+            {
+              "name": "DevOps & Tooling",
+              "children": [
+                { "name": "Dev Toolchains" },
+                { "name": "CI/CD Pipelines" },
+                { "name": "Testing & QA Tools" },
+                { "name": "Observability Tools" }
+              ]
+            },
+            {
+              "name": "Architecture Advisory",
+              "children": [
+                { "name": "Solution Guidance" },
+                { "name": "Technology Selection" },
+                { "name": "Pattern Interpretation" },
+                { "name": "Review Facilitation" }
+              ]
+            },
+            {
+              "name": "Delivery Support",
+              "children": [
+                { "name": "Project Intake" },
+                { "name": "Checkpoint Facilitation" },
+                { "name": "Resource Allocation" },
+                { "name": "Risk Advisory" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Delivery",
+          "children": [
+            {
+              "name": "Project Execution",
+              "children": [
+                { "name": "Schedule Governance" },
+                { "name": "Budget Oversight" },
+                { "name": "Scope Control" },
+                { "name": "Resource Management" },
+                { "name": "Milestone Tracking" }
+              ]
+            },
+            {
+              "name": "Solution Oversight",
+              "children": [
+                { "name": "Design Reviews" },
+                { "name": "Technical Debt" },
+                { "name": "Conformance Verification" },
+                { "name": "Solution Documentation" }
+              ]
+            },
+            {
+              "name": "Delivery Risk",
+              "children": [
+                { "name": "Risk Assessment" },
+                { "name": "Issue Escalation" },
+                { "name": "Mitigation Tracking" },
+                { "name": "Contingency Management" }
+              ]
+            },
+            {
+              "name": "Change & Release",
+              "children": [
+                { "name": "Change Control" },
+                { "name": "Release Coordination" },
+                { "name": "Deployment Approvals" },
+                { "name": "Rollback Planning" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Integration",
+          "children": [
+            {
+              "name": "System Integration",
+              "children": [
+                { "name": "Integration Review" },
+                { "name": "Interface Risk" },
+                { "name": "Dependency Mapping" },
+                { "name": "Integration Testing" }
+              ]
+            },
+            {
+              "name": "API Management",
+              "children": [
+                { "name": "API Design Standards" },
+                { "name": "API Lifecycle" },
+                { "name": "Contract Management" },
+                { "name": "API Security" }
+              ]
+            },
+            {
+              "name": "Data Interoperability",
+              "children": [
+                { "name": "Data Agreements" },
+                { "name": "Interop Compliance" },
+                { "name": "Master Data" },
+                { "name": "Cross-Domain Data" }
+              ]
+            },
+            {
+              "name": "Ministry Coordination",
+              "children": [
+                { "name": "Joint Initiatives" },
+                { "name": "Service Alignment" },
+                { "name": "Ministry Dependencies" },
+                { "name": "Collaborative Delivery" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Outcomes",
+          "children": [
+            {
+              "name": "Performance Monitoring",
+              "children": [
+                { "name": "KPI Tracking" },
+                { "name": "SLA Monitoring" },
+                { "name": "Service Health" },
+                { "name": "User Experience" }
+              ]
+            },
+            {
+              "name": "Benefits Realization",
+              "children": [
+                { "name": "Benefits Tracking" },
+                { "name": "Value Assessment" },
+                { "name": "ROI Measurement" },
+                { "name": "Outcome Accountability" }
+              ]
+            },
+            {
+              "name": "Operational Sustainability",
+              "children": [
+                { "name": "Readiness Validation" },
+                { "name": "Support Models" },
+                { "name": "Capacity Monitoring" },
+                { "name": "Lifecycle Costs" }
+              ]
+            },
+            {
+              "name": "Continuous Improvement",
+              "children": [
+                { "name": "Lessons Learned" },
+                { "name": "Process Optimization" },
+                { "name": "Innovation Pipeline" },
+                { "name": "Maturity Assessment" }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    const stageColors = {
+      'Policy': '#4b7cc4',
+      'Standards': '#8b6bb8',
+      'Enablement': '#2a9daf',
+      'Delivery': '#3a9d7c',
+      'Integration': '#d4952f',
+      'Outcomes': '#c75a5a'
+    };
+
+    const width = 920;
+    const height = 920;
+    const radius = Math.min(width, height) / 2;
+
+    // Ring sizing optimized for export
+    const centerRadius = 68;
+    const level1Width = 122;
+    const level2Width = 140;
+    const level3Width = 131;
+
+    const svg = d3.select('#sunburst')
+      .append('svg')
+      .attr('viewBox', `0 0 ${width} ${height}`)
+      .attr('width', width)
+      .attr('height', height)
+      .style('font', '10px IBM Plex Sans, sans-serif')
+      .append('g')
+      .attr('transform', `translate(${width / 2},${height / 2})`);
+
+    const partition = d3.partition()
+      .size([2 * Math.PI, radius]);
+
+    const root = d3.hierarchy(data)
+      .sum(d => d.children ? 0 : 1)
+      .sort((a, b) => b.value - a.value);
+
+    partition(root);
+
+    const arc = d3.arc()
+      .startAngle(d => d.x0)
+      .endAngle(d => d.x1)
+      .padAngle(0.002)
+      .padRadius(radius / 4)
+      .innerRadius(d => {
+        if (d.depth === 0) return 0;
+        if (d.depth === 1) return centerRadius;
+        if (d.depth === 2) return centerRadius + level1Width;
+        if (d.depth === 3) return centerRadius + level1Width + level2Width;
+        return d.y0;
+      })
+      .outerRadius(d => {
+        if (d.depth === 0) return centerRadius;
+        if (d.depth === 1) return centerRadius + level1Width;
+        if (d.depth === 2) return centerRadius + level1Width + level2Width;
+        if (d.depth === 3) return centerRadius + level1Width + level2Width + level3Width;
+        return d.y1;
+      });
+
+    function getColor(d) {
+      if (d.depth === 0) return '#1e293b';
+      
+      let ancestor = d;
+      while (ancestor.depth > 1) ancestor = ancestor.parent;
+      
+      const baseColor = stageColors[ancestor.data.name] || '#6366f1';
+      const color = d3.color(baseColor);
+      
+      if (d.depth === 1) return baseColor;
+      if (d.depth === 2) return color.brighter(0.35).formatHex();
+      if (d.depth === 3) return color.brighter(0.65).formatHex();
+      
+      return baseColor;
+    }
+
+    function getOpacity(d) {
+      if (d.depth === 0) return 1;
+      if (d.depth === 1) return 0.95;
+      if (d.depth === 2) return 0.9;
+      return 0.85;
+    }
+
+    // Draw arcs
+    svg.selectAll('path')
+      .data(root.descendants())
+      .join('path')
+      .attr('d', arc)
+      .attr('fill', getColor)
+      .attr('fill-opacity', getOpacity)
+      .attr('stroke', '#111827')
+      .attr('stroke-width', 0.5);
+
+    // Center text with inline styles for export consistency
+    const centerGroup = svg.append('g').attr('class', 'center-text');
+    
+    centerGroup.append('text')
+      .attr('x', 0)
+      .attr('y', -18)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', '#f1f5f9')
+      .attr('font-family', 'IBM Plex Sans, sans-serif')
+      .attr('font-size', '11px')
+      .attr('font-weight', '500')
+      .text('Enterprise');
+
+    centerGroup.append('text')
+      .attr('x', 0)
+      .attr('y', -2)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', '#f1f5f9')
+      .attr('font-family', 'IBM Plex Sans, sans-serif')
+      .attr('font-size', '11px')
+      .attr('font-weight', '500')
+      .text('Governance,');
+
+    centerGroup.append('text')
+      .attr('x', 0)
+      .attr('y', 14)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', '#f1f5f9')
+      .attr('font-family', 'IBM Plex Sans, sans-serif')
+      .attr('font-size', '11px')
+      .attr('font-weight', '500')
+      .text('Architecture');
+
+    centerGroup.append('text')
+      .attr('x', 0)
+      .attr('y', 30)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', '#f1f5f9')
+      .attr('font-family', 'IBM Plex Sans, sans-serif')
+      .attr('font-size', '11px')
+      .attr('font-weight', '500')
+      .text('& Delivery');
+
+    // Labels for Level 1
+    svg.selectAll('.label-level1')
+      .data(root.descendants().filter(d => d.depth === 1))
+      .join('text')
+      .attr('class', 'label-level1')
+      .attr('transform', d => {
+        const angle = (d.x0 + d.x1) / 2;
+        const r = centerRadius + level1Width / 2;
+        const x = Math.sin(angle) * r;
+        const y = -Math.cos(angle) * r;
+        let rotation = (angle * 180 / Math.PI) - 90;
+        if (rotation > 90) rotation -= 180;
+        return `translate(${x},${y}) rotate(${rotation})`;
+      })
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', '#0f172a')
+      .attr('font-size', '14px')
+      .attr('font-weight', '600')
+      .attr('letter-spacing', '0.02em')
+      .text(d => d.data.name);
+
+    // Labels for Level 2
+    svg.selectAll('.label-level2')
+      .data(root.descendants().filter(d => d.depth === 2))
+      .join('text')
+      .attr('class', 'label-level2')
+      .attr('transform', d => {
+        const angle = (d.x0 + d.x1) / 2;
+        const r = centerRadius + level1Width + 8;
+        const x = Math.sin(angle) * r;
+        const y = -Math.cos(angle) * r;
+        let rotation = (angle * 180 / Math.PI);
+        if (angle > Math.PI) {
+          rotation += 180;
+        }
+        return `translate(${x},${y}) rotate(${rotation - 90})`;
+      })
+      .attr('text-anchor', d => {
+        const angle = (d.x0 + d.x1) / 2;
+        return angle > Math.PI ? 'end' : 'start';
+      })
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', '#0f172a')
+      .attr('font-size', '10.5px')
+      .attr('font-weight', '500')
+      .text(d => d.data.name);
+
+    // Labels for Level 3
+    svg.selectAll('.label-level3')
+      .data(root.descendants().filter(d => d.depth === 3))
+      .join('text')
+      .attr('class', 'label-level3')
+      .attr('transform', d => {
+        const angle = (d.x0 + d.x1) / 2;
+        const r = centerRadius + level1Width + level2Width + 10;
+        const x = Math.sin(angle) * r;
+        const y = -Math.cos(angle) * r;
+        let rotation = (angle * 180 / Math.PI);
+        if (angle > Math.PI) {
+          rotation += 180;
+        }
+        return `translate(${x},${y}) rotate(${rotation - 90})`;
+      })
+      .attr('text-anchor', d => {
+        const angle = (d.x0 + d.x1) / 2;
+        return angle > Math.PI ? 'end' : 'start';
+      })
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', '#1e293b')
+      .attr('font-size', '9px')
+      .attr('font-weight', '400')
+      .text(d => d.data.name);
+
+    // Build legend
+    const legend = d3.select('#legend');
+    Object.entries(stageColors).forEach(([name, color]) => {
+      const item = legend.append('div')
+        .attr('class', 'legend-item');
+      
+      item.append('div')
+        .attr('class', 'legend-color')
+        .style('background', color);
+      
+      item.append('span')
+        .attr('class', 'legend-label')
+        .text(name);
+    });
+
+    // Export functions
+    function exportSVG() {
+      const svgElement = document.querySelector('#sunburst svg');
+      const svgClone = svgElement.cloneNode(true);
+      
+      // Add background as first element
+      const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      bg.setAttribute('width', '100%');
+      bg.setAttribute('height', '100%');
+      bg.setAttribute('fill', '#111827');
+      svgClone.insertBefore(bg, svgClone.firstChild);
+      
+      // Embed font directly for consistent rendering
+      const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      const style = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+      style.textContent = `
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+        text { font-family: 'IBM Plex Sans', Arial, sans-serif; }
+      `;
+      defs.appendChild(style);
+      svgClone.insertBefore(defs, svgClone.firstChild);
+      
+      const svgData = new XMLSerializer().serializeToString(svgClone);
+      const blob = new Blob([svgData], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Governance-Sunburst.svg';
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function exportPNG() {
+      const svgElement = document.querySelector('#sunburst svg');
+      const svgClone = svgElement.cloneNode(true);
+      
+      const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      bg.setAttribute('width', '100%');
+      bg.setAttribute('height', '100%');
+      bg.setAttribute('fill', '#111827');
+      svgClone.insertBefore(bg, svgClone.firstChild);
+      
+      const svgData = new XMLSerializer().serializeToString(svgClone);
+      const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+      
+      const img = new Image();
+      img.onload = function() {
+        const scale = 3;
+        const canvas = document.createElement('canvas');
+        canvas.width = width * scale;
+        canvas.height = height * scale;
+        
+        const ctx = canvas.getContext('2d');
+        ctx.scale(scale, scale);
+        ctx.fillStyle = '#111827';
+        ctx.fillRect(0, 0, width, height);
+        ctx.drawImage(img, 0, 0, width, height);
+        
+        const pngUrl = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = pngUrl;
+        link.download = 'Governance-Sunburst.png';
+        link.click();
+        
+        URL.revokeObjectURL(url);
+      };
+      img.src = url;
+    }
+  </script>
+</body>
+</html>

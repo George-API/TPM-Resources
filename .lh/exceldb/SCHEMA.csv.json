@@ -1,0 +1,22 @@
+{
+    "sourceFile": "exceldb/SCHEMA.csv",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1770566721881,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1770568401006,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,9 @@\n L1,AI/ML,,Models training evaluation operations GenAI\n L1,PM,,Project product agile change stakeholder\n L1,PROGRAMMING,,Data structures algorithms complexity\n L1,BUSINESS,,Finance contracts metrics risk\n+L1,JUSTICE,,Public safety corrections policing charges court\n TYPE,Technology,,Tool platform service\n TYPE,Pattern,,Reusable design solution\n TYPE,Practice,,Way of working\n TYPE,Concept,,Idea or principle\n"
+                }
+            ],
+            "date": 1770566721881,
+            "name": "Commit-0",
+            "content": "Section,Item,Value,Notes\nCOLUMN,Term,Text (30),Title case; acronym in parentheses\nCOLUMN,Definition,Text (80),Concise phrase; no ending period\nCOLUMN,L1_Category,Text (12),UPPERCASE; see L1 values below\nCOLUMN,L2_Subcategory,Text (15),Title Case; must match L1\nCOLUMN,Resource_Type,Text (12),Title Case; see Type values below\nCOLUMN,Priority,Text (10),Knowledge tier; see Priority values below\nL1,DATA,,Data platforms architecture quality processing BI governance streaming\nL1,SOFTWARE,,Software design patterns principles\nL1,CLOUD,,Infrastructure networking services resilience\nL1,DEVOPS,,Deployment observability reliability automation\nL1,SECURITY,,Access encryption testing compliance\nL1,AI/ML,,Models training evaluation operations GenAI\nL1,PM,,Project product agile change stakeholder\nL1,PROGRAMMING,,Data structures algorithms complexity\nL1,BUSINESS,,Finance contracts metrics risk\nTYPE,Technology,,Tool platform service\nTYPE,Pattern,,Reusable design solution\nTYPE,Practice,,Way of working\nTYPE,Concept,,Idea or principle\nTYPE,Metric,,Measure or KPI\nTYPE,Role,,Job or responsibility\nTYPE,Framework,,Structured approach\nTYPE,Protocol,,Communication standard\nTYPE,Process,,Workflow or procedure\nPRIORITY,Core,,Must know - foundational for competence\nPRIORITY,Advanced,,Learn when needed - specialist depth\nPRIORITY,Core-N,,Must know within niche domain\nPRIORITY,Advanced-N,,Specialist within niche domain\nRULE,Required,All columns,No blank cells allowed\nRULE,Unique,Term column,No duplicate terms\nRULE,Consistency,L1-L2,L2 must be valid for selected L1\nRULE,Sort,L1 → L2 → Term,Alphabetical within each level\n"
+        }
+    ]
+}

@@ -1,0 +1,252 @@
+{
+  "name": "OPS Enterprise Governance & Delivery System",
+  "children": [
+    {
+      "name": "Policy",
+      "children": [
+        {
+          "name": "Legislative & Regulatory Direction",
+          "children": [
+            { "name": "Statutory Requirements" },
+            { "name": "Regulatory Compliance Mapping" },
+            { "name": "Policy Obligations" },
+            { "name": "Legislative Change Tracking" }
+          ]
+        },
+        {
+          "name": "Enterprise Policy Frameworks",
+          "children": [
+            { "name": "Policy Development & Maintenance" },
+            { "name": "Policy Communication & Awareness" },
+            { "name": "Policy Exception Management" },
+            { "name": "Policy Review Cycles" }
+          ]
+        },
+        {
+          "name": "Strategic Mandate Definition",
+          "children": [
+            { "name": "Government Priority Alignment" },
+            { "name": "Ministry Mandate Mapping" },
+            { "name": "Digital Strategy Directives" },
+            { "name": "Service Modernization Goals" }
+          ]
+        },
+        {
+          "name": "Risk & Compliance Intent",
+          "children": [
+            { "name": "Enterprise Risk Appetite" },
+            { "name": "Compliance Framework Design" },
+            { "name": "Audit & Accountability Expectations" },
+            { "name": "Control Environment Requirements" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Standards",
+      "children": [
+        {
+          "name": "Go-ITS & Enterprise Standards",
+          "children": [
+            { "name": "Technical Standard Conformance" },
+            { "name": "Platform Standard Adoption" },
+            { "name": "Security Baseline Alignment" },
+            { "name": "Standard Lifecycle Management" }
+          ]
+        },
+        {
+          "name": "Architectural Patterns",
+          "children": [
+            { "name": "Reference Architecture Definitions" },
+            { "name": "Pattern Cataloguing" },
+            { "name": "Technology Stack Standards" },
+            { "name": "Integration Pattern Standards" }
+          ]
+        },
+        {
+          "name": "Security & Privacy Standards",
+          "children": [
+            { "name": "Information Security Requirements" },
+            { "name": "Privacy by Design Standards" },
+            { "name": "Identity & Access Standards" },
+            { "name": "Threat Modeling Requirements" }
+          ]
+        },
+        {
+          "name": "Data & Information Standards",
+          "children": [
+            { "name": "Data Classification Standards" },
+            { "name": "Metadata & Cataloguing Standards" },
+            { "name": "Data Quality Requirements" },
+            { "name": "Information Retention Standards" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Enablement",
+      "children": [
+        {
+          "name": "Shared Platforms & Services",
+          "children": [
+            { "name": "Enterprise Platform Adoption" },
+            { "name": "Managed Service Utilization" },
+            { "name": "Infrastructure Reuse" },
+            { "name": "Cloud Service Enablement" }
+          ]
+        },
+        {
+          "name": "Tooling & DevOps Enablement",
+          "children": [
+            { "name": "Development Toolchain Standards" },
+            { "name": "CI/CD Pipeline Enablement" },
+            { "name": "Testing & Quality Tooling" },
+            { "name": "Monitoring & Observability Tools" }
+          ]
+        },
+        {
+          "name": "Architecture Advisory Support",
+          "children": [
+            { "name": "Solution Architecture Guidance" },
+            { "name": "Technology Selection Support" },
+            { "name": "Pattern & Standard Interpretation" },
+            { "name": "Architecture Review Facilitation" }
+          ]
+        },
+        {
+          "name": "Delivery Governance Support",
+          "children": [
+            { "name": "Project Intake & Prioritization" },
+            { "name": "Governance Checkpoint Facilitation" },
+            { "name": "Resource Allocation Guidance" },
+            { "name": "Delivery Risk Advisory" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Delivery",
+      "children": [
+        {
+          "name": "Project & Program Execution",
+          "children": [
+            { "name": "Schedule Governance" },
+            { "name": "Budget Oversight" },
+            { "name": "Scope Control" },
+            { "name": "Resource Management" },
+            { "name": "Milestone Tracking" }
+          ]
+        },
+        {
+          "name": "Solution Architecture Oversight",
+          "children": [
+            { "name": "Design Review Gates" },
+            { "name": "Technical Debt Management" },
+            { "name": "Architecture Conformance Verification" },
+            { "name": "Solution Documentation Standards" }
+          ]
+        },
+        {
+          "name": "Risk Management in Delivery",
+          "children": [
+            { "name": "Risk Identification & Assessment" },
+            { "name": "Issue Escalation Protocols" },
+            { "name": "Mitigation Planning & Tracking" },
+            { "name": "Contingency Management" }
+          ]
+        },
+        {
+          "name": "Change & Release Management",
+          "children": [
+            { "name": "Change Control Boards" },
+            { "name": "Release Scheduling & Coordination" },
+            { "name": "Deployment Approval Workflows" },
+            { "name": "Rollback & Recovery Planning" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Integration",
+      "children": [
+        {
+          "name": "System Integration Governance",
+          "children": [
+            { "name": "Integration Architecture Review" },
+            { "name": "Interface Risk Management" },
+            { "name": "Cross-System Dependency Mapping" },
+            { "name": "Integration Testing Oversight" }
+          ]
+        },
+        {
+          "name": "API & Interface Management",
+          "children": [
+            { "name": "API Design Standards Enforcement" },
+            { "name": "API Lifecycle Governance" },
+            { "name": "Interface Contract Management" },
+            { "name": "API Security & Access Control" }
+          ]
+        },
+        {
+          "name": "Data Sharing & Interoperability",
+          "children": [
+            { "name": "Data Exchange Agreements" },
+            { "name": "Interoperability Standards Compliance" },
+            { "name": "Master Data Coordination" },
+            { "name": "Cross-Domain Data Governance" }
+          ]
+        },
+        {
+          "name": "Cross-Ministry Coordination",
+          "children": [
+            { "name": "Joint Initiative Governance" },
+            { "name": "Shared Service Alignment" },
+            { "name": "Inter-Ministry Dependencies" },
+            { "name": "Collaborative Delivery Models" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Outcomes",
+      "children": [
+        {
+          "name": "Service Performance Monitoring",
+          "children": [
+            { "name": "KPI Tracking" },
+            { "name": "SLA Monitoring" },
+            { "name": "Service Health Metrics" },
+            { "name": "User Experience Measurement" }
+          ]
+        },
+        {
+          "name": "Benefits Realization",
+          "children": [
+            { "name": "Benefits Tracking & Reporting" },
+            { "name": "Value Delivery Assessment" },
+            { "name": "ROI Measurement" },
+            { "name": "Outcome Accountability" }
+          ]
+        },
+        {
+          "name": "Operational Sustainability",
+          "children": [
+            { "name": "Operational Readiness Validation" },
+            { "name": "Support Model Governance" },
+            { "name": "Capacity & Scalability Monitoring" },
+            { "name": "Lifecycle Cost Management" }
+          ]
+        },
+        {
+          "name": "Continuous Improvement",
+          "children": [
+            { "name": "Lessons Learned Capture" },
+            { "name": "Process Optimization Initiatives" },
+            { "name": "Innovation Pipeline Governance" },
+            { "name": "Maturity Assessment & Advancement" }
+          ]
+        }
+      ]
+    }
+  ]
+}

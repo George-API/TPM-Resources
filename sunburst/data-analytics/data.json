@@ -1,0 +1,333 @@
+{
+  "name": "Data & Analytics",
+  "children": [
+    {
+      "name": "Dimensional Modeling",
+      "children": [
+        {
+          "name": "Schema Design",
+          "children": [
+            { "name": "Star Schema" },
+            { "name": "Snowflake Schema" },
+            { "name": "Grain" },
+            { "name": "Bus Matrix" }
+          ]
+        },
+        {
+          "name": "Fact Tables",
+          "children": [
+            { "name": "Fact Table" },
+            { "name": "Measure" },
+            { "name": "Additive" },
+            { "name": "Semi-Additive" }
+          ]
+        },
+        {
+          "name": "Dimension Tables",
+          "children": [
+            { "name": "Dimension Table" },
+            { "name": "Surrogate Key" },
+            { "name": "Natural Key" },
+            { "name": "SCD Types" }
+          ]
+        },
+        {
+          "name": "Dimension Types",
+          "children": [
+            { "name": "Conformed" },
+            { "name": "Degenerate" },
+            { "name": "Junk" },
+            { "name": "Role-Playing" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "OLAP & Analysis",
+      "children": [
+        {
+          "name": "OLAP Operations",
+          "children": [
+            { "name": "Drill-down" },
+            { "name": "Roll-up" },
+            { "name": "Slice" },
+            { "name": "Dice" }
+          ]
+        },
+        {
+          "name": "Navigation",
+          "children": [
+            { "name": "Hierarchy" },
+            { "name": "Pivot" },
+            { "name": "Cross-tabulation" },
+            { "name": "Drill-through" }
+          ]
+        },
+        {
+          "name": "Aggregation",
+          "children": [
+            { "name": "Aggregate Table" },
+            { "name": "Pre-aggregation" },
+            { "name": "Summarization" },
+            { "name": "Grouping" }
+          ]
+        },
+        {
+          "name": "Time Analysis",
+          "children": [
+            { "name": "YTD / QTD / MTD" },
+            { "name": "Prior Period" },
+            { "name": "Rolling Average" },
+            { "name": "Trending" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Semantic Layer",
+      "children": [
+        {
+          "name": "Business Logic",
+          "children": [
+            { "name": "Semantic Model" },
+            { "name": "Metrics Layer" },
+            { "name": "Business Rules" },
+            { "name": "KPI Definition" }
+          ]
+        },
+        {
+          "name": "Terminology",
+          "children": [
+            { "name": "Business Glossary" },
+            { "name": "Data Dictionary" },
+            { "name": "Common Vocabulary" },
+            { "name": "Naming Standards" }
+          ]
+        },
+        {
+          "name": "Self-Service",
+          "children": [
+            { "name": "Self-Service BI" },
+            { "name": "Ad-hoc Query" },
+            { "name": "Report Builder" },
+            { "name": "Data Discovery" }
+          ]
+        },
+        {
+          "name": "Data Virtualization",
+          "children": [
+            { "name": "Logical Layer" },
+            { "name": "Abstraction" },
+            { "name": "Federation" },
+            { "name": "Single Source" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Power BI",
+      "children": [
+        {
+          "name": "DAX Fundamentals",
+          "children": [
+            { "name": "CALCULATE" },
+            { "name": "Filter Context" },
+            { "name": "Row Context" },
+            { "name": "Context Transition" }
+          ]
+        },
+        {
+          "name": "DAX Patterns",
+          "children": [
+            { "name": "Time Intelligence" },
+            { "name": "Iterator Functions" },
+            { "name": "Variables (VAR)" },
+            { "name": "Table Functions" }
+          ]
+        },
+        {
+          "name": "Data Connectivity",
+          "children": [
+            { "name": "Import Mode" },
+            { "name": "DirectQuery" },
+            { "name": "Direct Lake" },
+            { "name": "Composite Model" }
+          ]
+        },
+        {
+          "name": "Report Design",
+          "children": [
+            { "name": "Visualization" },
+            { "name": "Cross-filter" },
+            { "name": "Drillthrough" },
+            { "name": "Bookmarks" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Architecture",
+      "children": [
+        {
+          "name": "Storage Patterns",
+          "children": [
+            { "name": "Data Warehouse" },
+            { "name": "Data Lake" },
+            { "name": "Data Lakehouse" },
+            { "name": "Data Mart" }
+          ]
+        },
+        {
+          "name": "Design Layers",
+          "children": [
+            { "name": "Medallion (Bronze/Silver/Gold)" },
+            { "name": "Staging" },
+            { "name": "Integration" },
+            { "name": "Presentation" }
+          ]
+        },
+        {
+          "name": "Schema Concepts",
+          "children": [
+            { "name": "Normalization" },
+            { "name": "Denormalization" },
+            { "name": "Primary Key" },
+            { "name": "Foreign Key" }
+          ]
+        },
+        {
+          "name": "Data Movement",
+          "children": [
+            { "name": "ETL" },
+            { "name": "ELT" },
+            { "name": "CDC" },
+            { "name": "Incremental Load" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Quality",
+      "children": [
+        {
+          "name": "Quality Dimensions",
+          "children": [
+            { "name": "Accuracy" },
+            { "name": "Completeness" },
+            { "name": "Consistency" },
+            { "name": "Timeliness" }
+          ]
+        },
+        {
+          "name": "Integrity",
+          "children": [
+            { "name": "Referential" },
+            { "name": "Entity" },
+            { "name": "Domain" },
+            { "name": "Golden Record" }
+          ]
+        },
+        {
+          "name": "Observability",
+          "children": [
+            { "name": "Data Lineage" },
+            { "name": "Data Profiling" },
+            { "name": "Data Freshness" },
+            { "name": "Anomaly Detection" }
+          ]
+        },
+        {
+          "name": "Validation",
+          "children": [
+            { "name": "Data Contract" },
+            { "name": "Schema Validation" },
+            { "name": "Business Rules" },
+            { "name": "Data Testing" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Governance",
+      "children": [
+        {
+          "name": "Ownership",
+          "children": [
+            { "name": "Data Owner" },
+            { "name": "Data Steward" },
+            { "name": "Data Domain" },
+            { "name": "Accountability" }
+          ]
+        },
+        {
+          "name": "Classification",
+          "children": [
+            { "name": "Data Classification" },
+            { "name": "Sensitivity Levels" },
+            { "name": "PII" },
+            { "name": "Data Retention" }
+          ]
+        },
+        {
+          "name": "Cataloging",
+          "children": [
+            { "name": "Data Catalog" },
+            { "name": "Metadata Mgmt" },
+            { "name": "Data Discovery" },
+            { "name": "Search & Browse" }
+          ]
+        },
+        {
+          "name": "Standards",
+          "children": [
+            { "name": "DAMA-DMBOK" },
+            { "name": "ISO 8000" },
+            { "name": "Data Policy" },
+            { "name": "Access Control" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Analytics Practice",
+      "children": [
+        {
+          "name": "Reporting Types",
+          "children": [
+            { "name": "Operational" },
+            { "name": "Analytical" },
+            { "name": "Strategic" },
+            { "name": "Paginated" }
+          ]
+        },
+        {
+          "name": "Delivery",
+          "children": [
+            { "name": "Dashboard" },
+            { "name": "Scorecard" },
+            { "name": "Scheduled Reports" },
+            { "name": "Alerts" }
+          ]
+        },
+        {
+          "name": "Methodology",
+          "children": [
+            { "name": "Kimball" },
+            { "name": "Inmon" },
+            { "name": "Data Vault" },
+            { "name": "Agile BI" }
+          ]
+        },
+        {
+          "name": "Organization",
+          "children": [
+            { "name": "CoE (Center of Excellence)" },
+            { "name": "Data Literacy" },
+            { "name": "Stakeholder Mgmt" },
+            { "name": "Requirements" }
+          ]
+        }
+      ]
+    }
+  ]
+}

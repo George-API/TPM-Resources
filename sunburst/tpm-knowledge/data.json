@@ -1,0 +1,266 @@
+{
+  "name": "TPM Knowledge Base",
+  "children": [
+    {
+      "name": "DATA",
+      "children": [
+        {
+          "name": "Architecture",
+          "children": [
+            { "name": "Data Warehouse", "children": [{ "name": "OLAP" }, { "name": "Fact Tables" }] },
+            { "name": "Data Lake", "children": [{ "name": "Raw Zone" }, { "name": "Curated Zone" }] },
+            { "name": "Star Schema", "children": [{ "name": "Dimensions" }, { "name": "Measures" }] }
+          ]
+        },
+        {
+          "name": "Processing",
+          "children": [
+            { "name": "ETL / ELT", "children": [{ "name": "Extract" }, { "name": "Transform" }] },
+            { "name": "Data Pipeline", "children": [{ "name": "Orchestration" }, { "name": "Scheduling" }] },
+            { "name": "Batch / Stream", "children": [{ "name": "Micro-batch" }, { "name": "Real-time" }] }
+          ]
+        },
+        {
+          "name": "Governance",
+          "children": [
+            { "name": "Data Quality", "children": [{ "name": "Accuracy" }, { "name": "Completeness" }] },
+            { "name": "Data Lineage", "children": [{ "name": "Source" }, { "name": "Transformation" }] },
+            { "name": "Data Catalog", "children": [{ "name": "Metadata" }, { "name": "Discovery" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SOFTWARE",
+      "children": [
+        {
+          "name": "Architecture",
+          "children": [
+            { "name": "Microservices", "children": [{ "name": "Decoupling" }, { "name": "Scaling" }] },
+            { "name": "REST API", "children": [{ "name": "Endpoints" }, { "name": "HTTP Methods" }] },
+            { "name": "Event-Driven", "children": [{ "name": "Pub/Sub" }, { "name": "Message Queue" }] }
+          ]
+        },
+        {
+          "name": "Patterns",
+          "children": [
+            { "name": "Design Patterns", "children": [{ "name": "Factory" }, { "name": "Singleton" }] },
+            { "name": "SOLID", "children": [{ "name": "Single Resp." }, { "name": "Open/Closed" }] },
+            { "name": "Clean Code", "children": [{ "name": "Readability" }, { "name": "Refactoring" }] }
+          ]
+        },
+        {
+          "name": "Testing",
+          "children": [
+            { "name": "Unit Testing", "children": [{ "name": "Mocking" }, { "name": "Assertions" }] },
+            { "name": "Integration", "children": [{ "name": "End-to-End" }, { "name": "Contract" }] },
+            { "name": "TDD / BDD", "children": [{ "name": "Red-Green" }, { "name": "Specs" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CLOUD",
+      "children": [
+        {
+          "name": "Infrastructure",
+          "children": [
+            { "name": "IaC", "children": [{ "name": "Terraform" }, { "name": "ARM/Bicep" }] },
+            { "name": "Containers", "children": [{ "name": "Docker" }, { "name": "Images" }] },
+            { "name": "Kubernetes", "children": [{ "name": "Pods" }, { "name": "Services" }] }
+          ]
+        },
+        {
+          "name": "Services",
+          "children": [
+            { "name": "Compute", "children": [{ "name": "VMs" }, { "name": "App Service" }] },
+            { "name": "Storage", "children": [{ "name": "Blob" }, { "name": "File" }] },
+            { "name": "Serverless", "children": [{ "name": "Functions" }, { "name": "Logic Apps" }] }
+          ]
+        },
+        {
+          "name": "Resilience",
+          "children": [
+            { "name": "HA / DR", "children": [{ "name": "Failover" }, { "name": "Geo-Replication" }] },
+            { "name": "Load Balancing", "children": [{ "name": "Round Robin" }, { "name": "Health Checks" }] },
+            { "name": "Auto-Scaling", "children": [{ "name": "Scale Out" }, { "name": "Scale Up" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DEVOPS",
+      "children": [
+        {
+          "name": "Deployment",
+          "children": [
+            { "name": "CI/CD", "children": [{ "name": "Build" }, { "name": "Deploy" }] },
+            { "name": "Pipelines", "children": [{ "name": "Stages" }, { "name": "Approvals" }] },
+            { "name": "Release Mgmt", "children": [{ "name": "Versioning" }, { "name": "Rollback" }] }
+          ]
+        },
+        {
+          "name": "Observability",
+          "children": [
+            { "name": "Monitoring", "children": [{ "name": "Dashboards" }, { "name": "Metrics" }] },
+            { "name": "Logging", "children": [{ "name": "Centralized" }, { "name": "Structured" }] },
+            { "name": "Alerting", "children": [{ "name": "Thresholds" }, { "name": "Escalation" }] }
+          ]
+        },
+        {
+          "name": "Reliability",
+          "children": [
+            { "name": "SRE", "children": [{ "name": "Toil Reduction" }, { "name": "Automation" }] },
+            { "name": "Incident Mgmt", "children": [{ "name": "Triage" }, { "name": "Post-mortem" }] },
+            { "name": "SLO / SLA", "children": [{ "name": "Availability" }, { "name": "Latency" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SECURITY",
+      "children": [
+        {
+          "name": "Access",
+          "children": [
+            { "name": "IAM", "children": [{ "name": "Users" }, { "name": "Groups" }] },
+            { "name": "RBAC", "children": [{ "name": "Roles" }, { "name": "Permissions" }] },
+            { "name": "SSO / MFA", "children": [{ "name": "SAML" }, { "name": "TOTP" }] }
+          ]
+        },
+        {
+          "name": "Protection",
+          "children": [
+            { "name": "Encryption", "children": [{ "name": "At Rest" }, { "name": "In Transit" }] },
+            { "name": "Secrets Mgmt", "children": [{ "name": "Key Vault" }, { "name": "Rotation" }] },
+            { "name": "Zero Trust", "children": [{ "name": "Verify" }, { "name": "Least Privilege" }] }
+          ]
+        },
+        {
+          "name": "Compliance",
+          "children": [
+            { "name": "Auditing", "children": [{ "name": "Logs" }, { "name": "Trails" }] },
+            { "name": "Risk Assessment", "children": [{ "name": "TRA" }, { "name": "Mitigation" }] },
+            { "name": "Policy", "children": [{ "name": "Standards" }, { "name": "Controls" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AI/ML",
+      "children": [
+        {
+          "name": "Fundamentals",
+          "children": [
+            { "name": "Supervised", "children": [{ "name": "Classification" }, { "name": "Regression" }] },
+            { "name": "Unsupervised", "children": [{ "name": "Clustering" }, { "name": "Reduction" }] },
+            { "name": "Deep Learning", "children": [{ "name": "Neural Nets" }, { "name": "Layers" }] }
+          ]
+        },
+        {
+          "name": "Operations",
+          "children": [
+            { "name": "MLOps", "children": [{ "name": "Pipelines" }, { "name": "Versioning" }] },
+            { "name": "Model Training", "children": [{ "name": "Features" }, { "name": "Tuning" }] },
+            { "name": "Inference", "children": [{ "name": "Batch" }, { "name": "Real-time" }] }
+          ]
+        },
+        {
+          "name": "GenAI",
+          "children": [
+            { "name": "LLMs", "children": [{ "name": "Tokens" }, { "name": "Context" }] },
+            { "name": "Prompting", "children": [{ "name": "Few-shot" }, { "name": "Chain-of-Thought" }] },
+            { "name": "RAG", "children": [{ "name": "Retrieval" }, { "name": "Augmentation" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PM",
+      "children": [
+        {
+          "name": "Planning",
+          "children": [
+            { "name": "Scope", "children": [{ "name": "Requirements" }, { "name": "WBS" }] },
+            { "name": "Schedule", "children": [{ "name": "Milestones" }, { "name": "Dependencies" }] },
+            { "name": "Budget", "children": [{ "name": "Estimates" }, { "name": "Tracking" }] }
+          ]
+        },
+        {
+          "name": "Execution",
+          "children": [
+            { "name": "Agile / Scrum", "children": [{ "name": "Sprints" }, { "name": "Ceremonies" }] },
+            { "name": "Risk Mgmt", "children": [{ "name": "Register" }, { "name": "Mitigation" }] },
+            { "name": "Stakeholders", "children": [{ "name": "RACI" }, { "name": "Communication" }] }
+          ]
+        },
+        {
+          "name": "Delivery",
+          "children": [
+            { "name": "Milestones", "children": [{ "name": "Gates" }, { "name": "Reviews" }] },
+            { "name": "Change Mgmt", "children": [{ "name": "CCB" }, { "name": "Impact" }] },
+            { "name": "Governance", "children": [{ "name": "Reporting" }, { "name": "Decisions" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PROGRAMMING",
+      "children": [
+        {
+          "name": "Fundamentals",
+          "children": [
+            { "name": "Data Structures", "children": [{ "name": "Arrays" }, { "name": "Hash Maps" }] },
+            { "name": "Algorithms", "children": [{ "name": "Sorting" }, { "name": "Searching" }] },
+            { "name": "Big O", "children": [{ "name": "Time" }, { "name": "Space" }] }
+          ]
+        },
+        {
+          "name": "Languages",
+          "children": [
+            { "name": "Python", "children": [{ "name": "Libraries" }, { "name": "Syntax" }] },
+            { "name": "SQL", "children": [{ "name": "Queries" }, { "name": "Joins" }] },
+            { "name": "JavaScript", "children": [{ "name": "ES6+" }, { "name": "Async" }] }
+          ]
+        },
+        {
+          "name": "Practices",
+          "children": [
+            { "name": "Version Control", "children": [{ "name": "Git" }, { "name": "Branching" }] },
+            { "name": "Code Review", "children": [{ "name": "PRs" }, { "name": "Feedback" }] },
+            { "name": "Documentation", "children": [{ "name": "Comments" }, { "name": "README" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BUSINESS",
+      "children": [
+        {
+          "name": "Finance",
+          "children": [
+            { "name": "CapEx / OpEx", "children": [{ "name": "Capital" }, { "name": "Operating" }] },
+            { "name": "ROI / TCO", "children": [{ "name": "Returns" }, { "name": "Costs" }] },
+            { "name": "Business Case", "children": [{ "name": "Benefits" }, { "name": "Justification" }] }
+          ]
+        },
+        {
+          "name": "Contracts",
+          "children": [
+            { "name": "SLA", "children": [{ "name": "Uptime" }, { "name": "Penalties" }] },
+            { "name": "SOW", "children": [{ "name": "Deliverables" }, { "name": "Timeline" }] },
+            { "name": "Procurement", "children": [{ "name": "RFP" }, { "name": "Evaluation" }] }
+          ]
+        },
+        {
+          "name": "Metrics",
+          "children": [
+            { "name": "KPIs", "children": [{ "name": "Targets" }, { "name": "Tracking" }] },
+            { "name": "OKRs", "children": [{ "name": "Objectives" }, { "name": "Key Results" }] },
+            { "name": "Reporting", "children": [{ "name": "Dashboards" }, { "name": "Insights" }] }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,957 @@
+Term,Definition,L1_Category,L2_Subcategory,Resource_Type,Priority
+API Gateway,Centralized entry point for API requests; handles routing authentication rate limiting,CLOUD,Services,Technology,Core
+CDN (Content Delivery Network),Distributed network for delivering content with low latency,CLOUD,Services,Technology,Core
+CI/CD (Continuous Integration/Deployment),Automated build test and deployment pipelines,DEVOPS,Deployment,Practice,Core
+Circuit Breaker,Pattern to prevent cascading failures by stopping requests to failing services,SOFTWARE,Patterns,Pattern,Core
+Fallback,Alternative behavior or response when primary operation or dependency fails,SOFTWARE,Patterns,Pattern,Core
+Graceful Degradation,Delivering reduced functionality when dependencies fail instead of total failure,SOFTWARE,Patterns,Pattern,Core
+Half-Open (Circuit Breaker),Test state allowing one request through to check if dependency recovered,SOFTWARE,Patterns,Concept,Advanced
+Request Timeout,Maximum wait for remote call; prevents indefinite hang and resource exhaustion,SOFTWARE,Patterns,Pattern,Core
+Container Orchestration,Managing containerized applications (Kubernetes Docker Swarm),CLOUD,Infrastructure,Technology,Core
+DDoS Protection,Distributed Denial of Service protection at network edge,SECURITY,Compliance,Technology,Core
+DNS (Domain Name System),System translating domain names to IP addresses,CLOUD,Networking,Protocol,Core
+DR (Disaster Recovery),Strategy and processes for recovering IT systems after catastrophic failure,CLOUD,Resilience,Practice,Core
+Event-Driven Architecture,Architecture pattern using events for communication between services,SOFTWARE,Architecture,Pattern,Core
+GitOps,Operational model using Git as source of truth for infrastructure,DEVOPS,Automation,Practice,Advanced
+HA (High Availability),System design ensuring continuous operation with minimal downtime,CLOUD,Resilience,Concept,Core
+Horizontal Scaling,Adding more instances/nodes to handle increased load (scale out),CLOUD,Resilience,Concept,Core
+IaC (Infrastructure as Code),Managing infrastructure through code/configuration (Terraform Bicep),CLOUD,Infrastructure,Practice,Core
+Immutable Infrastructure,Infrastructure replaced rather than modified; ensures consistency,CLOUD,Infrastructure,Concept,Advanced
+Kubernetes,Container orchestration platform for automated deployment and scaling,CLOUD,Infrastructure,Technology,Core
+Load Balancer,Distributes traffic across multiple servers,CLOUD,Networking,Technology,Core
+Managed Identity,Cloud-native identity for resources (no secrets required),SECURITY,Access,Technology,Core
+mTLS (Mutual TLS),Mutual authentication using TLS certificates,SECURITY,Encryption,Protocol,Advanced
+Multi-tenant SaaS,Software architecture serving multiple customers from single instance,SOFTWARE,Architecture,Pattern,Core
+NAT (Network Address Translation),Translating private IPs to public IPs,CLOUD,Networking,Technology,Core
+OIDC (OpenID Connect),Authentication protocol built on OAuth 2.0,SECURITY,Access,Protocol,Core
+Private Link,Secure connectivity to cloud services without public internet,CLOUD,Networking,Technology,Advanced-N
+Rolling Deployment,Gradual replacement of instances with new versions (zero downtime),DEVOPS,Deployment,Pattern,Core
+RPO (Recovery Point Objective),Maximum acceptable data loss measured in time,CLOUD,Resilience,Metric,Core
+RTO (Recovery Time Objective),Maximum acceptable downtime after failure,CLOUD,Resilience,Metric,Core
+Active-Active,Both sites serving live traffic; near-zero RTO and continuous availability,CLOUD,Resilience,Concept,Core
+BCP (Business Continuity Plan),Plan to maintain critical business operations during disruption,CLOUD,Resilience,Process,Core
+BCDR (Business Cont and DR),Combined business continuity and disaster recovery strategy,CLOUD,Resilience,Concept,Core
+Cold Standby,Secondary site offline until failover; lowest cost longest recovery time,CLOUD,Resilience,Concept,Core
+Failback,Returning traffic and workload to primary site after recovery,CLOUD,Resilience,Practice,Core
+Warm Standby,Secondary partially ready; balance of cost and recovery time vs cold,CLOUD,Resilience,Concept,Core
+Serverless,Cloud computing model where provider manages infrastructure,CLOUD,Services,Technology,Core
+Service Mesh,Infrastructure layer for managing service-to-service communication,CLOUD,Infrastructure,Technology,Advanced
+Vertical Scaling,Increasing resources (CPU RAM) on existing instance (scale up),CLOUD,Resilience,Concept,Core
+VNet (Virtual Network),Isolated network environment in cloud,CLOUD,Networking,Technology,Core
+WAF (Web Application Firewall),Firewall protecting web applications from attacks,SECURITY,Compliance,Technology,Core
+Zero Trust,Security model requiring verification for every access request,SECURITY,Access,Framework,Core
+Bandwidth,Maximum data transfer capacity of a network connection,CLOUD,Networking,Metric,Core
+CORS (Cross-Origin Resource Sharing),HTTP mechanism allowing cross-domain requests,CLOUD,Networking,Protocol,Core
+Firewall,Network security system controlling incoming/outgoing traffic,SECURITY,Compliance,Technology,Core
+GraphQL,Query language for APIs; client specifies exact data needed,SOFTWARE,Patterns,Technology,Core
+HTTP/HTTPS,Hypertext Transfer Protocol; HTTPS adds TLS encryption,CLOUD,Networking,Protocol,Core
+IP Address,Unique numerical identifier for devices on a network,CLOUD,Networking,Concept,Core
+Latency,Time delay between request and response,CLOUD,Networking,Metric,Core
+OSI Model,Seven-layer networking model for protocol stacks (Physical through Application),CLOUD,Networking,Framework,Core
+Proxy,Intermediary server between client and destination server,CLOUD,Networking,Technology,Core
+Rate Limiting,Controlling number of requests a client can make in a time period,SOFTWARE,Patterns,Pattern,Core
+REST (Representational State Transfer),Architectural style for web APIs using HTTP methods,SOFTWARE,Architecture,Pattern,Core
+Reverse Proxy,Server that forwards client requests to backend servers (nginx HAProxy),CLOUD,Networking,Technology,Core
+Subnet,Logical subdivision of an IP network,CLOUD,Networking,Concept,Core
+TCP (Transmission Control Protocol),Reliable ordered connection-oriented protocol,CLOUD,Networking,Protocol,Core
+Throughput,Actual data transferred per unit of time,CLOUD,Networking,Metric,Core
+UDP (User Datagram Protocol),Fast connectionless protocol; no delivery guarantee,CLOUD,Networking,Protocol,Core
+WebSocket,Protocol for full-duplex persistent connections between client and server,CLOUD,Networking,Protocol,Core
+ADF (Azure Data Factory),Cloud-based data integration and orchestration service,DATA,Platform,Technology,Core-N
+ADLS Gen2 (Azure Data Lake Storage),Scalable data lake storage with hierarchical namespace,DATA,Platform,Technology,Core-N
+Delta Lake,Open-source storage layer with ACID transactions for data lakes,DATA,Platform,Technology,Core
+Delta Live Tables (DLT),Databricks declarative framework for building data pipelines,DATA,Platform,Technology,Advanced-N
+Direct Lake,Power BI mode querying OneLake Delta tables directly (no import/DirectQuery),DATA,Platform,Technology,Core-N
+Medallion Architecture,Bronze (raw) to Silver (cleaned) to Gold (curated) data layers,DATA,Architecture,Pattern,Core
+OneLake,Microsoft Fabric unified data lake storage across workspaces,DATA,Platform,Technology,Core-N
+Parquet,Columnar storage format optimized for analytics workloads,DATA,Platform,Technology,Core
+Photon Engine,Databricks accelerated SQL engine for faster query performance,DATA,Platform,Technology,Advanced-N
+Real-Time Intelligence,Fabric workload for streaming data processing,DATA,Platform,Technology,Core-N
+Shortcuts,Fabric references to external data without copying,DATA,Platform,Technology,Advanced-N
+Structured Streaming,Spark API for stream processing with exactly-once semantics,DATA,Processing,Technology,Core-N
+Synapse Analytics,Analytics service combining data warehousing and big data,DATA,Platform,Technology,Core-N
+Unity Catalog,Databricks unified governance layer for data assets,DATA,Platform,Technology,Core-N
+Workspace,Databricks/Fabric environment for notebooks jobs clusters,DATA,Platform,Concept,Core
+At-Least-Once Delivery,Message delivered one or more times; requires idempotent consumers,DATA,Processing,Concept,Core
+Backpressure,Mechanism to slow producers when consumers can't keep up,DATA,Processing,Pattern,Advanced
+Batch Processing,Processing data in scheduled batches (hourly daily),DATA,Processing,Practice,Core
+CDC (Change Data Capture),Capturing incremental changes from source systems,DATA,Processing,Technology,Core
+Data Contract,Agreement defining schema semantics and SLAs for data products,DATA,Quality,Concept,Core
+Data Drift,Unexpected changes in data distribution or schema over time,DATA,Quality,Concept,Core
+Data Fabric,Architecture pattern providing unified data access across environments,DATA,Architecture,Pattern,Advanced
+Data Lake,Centralized repository storing raw data in native format,DATA,Architecture,Concept,Core
+Data Lakehouse,Architecture combining data lake flexibility with warehouse structure,DATA,Architecture,Pattern,Core
+Data Lineage,Tracking data flow from source to consumption,DATA,Quality,Practice,Core
+Data Mesh,Decentralized data architecture with domain-oriented ownership,DATA,Architecture,Pattern,Advanced
+Data Product,Self-contained reusable data asset with defined contract,DATA,Architecture,Concept,Core
+Data Warehouse,Centralized repository for structured queryable data,DATA,Architecture,Concept,Core
+DLQ (Dead Letter Queue),Queue for messages that fail processing; enables retry/investigation,DATA,Processing,Pattern,Core
+ELT (Extract Load Transform),Load raw data first transform in destination,DATA,Processing,Practice,Core
+ETL (Extract Transform Load),Transform data before loading to destination,DATA,Processing,Practice,Core
+Exactly-Once Delivery,Message processed exactly once; requires coordination,DATA,Processing,Concept,Core
+Full Refresh,Reloading all data in a pipeline run; opposite of incremental load,DATA,Processing,Practice,Core
+Idempotency,Operation that produces same result regardless of execution count,DATA,Processing,Concept,Core
+Incremental Processing,Processing only new/changed data since last run,DATA,Processing,Practice,Core
+Lookup (Transformation),ETL step enriching rows by joining to reference or dimension table,DATA,Processing,Concept,Core
+Lambda Architecture,Architecture combining batch and streaming processing,DATA,Architecture,Pattern,Advanced
+Metadata,Data about data (schema lineage quality usage statistics),DATA,Quality,Concept,Core
+Orchestration,Coordinating multiple data pipeline tasks (Airflow ADF Prefect),DATA,Processing,Practice,Core
+Schema Evolution,Managing schema changes while maintaining compatibility,DATA,Architecture,Practice,Core
+Schema-on-Read,Schema applied when reading data (flexible late binding),DATA,Architecture,Concept,Core
+Schema-on-Write,Schema enforced when writing data (strict early binding),DATA,Architecture,Concept,Core
+Star Schema,Data warehouse schema with central fact tables and dimension tables,DATA,Architecture,Pattern,Core
+Streaming Processing,Real-time continuous data processing,DATA,Processing,Practice,Core
+Staging (Data),Interim storage for data during ETL before loading to destination,DATA,Processing,Concept,Core
+Watermarking,Tracking high-water mark for incremental data loads,DATA,Processing,Concept,Core
+Upsert,Insert or update in one operation; merge new and existing records,DATA,Processing,Concept,Core
+Backup and Restore,Copy and restore of data for recovery from failure or corruption,DATA,Processing,Practice,Core
+PITR (Point-in-Time Recovery),Restore database or dataset to specific timestamp before failure,DATA,Processing,Concept,Core
+Data Catalog,Inventory of data assets with metadata and discovery,DATA,Quality,Technology,Core
+Data Freshness,Measure of how current data is (time since last update),DATA,Quality,Metric,Core
+Data Observability,Monitoring data health quality and lineage across systems,DATA,Quality,Practice,Core
+Data Profiling,Analyzing data to understand structure content and quality issues,DATA,Quality,Practice,Core
+Data Quality,Measure of data accuracy completeness consistency timeliness,DATA,Quality,Concept,Core
+Data Reliability Engineering,Practice of ensuring data systems meet quality and availability targets,DATA,Quality,Practice,Advanced
+Data SLO (Service Level Objective),Targets for data freshness completeness accuracy,DATA,Quality,Metric,Core
+Data Steward,Person responsible for data quality and governance within a domain,DATA,Quality,Role,Core
+Data Validation,Checking data against rules constraints and expectations,DATA,Quality,Practice,Core
+Golden Record,Single authoritative version of an entity across systems,DATA,Quality,Concept,Core
+MDM (Master Data Management),Processes ensuring consistent accurate master data across systems,DATA,Quality,Practice,Core
+Quarantine,Isolating bad/invalid data for review and remediation,DATA,Quality,Practice,Advanced
+Data Corruption,Loss or damage to data integrity requiring detection and recovery,DATA,Quality,Concept,Core
+Duplicate Detection,Identifying and handling duplicate records in data pipelines,DATA,Quality,Practice,Core
+Null Handling,Strategy for missing unknown or inapplicable values in data,DATA,Quality,Concept,Core
+ACID,Atomicity Consistency Isolation Durability (transaction properties),DATA,Architecture,Concept,Core
+CLS (Column-Level Security),Restricting access to specific columns,SECURITY,Access,Technology,Advanced
+Encryption at Rest,Protecting stored data through encryption,SECURITY,Encryption,Practice,Core
+Encryption in Transit,Protecting data during transmission (TLS/SSL),SECURITY,Encryption,Practice,Core
+IAM (Identity and Access Management),Framework for managing digital identities and access,SECURITY,Access,Framework,Core
+Index,Database structure improving query performance,DATA,Platform,Concept,Core
+MFA (Multi-Factor Authentication),Authentication requiring multiple verification methods,SECURITY,Access,Technology,Core
+Partition Key,Field used to distribute data across partitions; affects throughput and hotspots,DATA,Architecture,Concept,Advanced
+Partitioning,Dividing large tables into smaller manageable pieces,DATA,Architecture,Practice,Core
+PII (Personally Identifiable Information),Data that can identify individuals,SECURITY,Compliance,Concept,Core
+Query Optimization,Improving database query performance through execution plans,DATA,Platform,Practice,Core
+RBAC (Role-Based Access Control),Access permissions based on user roles,SECURITY,Access,Pattern,Core
+RLS (Row-Level Security),Restricting access to specific rows based on user context,SECURITY,Access,Technology,Core
+Secrets Management,Secure storage and access control for credentials keys tokens,SECURITY,Access,Practice,Core
+SSO (Single Sign-On),Authentication allowing access to multiple systems with one login,SECURITY,Access,Technology,Core
+Transaction,Unit of work that must complete entirely or not at all,DATA,Processing,Concept,Core
+API Versioning,Managing multiple API versions for backward compatibility,SOFTWARE,Patterns,Practice,Core
+Bounded Context,Explicit boundary where domain model applies (DDD concept),SOFTWARE,Architecture,Concept,Advanced
+Bulkhead Pattern,Isolating components to prevent cascading failures,SOFTWARE,Patterns,Pattern,Advanced
+CQRS (Command Query Responsibility Segregation),Separating read and write operations,SOFTWARE,Patterns,Pattern,Advanced
+DDD (Domain-Driven Design),Software design approach focusing on domain model,SOFTWARE,Architecture,Framework,Core
+Design Pattern,Reusable solution to common software design problems,SOFTWARE,Patterns,Concept,Core
+Event Sourcing,Storing state changes as sequence of events,SOFTWARE,Patterns,Pattern,Advanced
+Hexagonal Architecture,Architecture isolating business logic from infrastructure,SOFTWARE,Architecture,Pattern,Advanced
+Microservices,Architecture pattern with independently deployable services,SOFTWARE,Architecture,Pattern,Core
+Monolith,Single deployable unit containing all application functionality,SOFTWARE,Architecture,Pattern,Core
+Outbox Pattern,Reliable event publishing using database transactions,SOFTWARE,Patterns,Pattern,Advanced
+Retry Pattern,Automatically retrying failed operations with backoff,SOFTWARE,Patterns,Pattern,Core
+Saga Pattern,Managing distributed transactions across services using compensating actions,SOFTWARE,Patterns,Pattern,Advanced
+SOLID Principles,Single responsibility open-closed Liskov interface segregation dependency inversion,SOFTWARE,Principles,Framework,Core
+Array,Contiguous memory storing elements of same type; O(1) access by index,PROGRAMMING,Structures,Concept,Core
+BFS (Breadth-First Search),Graph traversal exploring neighbors before children,PROGRAMMING,Algorithms,Concept,Core
+Big O Notation,Describes algorithm time/space complexity as input grows,PROGRAMMING,Complexity,Concept,Core
+Binary Search,Finding element in sorted array by halving search space; O(log n),PROGRAMMING,Algorithms,Concept,Core
+Binary Tree,Tree where each node has at most two children,PROGRAMMING,Structures,Concept,Core
+DFS (Depth-First Search),Graph traversal exploring as deep as possible before backtracking,PROGRAMMING,Algorithms,Concept,Core
+Dynamic Programming,Solving problems by breaking into overlapping subproblems; memoization,PROGRAMMING,Algorithms,Concept,Core
+Graph,Data structure with nodes (vertices) and edges; models relationships,PROGRAMMING,Structures,Concept,Core
+Greedy Algorithm,Making locally optimal choices at each step,PROGRAMMING,Algorithms,Concept,Core
+Hash Table/HashMap,Key-value store with O(1) average lookup using hash function,PROGRAMMING,Structures,Concept,Core
+Heap,Tree-based structure where parent is greater/less than children; priority queue,PROGRAMMING,Structures,Concept,Core
+Linked List,Linear structure where elements point to next; O(1) insert O(n) access,PROGRAMMING,Structures,Concept,Core
+Memoization,Caching function results to avoid redundant computation,PROGRAMMING,Algorithms,Concept,Core
+Queue,FIFO (First In First Out) data structure,PROGRAMMING,Structures,Concept,Core
+Recursion,Function calling itself to solve smaller subproblems,PROGRAMMING,Algorithms,Concept,Core
+Sliding Window,Technique for processing subarrays/substrings efficiently,PROGRAMMING,Algorithms,Concept,Core
+Space Complexity,Memory usage of algorithm as function of input size,PROGRAMMING,Complexity,Metric,Core
+Stack,LIFO (Last In First Out) data structure,PROGRAMMING,Structures,Concept,Core
+Time Complexity,Execution time of algorithm as function of input size,PROGRAMMING,Complexity,Metric,Core
+Tree,Hierarchical structure with root node and children; no cycles,PROGRAMMING,Structures,Concept,Core
+Trie,Tree for storing strings; enables prefix search,PROGRAMMING,Structures,Concept,Advanced
+Two Pointers,Technique using two indices to traverse array efficiently,PROGRAMMING,Algorithms,Concept,Core
+Blue-Green Deployment,Deployment strategy with two identical environments,DEVOPS,Deployment,Pattern,Core
+Canary Deployment,Gradual rollout to subset of users before full release,DEVOPS,Deployment,Pattern,Core
+Configuration Drift,Unplanned divergence between infrastructure state and definition,DEVOPS,Reliability,Concept,Advanced
+Feature Flag,Toggle enabling/disabling features without code deployment,DEVOPS,Deployment,Technology,Core
+MTBF (Mean Time Between Failures),Average time between consecutive failures,DEVOPS,Reliability,Metric,Advanced
+MTTD (Mean Time To Detection),Average time to detect a failure or incident,DEVOPS,Reliability,Metric,Advanced
+MTTF (Mean Time To Failure),Average time until first failure,DEVOPS,Reliability,Metric,Advanced
+MTTR (Mean Time To Recovery),Average time to recover from failure,DEVOPS,Reliability,Metric,Core
+Observability,Ability to understand system state from external outputs (logs metrics traces),DEVOPS,Observability,Practice,Core
+Platform Engineering,Practice of building internal developer platforms and tooling,DEVOPS,Automation,Practice,Advanced
+Runbook,Documented procedures for routine operations and incident response,DEVOPS,Reliability,Process,Advanced
+Shift Left,Moving testing security and quality earlier in development lifecycle,DEVOPS,Deployment,Practice,Core
+Shift Right,Testing and monitoring in production environments,DEVOPS,Observability,Practice,Advanced
+SRE (Site Reliability Engineering),Practice applying software engineering to operations problems,DEVOPS,Reliability,Practice,Core
+Toil,Repetitive manual automatable work that scales with service growth,DEVOPS,Reliability,Concept,Advanced
+CSPM (Cloud Security Posture Management),Continuous monitoring of cloud security configuration,SECURITY,Compliance,Technology,Advanced
+CWPP (Cloud Workload Protection Platform),Security platform protecting cloud workloads,SECURITY,Compliance,Technology,Advanced
+DAST (Dynamic Application Security Testing),Testing running applications for vulnerabilities,SECURITY,Testing,Practice,Core
+Least Privilege,Granting minimum permissions necessary to perform a function,SECURITY,Access,Concept,Core
+SAST (Static Application Security Testing),Analyzing source code for security vulnerabilities,SECURITY,Testing,Practice,Core
+SBOM (Software Bill of Materials),Inventory of components and dependencies in software,SECURITY,Compliance,Concept,Advanced
+SCA (Software Composition Analysis),Identifying vulnerabilities in open-source dependencies,SECURITY,Testing,Practice,Advanced
+SIEM (Security Information and Event Management),Centralized security event monitoring,SECURITY,Compliance,Technology,Advanced
+SOAR (Security Orchestration Automation and Response),Automating security operations,SECURITY,Compliance,Technology,Advanced
+Supply Chain Security,Protecting software supply chain from vulnerabilities and attacks,SECURITY,Compliance,Practice,Core
+Threat Modeling,Identifying potential security threats and mitigations,SECURITY,Testing,Practice,Core
+A/B Testing (ML),Comparing two variants to determine which performs better,AI/ML,Evaluation,Practice,Advanced
+Agentic AI,AI systems that can autonomously plan and execute multi-step tasks,AI/ML,GenAI,Concept,Advanced
+AI Governance,Framework for managing AI systems responsibly and ethically,AI/ML,Operations,Framework,Advanced
+Attention Mechanism,Neural network component focusing on relevant input parts,AI/ML,Models,Concept,Advanced
+Bias (ML),Systematic error from assumptions; underfitting,AI/ML,Evaluation,Concept,Core
+Classification,Predicting discrete categories (spam/not spam),AI/ML,Models,Concept,Core
+CNN (Convolutional Neural Network),Neural network for image/spatial data processing,AI/ML,Models,Technology,Core
+Confusion Matrix,Table showing true/false positives and negatives,AI/ML,Evaluation,Concept,Core
+Cross-Validation,Evaluating model on different data subsets to assess generalization,AI/ML,Evaluation,Practice,Core
+Deep Learning,Neural networks with multiple layers for complex pattern recognition,AI/ML,Models,Concept,Core
+Embedding,Vector representation of data (text images) for ML models,AI/ML,Models,Concept,Core
+Epoch,One complete pass through entire training dataset,AI/ML,Training,Concept,Advanced
+Feature Engineering,Creating/selecting input variables to improve model performance,AI/ML,Training,Practice,Core
+Feature Store,Centralized repository for ML features; enables reuse and consistency,AI/ML,Operations,Technology,Advanced
+Gradient Descent,Optimization algorithm minimizing loss by following gradient,AI/ML,Training,Concept,Advanced
+Grounding,Connecting AI responses to factual verifiable information,AI/ML,GenAI,Concept,Advanced
+Hallucination,AI generating plausible but incorrect or fabricated information,AI/ML,GenAI,Concept,Core
+Hyperparameter Tuning,Optimizing model configuration (learning rate layers etc.),AI/ML,Training,Practice,Advanced
+Inference,Using trained model to make predictions on new data,AI/ML,Operations,Concept,Core
+LLM (Large Language Model),AI model trained on large text datasets for natural language tasks,AI/ML,GenAI,Technology,Core
+Loss Function,Measures difference between predicted and actual values,AI/ML,Training,Concept,Advanced
+MLOps,Practices for deploying and maintaining ML models in production,AI/ML,Operations,Practice,Core
+Model Drift,Degradation of model performance over time as data changes,AI/ML,Operations,Concept,Advanced
+Model Fine-tuning,Adapting pre-trained models for specific tasks or domains,AI/ML,Training,Practice,Advanced
+Model Registry,Versioned repository for ML models with metadata,AI/ML,Operations,Technology,Advanced
+Neural Network,Computing system inspired by biological neurons; learns patterns,AI/ML,Models,Technology,Core
+Overfitting,Model learns training data too well; poor generalization,AI/ML,Evaluation,Concept,Core
+Precision,True positives / (True positives + False positives),AI/ML,Evaluation,Metric,Advanced
+Prompt Engineering,Crafting effective prompts to get desired outputs from AI models,AI/ML,GenAI,Practice,Core
+RAG (Retrieval Augmented Generation),AI pattern combining retrieval with generation for accurate responses,AI/ML,GenAI,Pattern,Core
+Recall,True positives / (True positives + False negatives),AI/ML,Evaluation,Metric,Advanced
+Regression,Predicting continuous values (price temperature),AI/ML,Models,Concept,Core
+Supervised Learning,Training with labeled data (input-output pairs),AI/ML,Training,Concept,Core
+Token,Basic unit of text processed by language models,AI/ML,GenAI,Concept,Core
+Training,Process of teaching model using data to adjust weights,AI/ML,Training,Process,Core
+Transformer,Neural network architecture using self-attention; basis for GPT BERT,AI/ML,Models,Technology,Core
+Underfitting,Model too simple to capture underlying patterns,AI/ML,Evaluation,Concept,Advanced
+Unsupervised Learning,Training with unlabeled data; finds patterns/clusters,AI/ML,Training,Concept,Core
+Variance (ML),Sensitivity to training data fluctuations; overfitting,AI/ML,Evaluation,Concept,Advanced
+A/B Testing (Product),Comparing product variants to measure impact on metrics,PM,Product,Practice,Core
+CAC (Customer Acquisition Cost),Total cost to acquire a new customer,BUSINESS,Metrics,Metric,Advanced
+Churn Rate,Percentage of customers who stop using product over time period,PM,Product,Metric,Core
+Cohort Analysis,Analyzing behavior of user groups over time,PM,Product,Practice,Advanced
+Customer Feedback Loop,Cycle of gathering feedback from users and acting on it to improve product,PM,Product,Concept,Core
+Customer Journey,End-to-end experience of customer with product/company,PM,Product,Concept,Core
+Discovery,Research phase to understand user problems and validate solutions,PM,Product,Practice,Advanced
+Feature Prioritization,Deciding which features to build based on value/effort,PM,Product,Practice,Core
+Go-to-Market (GTM),Strategy for launching product to target customers,PM,Product,Practice,Advanced
+Jobs to Be Done (JTBD),Framework focusing on outcomes customers want to achieve,PM,Product,Framework,Advanced
+LTV (Lifetime Value),Total revenue expected from a customer over relationship,BUSINESS,Metrics,Metric,Advanced
+North Star Metric,Single metric that best captures core value delivered to customers,PM,Product,Metric,Advanced
+NPS (Net Promoter Score),Customer loyalty metric based on likelihood to recommend,PM,Product,Metric,Core
+PLG (Product-Led Growth),Growth strategy where product drives acquisition/retention,PM,Product,Practice,Advanced
+Product Discovery,Research to understand problems before building solutions,PM,Product,Practice,Core
+Product-Market Fit,When product satisfies strong market demand,PM,Product,Concept,Core
+Product Vision,Aspirational description of what product aims to achieve long-term,PM,Product,Concept,Core
+Time to Value (TTV),Time for customer to realize value from product,PM,Product,Metric,Advanced
+User Research,Methods to understand user needs behaviors and motivations,PM,Product,Practice,Advanced
+Value Proposition,Statement of benefits product provides to customers,PM,Product,Concept,Core
+Build-Measure-Learn,Lean Startup loop: build MVP measure feedback learn and iterate,PM,Product,Framework,Core
+Continuous Discovery,Ongoing customer insight collection feeding product decisions,PM,Product,Practice,Core
+Hypothesis-Driven Development,Building and testing hypotheses rather than fixed requirements,PM,Product,Practice,Core
+Opportunity Solution Tree,Visual framework linking outcomes to opportunities and solution ideas,PM,Product,Framework,Advanced
+Outcome vs Output,Outcome is business result achieved; output is deliverable shipped,PM,Product,Concept,Core
+Product Lifecycle,Stages from ideation through growth maturity and retirement,PM,Product,Concept,Core
+Product Operations (ProdOps),Scaling product processes tools and data across teams,PM,Product,Practice,Advanced
+Product Strategy,Long-term direction and choices for product to achieve business goals,PM,Product,Concept,Core
+PRD (Product Req Document),Document specifying product features and requirements,PM,Product,Process,Core
+RICE Scoring,Prioritization by Reach Impact Confidence and Effort; score = (R×I×C)/E,PM,Product,Framework,Core
+ADKAR Model,Change management model (Awareness Desire Knowledge Ability Reinforcement),PM,Change,Framework,Advanced
+Backlog Refinement,Process of reviewing and updating product backlog,PM,Agile,Process,Core
+Burndown Chart,Visual representation of work remaining over time,PM,Agile,Concept,Core
+Change Control Board (CCB),Group responsible for approving project changes,PM,Project,Process,Advanced
+Critical Path,Sequence of dependent tasks determining minimum project duration,PM,Project,Concept,Advanced
+Definition of Done (DoD),Shared understanding of when work is complete,PM,Agile,Concept,Core
+Definition of Ready (DoR),Criteria a story must meet before sprint planning,PM,Agile,Concept,Advanced
+Dependency,Relationship where one task must complete before another starts,PM,Project,Concept,Core
+EVM (Earned Value Management),Project performance measurement technique,PM,Project,Framework,Advanced
+Executive Sponsor,Senior executive who champions and supports the project,PM,Stakeholder,Role,Advanced
+Gantt Chart,Visual timeline showing project tasks durations and dependencies,PM,Project,Concept,Core
+Kotter's 8-Step Process,Change management framework for organizational transformation,PM,Change,Framework,Advanced
+Milestone,Significant event or achievement in project timeline,PM,Project,Concept,Core
+MoSCoW,Prioritization method (Must have Should have Could have Won't have),PM,Project,Framework,Core
+MVP (Minimum Viable Product),Simplest product version that delivers core value,PM,Product,Concept,Core
+OKRs (Objectives and Key Results),Goal-setting framework linking objectives to measurable results,PM,Project,Framework,Core
+PMO (Project Management Office),Organizational unit providing PM standards and support,PM,Project,Concept,Core
+Portfolio Management,Managing collection of projects to achieve strategic objectives,PM,Project,Practice,Advanced
+Power/Interest Grid,Matrix categorizing stakeholders by power and interest levels,PM,Stakeholder,Framework,Advanced
+Program Management,Coordinated management of related projects to deliver benefits,PM,Project,Practice,Core
+Project Charter,Document authorizing project and defining objectives,PM,Project,Process,Core
+RACI Matrix,Responsibility assignment (Responsible Accountable Consulted Informed),PM,Project,Framework,Core
+Risk Register,Document tracking identified risks and responses,PM,Project,Process,Core
+Roadmap,High-level strategic view of project goals milestones timeline,PM,Project,Concept,Core
+Scope Creep,Uncontrolled expansion of project scope,PM,Project,Concept,Core
+SMART Objectives,Specific Measurable Achievable Relevant Time-bound goals,PM,Project,Framework,Core
+Stage Gate,Go/no-go decision point at key project milestones,PM,Project,Process,Advanced
+Stakeholder,Individual or group with interest in project outcome,PM,Stakeholder,Concept,Core
+Stakeholder Register,Document identifying stakeholders interests and engagement needs,PM,Stakeholder,Process,Advanced
+Steering Committee,Executive oversight body making strategic project decisions,PM,Stakeholder,Concept,Advanced
+Technical Debt,Shortcuts in development that create future maintenance burden,SOFTWARE,Architecture,Concept,Core
+Triple Constraint,Scope Time Cost (fundamental project constraints),PM,Project,Concept,Core
+Vendor Management,Managing relationships with third-party vendors,PM,Project,Practice,Advanced
+WBS (Work Breakdown Structure),Hierarchical decomposition of project work,PM,Project,Framework,Core
+AC (Actual Cost),Actual cost incurred for work performed as of data date,PM,Project,Metric,Core
+Activity,Discrete unit of work in project schedule; building block of WBS,PM,Project,Concept,Core
+Adaptive Approach,Iterative flexible methodology responding to change (agile),PM,Project,Concept,Core
+BAC (Budget at Completion),Total budget allocated to complete the entire project,PM,Project,Metric,Core
+Cost Baseline,Approved time-phased budget used for cost control and comparison,PM,Project,Concept,Core
+CPI (Cost Performance Index),EV/AC; cost efficiency; greater than 1 is under budget,PM,Project,Metric,Core
+Deliverable,Tangible or intangible output produced to complete project work,PM,Project,Concept,Core
+EV (Earned Value),Budgeted value of work actually performed as of data date,PM,Project,Metric,Core
+Hybrid Approach,Combining predictive and adaptive methods for project delivery,PM,Project,Concept,Core
+Lessons Learned,Knowledge captured from project for future use and continuous improvement,PM,Project,Process,Core
+Outcome,Result or benefit realized from deliverables; PMBOK 7 emphasis,PM,Project,Concept,Core
+Performance Domains,Eight integrated domains for effective project delivery (PMBOK 7),PM,Project,Concept,Core
+Predictive Approach,Plan-driven methodology with sequential phases (waterfall),PM,Project,Concept,Core
+Project Manager,Role accountable for project delivery team leadership and stakeholder engagement,PM,Project,Role,Core
+PV (Planned Value),Authorized budget for work scheduled as of data date,PM,Project,Metric,Core
+Risk Response,Strategy and actions to address identified project risks,PM,Project,Process,Core
+Schedule Baseline,Approved project schedule used for schedule control and comparison,PM,Project,Concept,Core
+Scope Baseline,Approved scope statement WBS and WBS dictionary,PM,Project,Concept,Core
+SPI (Schedule Performance Index),EV/PV; schedule efficiency; greater than 1 is ahead,PM,Project,Metric,Core
+SV (Schedule Variance),EV minus PV; positive indicates ahead of schedule,PM,Project,Metric,Core
+Tailoring,Adapting project approach and processes to project context,PM,Project,Practice,Core
+TCPI (To-Complete Perf Index),Efficiency required to meet BAC or EAC target,PM,Project,Metric,Advanced
+VAC (Variance at Completion),BAC minus EAC; projected cost over or under at completion,PM,Project,Metric,Core
+Work Package,Lowest-level WBS component deliverable assigned to single owner,PM,Project,Concept,Core
+Acceptance Criteria,Conditions that must be met for story to be considered complete,PM,Agile,Concept,Core
+Agile,Iterative incremental development methodology,PM,Agile,Framework,Core
+Daily Standup,Brief daily team synchronization meeting,PM,Agile,Process,Core
+Epic,Large body of work that can be broken down into smaller stories,PM,Agile,Concept,Core
+Increment,Potentially releasable product at the end of each sprint,PM,Agile,Concept,Core
+Kanban,Visual workflow management method using boards and WIP limits,PM,Agile,Framework,Core
+PRINCE2,Process-based project management methodology,PM,Project,Framework,Advanced
+Product Manager,Role responsible for product strategy roadmap and feature prioritization,PM,Product,Role,Core
+Product Owner,Scrum role owning product backlog prioritizing work defining acceptance,PM,Agile,Role,Core
+SAFe (Scaled Agile Framework),Framework for scaling Agile to enterprise,PM,Agile,Framework,Advanced
+Scrum,Agile framework with sprints roles (PO SM Dev) and ceremonies,PM,Agile,Framework,Core
+Scrum Master,Facilitator ensuring Scrum practices are followed; removes impediments,PM,Agile,Role,Core
+SDLC (Software Development Life Cycle),Phases of software development from planning to maintenance,SOFTWARE,Architecture,Framework,Core
+Spike,Time-boxed research task to reduce uncertainty or explore solutions,PM,Agile,Concept,Advanced
+Sprint,Time-boxed iteration in Agile development (typically 2 weeks),PM,Agile,Concept,Core
+Sprint Planning,Meeting to plan work for upcoming sprint,PM,Agile,Process,Core
+Sprint Retrospective,Meeting to reflect on team process and improve,PM,Agile,Process,Core
+Sprint Review,Meeting to demonstrate completed work to stakeholders,PM,Agile,Process,Core
+Story Points,Relative estimation unit for story complexity,PM,Agile,Concept,Core
+User Story,Short description of feature from user perspective,PM,Agile,Concept,Core
+Velocity,Measure of work completed per sprint,PM,Agile,Metric,Core
+Waterfall,Sequential project management methodology,PM,Project,Framework,Advanced
+WIP (Work in Progress),Number of items currently being worked on; limiting WIP improves flow,PM,Agile,Concept,Core
+Dual-Track Agile,Parallel discovery track (validate) and delivery track (build) working simultaneously,PM,Agile,Framework,Core
+Product Backlog,Ordered list of product work items; owned by Product Owner; feeds sprint backlog,PM,Agile,Concept,Core
+Release Management,Planning and controlling product releases to users and environments,PM,Agile,Practice,Core
+Allocation,Distribution of costs to departments projects or cost centers,BUSINESS,Finance,Practice,Advanced
+Baseline,Approved plan used as reference for performance measurement,BUSINESS,Metrics,Concept,Advanced
+Budget,Financial plan allocating resources for specific period or project,BUSINESS,Finance,Concept,Core
+Business Case,Justification for a project including costs benefits and risks,BUSINESS,Finance,Process,Core
+CapEx (Capital Expenditure),One-time investment in assets (hardware infrastructure),BUSINESS,Finance,Concept,Core
+Chargeback,Allocating IT costs to business units based on actual usage,BUSINESS,Finance,Practice,Advanced
+Cost Center,Organizational unit that incurs costs but doesn't generate revenue,BUSINESS,Finance,Concept,Advanced
+Cost Variance (CV),Difference between earned value and actual cost (CV = EV - AC),BUSINESS,Metrics,Metric,Advanced
+Depreciation,Accounting method allocating asset cost over useful life,BUSINESS,Finance,Practice,Advanced
+EAC (Estimate At Completion),Projected total cost at project completion,BUSINESS,Metrics,Metric,Advanced
+ETC (Estimate To Complete),Projected cost to complete remaining work,BUSINESS,Metrics,Metric,Advanced
+FinOps,Financial operations practice optimizing cloud spending,BUSINESS,Finance,Practice,Advanced
+KPI (Key Performance Indicator),Measurable value demonstrating effectiveness,BUSINESS,Metrics,Metric,Core
+MSA (Master Service Agreement),Framework agreement governing multiple projects,BUSINESS,Contracts,Concept,Advanced
+NPV (Net Present Value),Present value of future cash flows minus initial investment,BUSINESS,Finance,Metric,Advanced
+OpEx (Operational Expenditure),Ongoing operational costs (cloud services licenses),BUSINESS,Finance,Concept,Core
+Profit Center,Organizational unit that generates revenue and profit,BUSINESS,Finance,Concept,Advanced
+RFP (Request for Proposal),Document soliciting vendor proposals,BUSINESS,Contracts,Process,Advanced
+RFQ (Request for Quote),Document requesting pricing information,BUSINESS,Contracts,Process,Advanced
+ROI (Return on Investment),Measure of profitability: (gain - cost) / cost,BUSINESS,Metrics,Metric,Core
+Showback,Reporting IT costs to business units without actual charge,BUSINESS,Finance,Practice,Advanced
+SLA (Service Level Agreement),Contractual commitment to service level,BUSINESS,Contracts,Concept,Core
+SLI (Service Level Indicator),Measurable aspect of service performance,BUSINESS,Metrics,Metric,Advanced
+SLO (Service Level Objective),Internal target for service reliability/performance,BUSINESS,Metrics,Metric,Core
+SOW (Statement of Work),Detailed description of work to be performed,BUSINESS,Contracts,Concept,Core
+TCO (Total Cost of Ownership),Total cost including acquisition operation maintenance,BUSINESS,Metrics,Metric,Core
+OLAP (Online Analytical Processing),Technology for complex analytical queries on multidimensional data,DATA,BI,Technology,Core
+OLTP (Online Transaction Processing),Systems optimized for high-volume transactional operations,DATA,Architecture,Concept,Core
+Snowflake Schema,Normalized star schema with dimension tables split into sub-dimensions,DATA,Architecture,Pattern,Advanced
+Fact Table,Central warehouse table containing measurable quantitative business events,DATA,BI,Concept,Core
+Dimension Table,Descriptive attributes used for filtering and grouping facts,DATA,BI,Concept,Core
+Conformed Dimension,Dimension shared consistently across multiple fact tables or data marts,DATA,BI,Concept,Advanced
+Surrogate Key,System-generated synthetic key replacing natural business key in warehouse,DATA,BI,Concept,Core
+Natural Key,Business identifier from source system used before surrogate key assignment,DATA,BI,Concept,Advanced
+SCD (Slowly Changing Dimension),Techniques for tracking historical changes in dimension attributes (Type 1/2/3),DATA,BI,Pattern,Core
+Grain,Level of detail or granularity stored in a fact table (one row = one what),DATA,BI,Concept,Core
+Data Mart,Subject-specific subset of data warehouse for departmental analysis,DATA,Architecture,Concept,Core
+ODS (Operational Data Store),Staging area holding current operational data before warehouse load,DATA,Architecture,Concept,Advanced
+Aggregate Table,Pre-computed summary table improving query performance on large fact tables,DATA,BI,Concept,Advanced
+Degenerate Dimension,Dimension key stored directly in fact table without separate dimension table,DATA,BI,Concept,Advanced
+Junk Dimension,Single dimension consolidating miscellaneous low-cardinality flags and indicators,DATA,BI,Pattern,Advanced
+Bridge Table,Intermediate table resolving many-to-many relationships in dimensional models,DATA,BI,Pattern,Advanced
+Cardinality,Number of unique values in a column; relationship type (1:1 1:M M:M),DATA,BI,Concept,Advanced
+Role-Playing Dimension,Single dimension used multiple times in same fact table (e.g. OrderDate ShipDate),DATA,BI,Pattern,Advanced
+Measure,Numeric value aggregated from fact table data (sum avg count),DATA,BI,Concept,Core
+Hierarchy,Parent-child relationships within a dimension enabling drill navigation,DATA,BI,Concept,Core
+Drill-down,Navigation from summary level to more detailed data in a hierarchy,DATA,BI,Concept,Core
+Roll-up,Aggregation from detailed data to summary level in a hierarchy,DATA,BI,Concept,Core
+Slice,Filtering multidimensional data by fixing one dimension to single value,DATA,BI,Concept,Core
+Dice,Filtering multidimensional data by selecting ranges across multiple dimensions,DATA,BI,Concept,Core
+Pivot,Rotating data axes to view measures by different dimension combinations,DATA,BI,Concept,Core
+Cube,Multidimensional data structure enabling OLAP analysis across dimensions,DATA,BI,Concept,Advanced
+Semantic Layer,Business-friendly abstraction layer mapping technical data to business terms,DATA,BI,Concept,Core
+Semantic Model,Logical model defining relationships measures and hierarchies for BI consumption,DATA,BI,Concept,Core
+Self-Service BI,Enabling business users to create reports and perform analysis without IT,DATA,BI,Practice,Core
+Ad-hoc Query,User-created query for specific one-time analysis needs,DATA,BI,Concept,Advanced
+Data Virtualization,Querying and combining data across sources without physical movement,DATA,Architecture,Technology,Advanced
+DAX (Data Analysis Expressions),Formula language for calculations in Power BI Analysis Services and Power Pivot,DATA,BI,Technology,Core-N
+DirectQuery,BI mode querying source system in real-time without importing data,DATA,BI,Technology,Core-N
+Import Mode,BI mode loading data into compressed in-memory storage for fast queries,DATA,BI,Technology,Core-N
+Composite Model,Power BI model combining Import and DirectQuery tables in single model,DATA,BI,Technology,Advanced-N
+Calculated Column,Column computed during data refresh; stored in model; uses row context,DATA,BI,Concept,Core-N
+Calculated Measure,Dynamic calculation evaluated at query time based on filter context,DATA,BI,Concept,Core-N
+Filter Context,Set of active filters affecting DAX measure calculations,DATA,BI,Concept,Core-N
+Row Context,Current row reference during DAX iteration or calculated column evaluation,DATA,BI,Concept,Core-N
+Tabular Model,Columnar in-memory analytical model using VertiPaq compression,DATA,BI,Technology,Advanced-N
+VertiPaq,High-performance columnar compression engine for in-memory analytics,DATA,BI,Technology,Advanced-N
+Additive Measure,Measure that can be summed across all dimensions (e.g. Sales Amount),DATA,BI,Concept,Advanced
+Semi-Additive Measure,Measure summed across some dimensions but not time (e.g. Account Balance),DATA,BI,Concept,Advanced
+Non-Additive Measure,Measure that cannot be summed (e.g. ratios percentages averages),DATA,BI,Concept,Advanced
+Bus Matrix,Planning tool mapping business processes to conformed dimensions,DATA,BI,Concept,Advanced
+Late-Arriving Fact,Fact record arriving after dimension context already loaded,DATA,BI,Concept,Advanced
+Late-Arriving Dimension,Dimension member arriving after facts referencing it,DATA,BI,Concept,Advanced
+Factless Fact Table,Fact table recording events without numeric measures (coverage or events),DATA,BI,Pattern,Advanced
+Accumulating Snapshot,Fact table tracking lifecycle of process with multiple date columns,DATA,BI,Pattern,Advanced
+Periodic Snapshot,Fact table capturing state at regular intervals (daily weekly monthly),DATA,BI,Pattern,Advanced
+Transaction Fact Table,Fact table recording individual business events at atomic grain,DATA,BI,Pattern,Advanced
+Kimball Methodology,Bottom-up dimensional modeling approach using conformed dimensions,DATA,BI,Framework,Advanced
+Inmon Methodology,Top-down enterprise data warehouse approach with normalized model,DATA,BI,Framework,Advanced
+Data Vault 2.0,Hybrid modeling methodology with Hubs Links and Satellites for agility,DATA,Architecture,Framework,Advanced
+Data Governance,Framework of policies processes and standards for managing data assets,DATA,Governance,Practice,Core
+Data Owner,Business stakeholder accountable for data quality and usage within a domain,DATA,Governance,Role,Core
+Data Classification,Categorizing data by sensitivity level (public internal confidential restricted),DATA,Governance,Practice,Core
+Data Policy,Formal rules governing data collection storage access and usage,DATA,Governance,Concept,Core
+Data Dictionary,Repository defining data elements attributes and relationships,DATA,Governance,Concept,Core
+Business Glossary,Standardized definitions of business terms ensuring consistent understanding,DATA,Governance,Concept,Core
+Data Retention,Policies defining how long data must be kept before archival or deletion,DATA,Governance,Practice,Core
+Data Sovereignty,Legal requirement that data is subject to laws of country where collected/stored,DATA,Governance,Concept,Advanced
+DAMA-DMBOK,Data Management Body of Knowledge; industry standard data management framework,DATA,Governance,Framework,Advanced
+Referential Integrity,Constraint ensuring foreign key values match existing primary keys,DATA,Quality,Concept,Core
+Entity Integrity,Constraint ensuring primary keys are unique and not null,DATA,Quality,Concept,Core
+Domain Integrity,Constraint ensuring column values fall within defined valid ranges,DATA,Quality,Concept,Core
+Data Reconciliation,Process of verifying data consistency between source and target systems,DATA,Quality,Practice,Advanced
+Completeness,Data quality dimension measuring presence of required values,DATA,Quality,Metric,Core
+Consistency,Data quality dimension measuring uniformity across systems and time,DATA,Quality,Metric,Core
+Accuracy,Data quality dimension measuring correctness of data values,DATA,Quality,Metric,Core
+Timeliness,Data quality dimension measuring data availability when needed,DATA,Quality,Metric,Core
+Normalization,Database design process eliminating redundancy (1NF 2NF 3NF BCNF),DATA,Architecture,Practice,Core
+Denormalization,Intentionally adding redundancy to improve query performance,DATA,Architecture,Practice,Core
+Primary Key,Column(s) uniquely identifying each row in a table,DATA,Architecture,Concept,Core
+Foreign Key,Column referencing primary key in another table; enforces relationships,DATA,Architecture,Concept,Core
+Stored Procedure,Precompiled SQL code stored in database for reuse,DATA,Platform,Technology,Core
+Subquery,Query nested inside another SQL statement (SELECT FROM WHERE),DATA,Platform,Concept,Core
+View,Virtual table defined by SQL query; simplifies access to underlying data,DATA,Platform,Concept,Core
+Window Function (SQL),SQL function over partition of rows (OVER clause); ROW_NUMBER RANK running sum,DATA,Platform,Concept,Core
+Action (Spark),Operation that returns result or writes data; triggers execution of transformations,DATA,Processing,Concept,Core-N
+Apache Spark,Distributed computing framework for large-scale data processing and analytics,DATA,Platform,Technology,Core-N
+DataFrame (Spark),Distributed collection of rows with named columns; built on Spark RDD,DATA,Platform,Concept,Core-N
+CTE (Common Table Expression),Named temporary result set in SQL (WITH clause); improves readability and reuse,DATA,Platform,Concept,Core
+DDL (Data Definition Language),SQL statements defining schema (CREATE ALTER DROP tables indexes),DATA,Platform,Concept,Core
+DML (Data Manipulation Language),SQL statements manipulating data (SELECT INSERT UPDATE DELETE),DATA,Platform,Concept,Core
+GROUP BY,SQL clause grouping rows for aggregation (SUM AVG COUNT MIN MAX),DATA,Platform,Concept,Core
+HAVING,SQL clause filtering on aggregated groups (applied after GROUP BY),DATA,Platform,Concept,Core
+JOIN (SQL),SQL operation combining rows from two or more tables by related column,DATA,Platform,Concept,Core
+Lazy Evaluation,Deferring computation until result is needed; used in Spark and functional code,DATA,Processing,Concept,Core
+PySpark,Python API for Apache Spark; distributed data processing in Python,DATA,Platform,Technology,Core-N
+RDD (Resilient Distributed Data),Spark immutable distributed collection; low-level parallel abstraction,DATA,Platform,Concept,Core-N
+SparkSession,Entry point for Spark/PySpark applications; creates DataFrames and runs jobs,DATA,Platform,Concept,Core-N
+SQL (Structured Query Language),Language for managing and querying relational databases,DATA,Platform,Technology,Core
+Transformation (Spark),Spark operation that builds a lineage (e.g. map filter); lazy until action,DATA,Processing,Concept,Core-N
+Materialized View,View with cached results; refreshed periodically for performance,DATA,Platform,Technology,Advanced
+MERGE (SQL),SQL operation combining INSERT UPDATE DELETE in single statement (upsert),DATA,Platform,Concept,Advanced
+Deadlock,Circular dependency where transactions wait indefinitely for each other,DATA,Platform,Concept,Advanced
+Database Lock,Mechanism preventing concurrent access conflicts to data,DATA,Platform,Concept,Advanced
+Concurrency Control,Managing simultaneous database operations to maintain consistency,DATA,Platform,Practice,Advanced
+Database Replication,Copying data across multiple database instances for availability,DATA,Platform,Technology,Advanced
+RDBMS (Relational DBMS),System for managing relational databases (tables and SQL),DATA,Platform,Concept,Core
+Sharding,Horizontal partitioning of data across multiple database instances,DATA,Architecture,Pattern,Advanced
+Connection Pool,Cache of database connections reused to reduce connection overhead,DATA,Platform,Technology,Advanced
+Execution Plan,Database optimizer output showing how query will be processed,DATA,Platform,Concept,Core
+Trigger,Database procedure automatically executed on data changes (INSERT UPDATE DELETE),DATA,Platform,Technology,Advanced
+MOLAP (Multidimensional OLAP),OLAP storing data in optimized multidimensional cube structures,DATA,BI,Technology,Advanced-N
+ROLAP (Relational OLAP),OLAP querying data directly from relational database,DATA,BI,Technology,Advanced-N
+HOLAP (Hybrid OLAP),OLAP combining MOLAP aggregates with ROLAP detail data,DATA,BI,Technology,Advanced-N
+Databricks SQL,Databricks interface for SQL analytics on lakehouse data,DATA,Platform,Technology,Core-N
+Databricks Runtime,Databricks compute environment with Spark and optimizations,DATA,Platform,Technology,Core-N
+Notebook,Interactive document combining code markdown and visualizations,DATA,Platform,Technology,Core
+Cluster,Group of compute nodes for distributed data processing,DATA,Platform,Technology,Core
+Job,Scheduled or triggered execution of notebooks or pipelines,DATA,Platform,Concept,Core
+DBFS (Databricks File System),Distributed file system abstraction in Databricks workspace,DATA,Platform,Technology,Core-N
+MLflow,Open-source platform for ML lifecycle management (tracking registry deployment),DATA,Platform,Technology,Core-N
+Delta Sharing,Open protocol for secure cross-organization data sharing,DATA,Platform,Technology,Core-N
+Autoloader,Databricks feature for incremental file ingestion from cloud storage,DATA,Platform,Technology,Core-N
+Z-Ordering,Delta Lake optimization co-locating related data for faster queries,DATA,Platform,Technology,Advanced-N
+Liquid Clustering,Delta Lake dynamic clustering adapting to query patterns automatically,DATA,Platform,Technology,Advanced-N
+Time Travel,Delta Lake ability to query previous versions of data,DATA,Platform,Technology,Core-N
+dbt (data build tool),Analytics engineering tool for SQL-based data transformations,DATA,Platform,Technology,Core-N
+Analytics Engineer,Role bridging data engineering and analytics; owns transformation layer,DATA,Platform,Role,Core
+Metrics Layer,Centralized definitions of business metrics ensuring consistent calculations,DATA,BI,Concept,Core
+Reverse ETL,Syncing data from warehouse back to operational systems (CRM marketing),DATA,Processing,Practice,Core
+Data Testing,Automated validation of data quality expectations in pipelines,DATA,Quality,Practice,Core
+Materialization,Strategy for persisting transformation results (table view incremental ephemeral),DATA,Processing,Concept,Advanced-N
+Power Query,ETL engine in Power BI using M language for data transformation,DATA,BI,Technology,Core-N
+M Language,Functional language for data transformation in Power Query,DATA,BI,Technology,Advanced-N
+Dataflow,Power BI/Fabric reusable ETL component preparing data for multiple datasets,DATA,Platform,Technology,Advanced-N
+Power BI Gateway,Bridge connecting Power BI cloud service to on-premises data sources,DATA,Platform,Technology,Advanced-N
+Power BI Workspace,Collaboration container for reports dashboards and datasets in Power BI,DATA,Platform,Concept,Advanced-N
+Power BI App,Packaged collection of dashboards and reports distributed to users,DATA,BI,Concept,Advanced-N
+Report,Interactive visualization canvas with multiple visuals on pages,DATA,BI,Concept,Core
+Dashboard,Single-page canvas with pinned tiles from multiple reports,DATA,BI,Concept,Core
+Visual,Individual chart graph or data representation component,DATA,BI,Concept,Core
+Slicer,Interactive filter control for report consumers,DATA,BI,Concept,Core
+Bookmark,Saved state of report including filters selections and visual states,DATA,BI,Concept,Core
+Drillthrough,Navigation from summary visual to detailed page with context preserved,DATA,BI,Concept,Core
+Cross-filter,Interaction where selecting data in one visual filters other visuals,DATA,BI,Concept,Core
+Bi-directional Filtering,Relationship filtering flowing in both directions between tables,DATA,BI,Concept,Core-N
+Active Relationship,Default relationship used for DAX calculations between tables,DATA,BI,Concept,Core-N
+Inactive Relationship,Secondary relationship activated explicitly with USERELATIONSHIP,DATA,BI,Concept,Advanced-N
+CALCULATE,Core DAX function modifying filter context for measure calculations,DATA,BI,Technology,Core-N
+Iterator Functions,DAX functions (SUMX AVERAGEX) evaluating row-by-row then aggregating,DATA,BI,Concept,Core-N
+Time Intelligence,DAX patterns for period-over-period YTD MTD comparisons,DATA,BI,Concept,Core-N
+Paginated Report,Pixel-perfect formatted report optimized for printing and export,DATA,BI,Technology,Advanced-N
+Q&A (Power BI),Natural language query feature for asking questions about data,DATA,BI,Technology,Advanced-N
+Publish,Deploying Power BI content from Desktop to cloud service,DATA,BI,Process,Core
+Embed,Integrating Power BI visuals into external applications or portals,DATA,BI,Technology,Advanced-N
+Report Theme,JSON file defining consistent colors fonts and formatting for reports,DATA,BI,Concept,Advanced-N
+Conditional Formatting,Dynamic formatting rules based on data values or expressions,DATA,BI,Concept,Advanced-N
+OLS (Object-Level Security),Restricting access to specific tables or columns in semantic model,SECURITY,Access,Technology,Advanced-N
+Deployment Pipeline,Power BI feature for promoting content through dev test prod stages,DATA,BI,Technology,Advanced-N
+Incremental Refresh,Power BI feature refreshing only new/changed data partitions,DATA,BI,Technology,Advanced-N
+Aggregations (Power BI),Pre-computed summaries enabling fast queries over large DirectQuery tables,DATA,BI,Technology,Advanced-N
+Datamart (Power BI),Self-service relational database with auto-generated semantic model,DATA,Platform,Technology,Advanced-N
+XMLA Endpoint,Protocol enabling third-party tools to connect to Power BI datasets,DATA,BI,Technology,Advanced-N
+ALM Toolkit,Tool for comparing and deploying Power BI/SSAS model changes,DATA,BI,Technology,Advanced-N
+Tabular Editor,External tool for advanced Power BI/SSAS model development,DATA,BI,Technology,Advanced-N
+Best Practice Analyzer,Rules engine identifying model optimization opportunities,DATA,BI,Technology,Advanced-N
+DAX Studio,Tool for executing and analyzing DAX queries against semantic models,DATA,BI,Technology,Advanced-N
+Azure Event Hubs,Managed big data streaming platform for high-throughput event ingestion,DATA,Streaming,Technology,Core-N
+Azure Event Grid,Event routing service for reactive event-driven architectures,DATA,Streaming,Technology,Advanced-N
+Azure Stream Analytics,Real-time analytics service using SQL-like queries on streaming data,DATA,Streaming,Technology,Advanced-N
+Azure Service Bus,Enterprise message broker with queues and publish-subscribe topics,DATA,Streaming,Technology,Core-N
+Azure IoT Hub,Managed service for bi-directional IoT device communication,DATA,Streaming,Technology,Advanced-N
+Apache Kafka,Distributed event streaming platform for high-throughput pipelines,DATA,Streaming,Technology,Core
+Kafka Connect,Framework for connecting Kafka with external systems (sources sinks),DATA,Streaming,Technology,Advanced-N
+Event Hub Partition,Ordered sequence of events enabling parallel consumption,DATA,Streaming,Concept,Core
+Consumer Group,Named view of event stream enabling independent reader progress,DATA,Streaming,Concept,Core
+Offset,Position marker in event stream tracking consumption progress,DATA,Streaming,Concept,Core
+Checkpoint (Streaming),Saved state of streaming query enabling fault-tolerant recovery,DATA,Streaming,Concept,Core
+Microbatch,Small batch processing approach simulating continuous streaming,DATA,Streaming,Concept,Advanced
+Continuous Processing,True record-by-record streaming with sub-millisecond latency,DATA,Streaming,Concept,Advanced
+Trigger Interval,Frequency at which streaming query checks for new data,DATA,Streaming,Concept,Advanced
+Late Data Handling,Strategies for processing events arriving after their event time,DATA,Streaming,Practice,Advanced
+Event Time,Timestamp when event actually occurred at source,DATA,Streaming,Concept,Core
+Processing Time,Timestamp when event is processed by streaming system,DATA,Streaming,Concept,Core
+Ingestion Time,Timestamp when event arrives at streaming platform,DATA,Streaming,Concept,Advanced
+Tumbling Window,Fixed-size non-overlapping time windows for aggregation,DATA,Streaming,Pattern,Core
+Hopping Window,Fixed-size overlapping time windows advancing by hop interval,DATA,Streaming,Pattern,Advanced
+Sliding Window (Streaming),Window triggered by events within specified duration,DATA,Streaming,Pattern,Advanced
+Session Window,Dynamic window grouping events by activity with gap timeout,DATA,Streaming,Pattern,Advanced
+Windowing,Grouping streaming data into finite time-based buckets for processing,DATA,Streaming,Concept,Core
+Throughput Unit,Capacity unit for Azure Event Hubs scaling (1 TU = 1 MB/s in),DATA,Streaming,Concept,Advanced
+Event Hubs Capture,Automatic streaming data archival to Azure Storage or Data Lake,DATA,Streaming,Technology,Advanced-N
+Schema Registry,Centralized repository for event schemas ensuring compatibility,DATA,Streaming,Technology,Advanced-N
+Avro,Row-based binary serialization format common in streaming systems,DATA,Streaming,Technology,Advanced
+Spark Streaming,Databricks/Spark engine for processing live data streams,DATA,Streaming,Technology,Advanced-N
+ReadStream,Spark API for reading streaming data sources,DATA,Streaming,Technology,Advanced-N
+WriteStream,Spark API for writing streaming query results to sinks,DATA,Streaming,Technology,Advanced-N
+Foreachbatch,Spark streaming output mode processing microbatch as DataFrame,DATA,Streaming,Pattern,Advanced
+Trigger.AvailableNow,Spark trigger processing all available data then stopping,DATA,Streaming,Technology,Advanced-N
+Trigger.Once,Spark trigger processing one microbatch then stopping,DATA,Streaming,Technology,Advanced-N
+Eventstream,Fabric feature for capturing routing and transforming real-time events,DATA,Streaming,Technology,Core-N
+KQL (Kusto Query Language),Query language for Azure Data Explorer and Fabric Real-Time Intelligence,DATA,Streaming,Technology,Core-N
+KQL Database,Fabric database optimized for real-time analytics using KQL,DATA,Streaming,Technology,Advanced-N
+KQL Queryset,Saved KQL queries for reuse in Fabric Real-Time Intelligence,DATA,Streaming,Concept,Core-N
+Eventhouse,Fabric workspace for real-time data storage and analytics,DATA,Streaming,Technology,Core-N
+Real-Time Dashboard (Fabric),Fabric dashboard with automatic refresh for live data visualization,DATA,Streaming,Technology,Core-N
+Data Activator,Fabric feature triggering actions based on data conditions (alerts workflows),DATA,Streaming,Technology,Core-N
+Reflex,Data Activator rule defining trigger conditions and actions,DATA,Streaming,Concept,Core-N
+Eventstream Source,Input connector bringing data into Fabric Eventstream,DATA,Streaming,Concept,Core-N
+Eventstream Destination,Output target for processed Eventstream data,DATA,Streaming,Concept,Core-N
+No-Code Transformation,Eventstream visual transformations without writing code,DATA,Streaming,Technology,Core-N
+Push Dataset,Power BI dataset receiving data via REST API for real-time updates,DATA,Streaming,Technology,Advanced-N
+Streaming Dataset,Power BI dataset with real-time tile updates no historical storage,DATA,Streaming,Technology,Advanced-N
+Hybrid Dataset,Power BI dataset combining push streaming with historical storage,DATA,Streaming,Technology,Advanced-N
+Automatic Page Refresh,Power BI feature refreshing report page at set intervals,DATA,Streaming,Technology,Advanced-N
+Change Detection,Power BI refresh triggered only when source data changes,DATA,Streaming,Technology,Advanced-N
+Real-Time Dashboard (Power BI),Dashboard with streaming tiles updating automatically,DATA,Streaming,Concept,Advanced-N
+Live Connection,Power BI connection to SSAS or Power BI dataset without local model,DATA,BI,Technology,Advanced-N
+Azure Functions,Serverless compute triggered by events for real-time processing,DATA,Streaming,Technology,Core-N
+Logic Apps,Workflow automation triggered by events across services,DATA,Streaming,Technology,Core-N
+Durable Functions,Stateful serverless functions for complex event-driven workflows,DATA,Streaming,Technology,Advanced-N
+Event-Driven Trigger,Automation initiated by data events rather than schedules,DATA,Streaming,Concept,Core
+Hot Path,Real-time processing route for immediate insights and actions,DATA,Streaming,Concept,Advanced
+Cold Path,Batch processing route for historical analysis and deep analytics,DATA,Streaming,Concept,Advanced
+Warm Path,Near-real-time processing balancing latency and complexity,DATA,Streaming,Concept,Advanced
+Kappa Architecture,Streaming-only architecture eliminating batch layer complexity,DATA,Streaming,Pattern,Advanced
+Semantic Link,Fabric feature connecting data science notebooks to semantic models,DATA,Platform,Technology,Advanced-N
+Direct Lake Fallback,Automatic switch to DirectQuery when Direct Lake limits exceeded,DATA,BI,Concept,Advanced-N
+Lakehouse Table Streaming,Writing streaming data directly to Fabric lakehouse tables,DATA,Streaming,Practice,Advanced-N
+Delta Streaming,Reading and writing Delta tables as streaming sources and sinks,DATA,Streaming,Technology,Advanced-N
+Merge Into,Delta Lake operation for upserts in streaming scenarios,DATA,Streaming,Technology,Advanced-N
+Streaming Deduplication,Removing duplicate events in real-time using watermarks,DATA,Streaming,Practice,Advanced
+Stateful Streaming,Stream processing maintaining state across events (aggregations joins),DATA,Streaming,Concept,Advanced
+Stateless Streaming,Stream processing with no cross-event state (simple transformations),DATA,Streaming,Concept,Advanced
+Exactly-Once Semantics,Guarantee that each event is processed exactly once end-to-end,DATA,Streaming,Concept,Advanced
+At-Most-Once Semantics,Events may be lost but never processed more than once,DATA,Streaming,Concept,Advanced
+Stream-Table Join,Joining streaming data with static reference/dimension tables,DATA,Streaming,Pattern,Advanced
+Stream-Stream Join,Joining two streams based on time windows and keys,DATA,Streaming,Pattern,Advanced
+GDPR,EU regulation on data protection and privacy for EU residents,SECURITY,Compliance,Framework,Core
+Privacy Impact Assessment (PIA),Systematic process to evaluate privacy risks of a project or system,SECURITY,Compliance,Process,Advanced
+ISO 27001,International standard for information security management systems (ISMS),SECURITY,Compliance,Framework,Core
+ISO 27701,Privacy information management system extension to ISO 27001,SECURITY,Compliance,Framework,Advanced
+ISO 31000,International standard for risk management principles and guidelines,SECURITY,Compliance,Framework,Advanced
+ISO 8000,International standard for data quality management,DATA,Governance,Framework,Core
+ISO 25012,Data quality model defining 15 quality characteristics,DATA,Governance,Framework,Core
+NIST CSF,Cybersecurity Framework providing standards guidelines and best practices,SECURITY,Compliance,Framework,Core
+NIST SP 800-53,Comprehensive security and privacy controls catalog widely adopted globally,SECURITY,Compliance,Framework,Advanced
+COBIT,Framework for IT governance and management of enterprise IT,PM,Project,Framework,Advanced
+ITIL 4,IT service management framework for delivering IT services,PM,Project,Framework,Core
+TOGAF,Enterprise architecture framework for designing IT systems,SOFTWARE,Architecture,Framework,Advanced
+CIS Controls,Prioritized set of actions to protect against cyber attacks,SECURITY,Compliance,Framework,Advanced
+OWASP Top 10,Standard awareness document for web application security risks,SECURITY,Testing,Framework,Core
+OWASP API Security,Security risks specific to APIs and mitigation strategies,SECURITY,Testing,Framework,Advanced
+SOC 2,Service organization control report for security availability processing integrity,SECURITY,Compliance,Framework,Advanced
+PCI-DSS,Payment Card Industry Data Security Standard for card data protection,SECURITY,Compliance,Framework,Advanced
+CVE (Common Vulnerabilities and Exposures),Standardized identifiers for publicly known security vulnerabilities,SECURITY,Testing,Concept,Core
+CWE (Common Weakness Enumeration),Catalog of software and hardware weakness types,SECURITY,Testing,Concept,Advanced
+EU AI Act,European regulation establishing rules for AI systems by risk level,AI/ML,Operations,Framework,Advanced
+Responsible AI,Practices ensuring AI systems are fair transparent accountable and safe,AI/ML,Operations,Practice,Core
+AI Ethics,Principles guiding ethical development and deployment of AI systems,AI/ML,Operations,Concept,Core
+Model Cards,Documentation describing ML model intended use performance and limitations,AI/ML,Operations,Concept,Advanced
+Differential Privacy,Mathematical framework adding noise to protect individual privacy in datasets,AI/ML,Operations,Technology,Advanced
+Data Clean Room,Secure environment for multiple parties to analyze combined data without sharing raw data,DATA,Governance,Technology,Advanced
+Privacy-Enhancing Technologies (PETs),Technologies enabling data analysis while protecting privacy,DATA,Governance,Technology,Advanced
+Synthetic Data,Artificially generated data mimicking real data for testing and training,DATA,Quality,Technology,Advanced
+Federated Learning,ML approach training models across decentralized data without data sharing,AI/ML,Training,Technology,Advanced
+Confidential Computing,Hardware-based isolation protecting data during processing,SECURITY,Encryption,Technology,Advanced
+SLSA (Supply chain Levels for Software Artifacts),Framework for ensuring integrity of software artifacts,SECURITY,Compliance,Framework,Advanced
+CNAPP (Cloud-Native Application Protection Platform),Unified security platform for cloud-native applications,SECURITY,Compliance,Technology,Advanced
+CIEM (Cloud Infrastructure Entitlement Management),Managing identities and permissions across cloud environments,SECURITY,Access,Technology,Advanced
+XDR (Extended Detection and Response),Unified security incident detection and response across multiple layers,SECURITY,Compliance,Technology,Advanced
+Policy as Code,Managing security and compliance policies as version-controlled code,SECURITY,Compliance,Practice,Core
+OpenTelemetry,Open-source observability framework for traces metrics and logs,DEVOPS,Observability,Technology,Core
+DataOps,Agile methodology for data pipeline development and operations,DATA,Quality,Practice,Core
+Semantic Versioning,Versioning scheme (MAJOR.MINOR.PATCH) communicating compatibility,SOFTWARE,Patterns,Practice,Advanced
+API-First Design,Development approach designing API contracts before implementation,SOFTWARE,Architecture,Practice,Core
+Internal Developer Platform (IDP),Self-service platform providing developers with tools and workflows,DEVOPS,Automation,Technology,Core-N
+Developer Experience (DevEx),Practice of optimizing developer productivity and satisfaction,DEVOPS,Automation,Practice,Core-N
+FinOps Maturity Model,Framework for assessing and improving cloud financial management,BUSINESS,Finance,Framework,Advanced-N
+GreenOps,Practices optimizing IT operations for environmental sustainability,DEVOPS,Reliability,Practice,Advanced
+Carbon-Aware Computing,Scheduling workloads based on carbon intensity of power grid,CLOUD,Resilience,Practice,Advanced-N
+Value Stream Mapping,Lean technique visualizing flow of materials and information,PM,Agile,Practice,Core
+DORA Metrics,DevOps Research and Assessment metrics (deployment frequency lead time MTTR change failure rate),DEVOPS,Reliability,Metric,Core
+Engineering Metrics,Quantitative measures of software development performance and quality,DEVOPS,Reliability,Metric,Advanced
+Trunk-Based Development,Source control branching model with short-lived branches,DEVOPS,Deployment,Practice,Core
+Progressive Delivery,Deployment strategy combining feature flags canary releases and experimentation,DEVOPS,Deployment,Practice,Advanced
+Chaos Engineering,Discipline of experimenting on systems to build confidence in resilience,DEVOPS,Reliability,Practice,Core
+Game Day,Scheduled exercise simulating failure scenarios to test incident response,DEVOPS,Reliability,Practice,Advanced
+Blameless Postmortem,Incident review focused on system improvement without individual blame,DEVOPS,Reliability,Practice,Core
+Error Budget,Allowable amount of unreliability before prioritizing stability over features,DEVOPS,Reliability,Concept,Core
+SLO-Based Alerting,Alerting strategy based on error budget consumption rate,DEVOPS,Observability,Practice,Advanced
+Golden Signals,Four key metrics for monitoring (latency traffic errors saturation),DEVOPS,Observability,Concept,Core
+Distributed Tracing,Tracking requests across multiple services to diagnose performance issues,DEVOPS,Observability,Technology,Core
+Span,Single unit of work in a distributed trace,DEVOPS,Observability,Concept,Advanced
+Trace Context,Metadata propagated across services to correlate distributed operations,DEVOPS,Observability,Concept,Advanced
+Service Registry,Registry of services with ownership documentation and dependencies,DEVOPS,Automation,Technology,Advanced
+API Gateway Pattern,Centralized entry point handling cross-cutting concerns for microservices,SOFTWARE,Patterns,Pattern,Core
+Backend for Frontend (BFF),API layer tailored to specific frontend client needs,SOFTWARE,Patterns,Pattern,Advanced
+Sidecar Pattern,Deploying helper components alongside primary service container,SOFTWARE,Patterns,Pattern,Advanced
+Ambassador Pattern,Helper service handling network communication on behalf of main service,SOFTWARE,Patterns,Pattern,Advanced
+Strangler Fig Pattern,Incrementally replacing legacy system by routing traffic to new implementation,SOFTWARE,Patterns,Pattern,Advanced
+Anti-Corruption Layer,Translation layer protecting domain model from external system complexity,SOFTWARE,Patterns,Pattern,Advanced
+SOA (Service-Oriented Architecture),Enterprise architecture using loosely coupled services communicating via protocols,SOFTWARE,Architecture,Pattern,Core
+ESB (Enterprise Service Bus),Middleware for integrating enterprise applications through message routing,SOFTWARE,Architecture,Technology,Advanced
+Legacy System,Outdated technology still in use due to business criticality or migration complexity,SOFTWARE,Architecture,Concept,Core
+Legacy Modernization,Strategy for updating or replacing outdated systems while maintaining business continuity,SOFTWARE,Architecture,Practice,Advanced
+COTS (Commercial Off-The-Shelf),Pre-built software purchased rather than custom developed,SOFTWARE,Architecture,Concept,Advanced
+Build vs Buy,Decision framework evaluating custom development against purchasing existing solutions,SOFTWARE,Architecture,Concept,Core
+Vendor Lock-in,Dependency on vendor making it costly to switch to alternatives,SOFTWARE,Architecture,Concept,Core
+Open Standards,Publicly available specifications enabling interoperability across vendors,SOFTWARE,Architecture,Concept,Core
+Interoperability,Ability of systems to exchange and use information across organizational boundaries,SOFTWARE,Architecture,Concept,Core
+Data Portability,Ability to transfer data between systems without loss of meaning or structure,DATA,Governance,Concept,Core
+N-Tier Architecture,Layered architecture separating presentation logic and data tiers,SOFTWARE,Architecture,Pattern,Core
+Clean Architecture,Architecture with concentric layers and dependency rule pointing inward,SOFTWARE,Architecture,Pattern,Core
+Layered Architecture,Architecture organizing code into horizontal layers with specific responsibilities,SOFTWARE,Architecture,Pattern,Core
+MVC (Model-View-Controller),Pattern separating data (Model) UI (View) and logic (Controller),SOFTWARE,Patterns,Pattern,Core
+Repository Pattern,Abstraction layer between domain and data mapping layers,SOFTWARE,Patterns,Pattern,Core
+Unit of Work,Pattern maintaining list of objects affected by transaction and coordinating changes,SOFTWARE,Patterns,Pattern,Advanced
+Factory Pattern,Creational pattern for creating objects without specifying exact class,SOFTWARE,Patterns,Pattern,Core
+Singleton Pattern,Pattern ensuring class has only one instance with global access point,SOFTWARE,Patterns,Pattern,Advanced
+Observer Pattern,Pattern where objects subscribe to events from another object,SOFTWARE,Patterns,Pattern,Advanced
+Strategy Pattern,Pattern enabling selecting algorithm at runtime,SOFTWARE,Patterns,Pattern,Advanced
+Adapter Pattern,Pattern allowing incompatible interfaces to work together,SOFTWARE,Patterns,Pattern,Advanced
+Facade Pattern,Pattern providing simplified interface to complex subsystem,SOFTWARE,Patterns,Pattern,Advanced
+Decorator Pattern,Pattern adding behavior to objects dynamically without affecting others,SOFTWARE,Patterns,Pattern,Advanced
+Dependency Injection,Pattern providing dependencies to objects rather than objects creating them,SOFTWARE,Patterns,Pattern,Core
+Inversion of Control (IoC),Principle where framework controls program flow rather than custom code,SOFTWARE,Principles,Concept,Core
+SOAP (Simple Object Access Protocol),XML-based messaging protocol for web services,SOFTWARE,Patterns,Protocol,Advanced
+WSDL (Web Services Description Language),XML format describing web service interfaces and bindings,SOFTWARE,Patterns,Protocol,Advanced
+gRPC,High-performance RPC framework using Protocol Buffers,SOFTWARE,Patterns,Technology,Advanced
+Protocol Buffers,Language-neutral binary serialization format by Google,SOFTWARE,Patterns,Technology,Advanced
+OpenAPI/Swagger,Specification for describing RESTful APIs in machine-readable format,SOFTWARE,Patterns,Framework,Core
+AsyncAPI,Specification for describing event-driven and asynchronous APIs,SOFTWARE,Patterns,Framework,Advanced
+JSON Schema,Vocabulary for annotating and validating JSON documents,SOFTWARE,Patterns,Framework,Advanced
+HATEOAS,REST constraint where responses include hypermedia links for navigation,SOFTWARE,Architecture,Concept,Advanced
+CAP Theorem,Distributed system can only guarantee two of: Consistency Availability Partition tolerance,SOFTWARE,Architecture,Concept,Core
+BASE,Distributed system properties: Basically Available Soft-state Eventually consistent,SOFTWARE,Architecture,Concept,Advanced
+Eventual Consistency,Consistency model where system becomes consistent over time without guarantees,SOFTWARE,Architecture,Concept,Core
+Strong Consistency,Consistency model where all nodes see same data at same time,SOFTWARE,Architecture,Concept,Advanced
+Optimistic Locking,Concurrency control allowing concurrent access checking for conflicts at commit,DATA,Platform,Pattern,Advanced
+Pessimistic Locking,Concurrency control preventing concurrent access by locking resources,DATA,Platform,Pattern,Advanced
+Race Condition,Bug where system behavior depends on timing of uncontrollable events,SOFTWARE,Patterns,Concept,Core
+Thread Safety,Code that functions correctly during simultaneous execution by multiple threads,SOFTWARE,Patterns,Concept,Core
+Concurrency,Multiple computations executing during overlapping time periods,PROGRAMMING,Algorithms,Concept,Core
+Parallelism,Multiple computations executing simultaneously on multiple processors,PROGRAMMING,Algorithms,Concept,Core
+Async/Await,Programming pattern for writing asynchronous code in synchronous style,PROGRAMMING,Algorithms,Concept,Core
+TDD (Test-Driven Development),Practice writing tests before implementation code,SOFTWARE,Principles,Practice,Core
+BDD (Behavior-Driven Development),Practice using natural language to describe system behavior and tests,SOFTWARE,Principles,Practice,Core
+Unit Testing,Testing individual components in isolation from dependencies,DEVOPS,Deployment,Practice,Core
+Integration Testing,Testing interactions between integrated components or systems,DEVOPS,Deployment,Practice,Core
+End-to-End Testing,Testing complete user flows from start to finish,DEVOPS,Deployment,Practice,Core
+Contract Testing,Verifying API interactions match agreed contract between consumer and provider,DEVOPS,Deployment,Practice,Advanced
+Regression Testing,Verifying existing functionality still works after changes,DEVOPS,Deployment,Practice,Core
+Smoke Testing,Quick tests verifying basic functionality works after deployment,DEVOPS,Deployment,Practice,Advanced
+Load Testing,Testing system behavior under expected and peak load conditions,DEVOPS,Deployment,Practice,Advanced
+Performance Testing,Measuring system responsiveness speed and stability under workload,DEVOPS,Deployment,Practice,Advanced
+UAT (User Acceptance Testing),Testing by end users to verify system meets business requirements,DEVOPS,Deployment,Practice,Advanced
+Code Coverage,Metric measuring percentage of code executed during testing,DEVOPS,Deployment,Metric,Core
+Test Coverage,Metric measuring how much of requirements or code paths are tested,DEVOPS,Deployment,Metric,Advanced
+Mutation Testing,Testing technique introducing code changes to verify test effectiveness,DEVOPS,Deployment,Practice,Advanced
+Static Analysis,Analyzing code without executing it to find bugs and vulnerabilities,DEVOPS,Deployment,Practice,Core
+Linting,Automated checking of code for programmatic and stylistic errors,DEVOPS,Deployment,Practice,Core
+Code Review,Systematic examination of code by peers to improve quality,DEVOPS,Deployment,Practice,Core
+Pull Request,Request to merge code changes into main branch with review workflow,DEVOPS,Deployment,Process,Core
+Architecture Decision Record (ADR),Document capturing important architectural decision with context and consequences,SOFTWARE,Architecture,Process,Advanced
+Technical Specification,Document describing technical requirements and design for implementation,SOFTWARE,Architecture,Process,Advanced
+Design Document,Detailed technical document describing system design and implementation approach,SOFTWARE,Architecture,Process,Advanced
+Clean Code,Code that is readable maintainable and follows established conventions,SOFTWARE,Principles,Concept,Core
+Code Smell,Indicator of potential deeper problem in code quality or design,SOFTWARE,Principles,Concept,Core
+Refactoring,Restructuring code without changing external behavior to improve quality,SOFTWARE,Principles,Practice,Core
+WCAG (Web Content Accessibility Guidelines),W3C guidelines for making web content accessible to people with disabilities,SECURITY,Compliance,Framework,Core
+Accessibility Testing,Verifying applications are usable by people with disabilities,DEVOPS,Deployment,Practice,Advanced
+Internationalization (i18n),Designing software to support multiple languages and regions,SOFTWARE,Architecture,Practice,Advanced
+Localization (l10n),Adapting software for specific language culture and region,SOFTWARE,Architecture,Practice,Advanced
+Multi-tenancy Architecture,Single instance serving multiple customers with data isolation,SOFTWARE,Architecture,Pattern,Advanced
+Cache-Aside Pattern,Application loads data into cache on demand from data store,SOFTWARE,Patterns,Pattern,Advanced
+Write-Through Cache,Cache writes data to both cache and data store simultaneously,SOFTWARE,Patterns,Pattern,Advanced
+Read-Through Cache,Cache automatically loads data from data store on cache miss,SOFTWARE,Patterns,Pattern,Advanced
+Cache Invalidation,Strategy for removing or updating stale cached data,SOFTWARE,Patterns,Concept,Advanced
+Distributed Cache,Cache shared across multiple servers for scalability (Redis Memcached),SOFTWARE,Patterns,Technology,Advanced
+In-Memory Cache,Cache stored in application memory for fastest access,SOFTWARE,Patterns,Technology,Advanced
+Message Queue,Asynchronous communication mechanism storing messages until processed,SOFTWARE,Architecture,Technology,Core
+Message Broker,Middleware translating messages between sender and receiver protocols,SOFTWARE,Architecture,Technology,Core
+Pub/Sub (Publish-Subscribe),Messaging pattern where publishers send messages to topics subscribers receive,SOFTWARE,Patterns,Pattern,Advanced
+Request-Reply,Messaging pattern where sender expects response from receiver,SOFTWARE,Patterns,Pattern,Advanced
+Idempotent Operation,Operation producing same result regardless of how many times executed,SOFTWARE,Patterns,Concept,Core
+Stateless Service,Service that does not store client state between requests,SOFTWARE,Architecture,Concept,Core
+Stateful Service,Service maintaining client state across requests,SOFTWARE,Architecture,Concept,Advanced
+Session Management,Handling user sessions including creation storage and expiration,SECURITY,Access,Practice,Advanced
+Technical Documentation,Written descriptions of system architecture design and usage,SOFTWARE,Architecture,Process,Advanced
+API Documentation,Documentation describing API endpoints parameters and usage examples,SOFTWARE,Architecture,Process,Advanced
+Changelog,Record of notable changes to a project organized by version,SOFTWARE,Patterns,Process,Advanced
+Release Notes,Summary of changes features and fixes in a software release,SOFTWARE,Patterns,Process,Advanced
+Backwards Compatibility,New version works with data and interfaces from previous versions,SOFTWARE,Architecture,Concept,Core
+Breaking Change,Change that requires consumers to modify their code or data,SOFTWARE,Architecture,Concept,Core
+Deprecation,Marking feature as obsolete with planned removal in future version,SOFTWARE,Architecture,Practice,Core
+Feature Parity,New system matching capabilities of system it replaces,SOFTWARE,Architecture,Concept,Advanced
+API Contract,Agreement specifying API endpoints request/response format and behavior,SOFTWARE,Patterns,Concept,Core
+Composition over Inheritance,Prefer composing objects over deep class hierarchies; OOP principle,SOFTWARE,Principles,Concept,Core
+CRUD,Create Read Update Delete; basic operations on persisted data,SOFTWARE,Patterns,Concept,Core
+DRY (Don't Repeat Yourself),Principle of avoiding duplicate code and logic,SOFTWARE,Principles,Concept,Core
+Immutability,Data or object that cannot be modified after creation; supports predictability,SOFTWARE,Principles,Concept,Core
+Middleware,Software that runs in the request/response pipeline between client and application,SOFTWARE,Architecture,Concept,Core
+Webhook,HTTP callback triggered by an event; push model for real-time notifications,SOFTWARE,Patterns,Concept,Core
+Event Loop,Mechanism that runs async code; processes queue of tasks (JavaScript Node Python asyncio),SOFTWARE,Patterns,Concept,Core
+JavaScript,Dynamic language for web and Node.js; single-threaded with event loop,SOFTWARE,Patterns,Technology,Core
+List Comprehension,Concise syntax for creating a list from iterable (Python and other languages),SOFTWARE,Patterns,Concept,Core
+Promise (JavaScript),Object representing eventual result of async operation; then/catch chain,SOFTWARE,Patterns,Concept,Core
+Python,Interpreted high-level language; widely used for data scripting and backend,SOFTWARE,Patterns,Technology,Core
+Public Sector Procurement,Formal process for government purchasing following regulations,BUSINESS,Contracts,Process,Advanced
+IRR (Internal Rate of Return),Discount rate making NPV of investment equal to zero,BUSINESS,Finance,Metric,Advanced
+Payback Period,Time required to recover initial investment from cash flows,BUSINESS,Finance,Metric,Advanced
+Cost-Benefit Analysis,Systematic comparison of costs and benefits to evaluate decisions,BUSINESS,Finance,Practice,Advanced
+Due Diligence,Investigation and analysis before major business decision or transaction,BUSINESS,Finance,Practice,Advanced
+Business Continuity,Planning and preparation to ensure critical functions continue during disruption,BUSINESS,Finance,Practice,Core
+Governance,Framework of rules practices and processes for directing and controlling organization,BUSINESS,Finance,Concept,Core
+Risk Management,Identifying assessing and mitigating risks to minimize impact,BUSINESS,Finance,Practice,Core
+Compliance,Adherence to laws regulations standards and internal policies,BUSINESS,Finance,Practice,Core
+Audit Trail,Chronological record of system activities enabling reconstruction of events,BUSINESS,Finance,Concept,Core
+License Management,Tracking and optimizing software licenses to ensure compliance and cost efficiency,BUSINESS,Contracts,Practice,Advanced
+Amortization,Spreading cost of intangible asset over its useful life,BUSINESS,Finance,Practice,Advanced
+Vendor Assessment,Evaluating potential vendors on capability reliability security and cost,BUSINESS,Contracts,Practice,Advanced
+Service Catalog,Menu of IT services available to business with descriptions and SLAs,BUSINESS,Contracts,Concept,Core
+Inherent Risk,Risk level before controls or mitigations are applied,BUSINESS,Risk,Concept,Core
+Key Risk Indicator (KRI),Metric indicating increasing risk or control weakness; early warning,BUSINESS,Risk,Metric,Core
+Residual Risk,Risk remaining after controls and mitigations have been applied,BUSINESS,Risk,Concept,Core
+Risk Appetite,Amount of risk organization is willing to accept in pursuit of objectives,BUSINESS,Risk,Concept,Core
+Risk Assessment,Process of identifying analyzing and evaluating risks to the organization,BUSINESS,Risk,Process,Core
+Risk Tolerance,Acceptable deviation around risk appetite; operational limits and thresholds,BUSINESS,Risk,Concept,Core
+TRA (Threat and Risk Assessment),Assessment of threats and associated risks to assets or systems,BUSINESS,Risk,Process,Core
+Three Lines of Defense,Model: 1st operations 2nd risk/compliance 3rd internal audit,BUSINESS,Risk,Framework,Core
+Change Advisory Board (CAB),Group reviewing and approving changes to minimize risk,PM,Project,Process,Core
+Deque (Double-Ended Queue),Queue allowing insertion and removal at both ends; O(1) operations,PROGRAMMING,Structures,Concept,Core
+Set,Collection of unique elements; O(1) membership testing,PROGRAMMING,Structures,Concept,Core
+Priority Queue,Queue where elements are processed by priority not arrival order,PROGRAMMING,Structures,Concept,Core
+Binary Search Tree (BST),Tree where left child < parent < right child; O(log n) average operations,PROGRAMMING,Structures,Concept,Core
+Balanced BST,Self-balancing BST (AVL Red-Black) guaranteeing O(log n) operations,PROGRAMMING,Structures,Concept,Core
+Adjacency List,Graph representation using list of neighbors per vertex; O(V+E) space,PROGRAMMING,Structures,Concept,Core
+Adjacency Matrix,Graph representation using VÃƒâ€”V matrix; O(1) edge lookup O(VÃ‚Â²) space,PROGRAMMING,Structures,Concept,Core
+Union-Find (Disjoint Set),Data structure tracking elements partitioned into disjoint sets,PROGRAMMING,Structures,Concept,Core
+Topological Sort,Linear ordering of vertices where dependencies precede dependents,PROGRAMMING,Algorithms,Concept,Core
+Dijkstra's Algorithm,Shortest path algorithm for graphs with non-negative edge weights,PROGRAMMING,Algorithms,Concept,Core
+Quick Sort,Divide-and-conquer sort using pivot; O(n log n) average O(nÃ‚Â²) worst,PROGRAMMING,Algorithms,Concept,Core
+Merge Sort,Stable divide-and-conquer sort; O(n log n) guaranteed O(n) space,PROGRAMMING,Algorithms,Concept,Core
+Heap Sort,In-place sort using heap; O(n log n) guaranteed,PROGRAMMING,Algorithms,Concept,Core
+Counting Sort,Non-comparison sort for integers in known range; O(n+k) time,PROGRAMMING,Algorithms,Concept,Advanced
+Backtracking,Algorithm pattern trying choices recursively and undoing on failure,PROGRAMMING,Algorithms,Concept,Advanced
+Bloom Filter,Probabilistic structure for set membership; space-efficient with false positives,PROGRAMMING,Structures,Concept,Advanced
+B-Tree,Self-balancing tree for databases/filesystems; optimized for disk access,PROGRAMMING,Structures,Concept,Core
+B+ Tree,B-Tree variant with all data in leaves; used in database indexes,PROGRAMMING,Structures,Concept,Core
+LSM Tree (Log-Structured Merge),Write-optimized structure used in databases (Cassandra RocksDB),PROGRAMMING,Structures,Concept,Advanced
+Skip List,Probabilistic structure with O(log n) search insert delete,PROGRAMMING,Structures,Concept,Advanced
+Consistent Hashing,Hashing technique minimizing redistribution when nodes added/removed,PROGRAMMING,Algorithms,Concept,Advanced
+Merkle Tree,Hash tree for efficient data integrity verification,PROGRAMMING,Structures,Concept,Advanced
+HyperLogLog,Probabilistic algorithm for cardinality estimation with minimal memory,PROGRAMMING,Algorithms,Concept,Advanced
+Count-Min Sketch,Probabilistic structure for frequency estimation in streaming data,PROGRAMMING,Algorithms,Concept,Advanced
+Reservoir Sampling,Algorithm for random sampling from stream of unknown size,PROGRAMMING,Algorithms,Concept,Advanced
+Ring Buffer (Circular Buffer),Fixed-size buffer wrapping around; used in streaming and logging,PROGRAMMING,Structures,Concept,Advanced
+Percentile,Value below which given percentage of observations fall,PROGRAMMING,Complexity,Concept,Core
+Amortized Analysis,Averaging time over sequence of operations for complexity analysis,PROGRAMMING,Complexity,Concept,Advanced
+Closure,Function that retains access to variables from its enclosing scope,PROGRAMMING,Algorithms,Concept,Core
+Generics,Parameterized types enabling type-safe reusable code across types,PROGRAMMING,Structures,Concept,Core
+Higher-Order Function,Function that takes functions as arguments or returns a function,PROGRAMMING,Algorithms,Concept,Core
+Type Safety,Catching type errors at compile time; static typing to prevent misuse,PROGRAMMING,Algorithms,Concept,Core
+Docker,Container platform for packaging applications with dependencies,CLOUD,Infrastructure,Technology,Core
+Helm,Package manager for Kubernetes using charts for deployment,CLOUD,Infrastructure,Technology,Advanced
+Pod,Smallest deployable unit in Kubernetes containing one or more containers,CLOUD,Infrastructure,Concept,Core-N
+Node (Kubernetes),Worker machine in Kubernetes cluster running pods,CLOUD,Infrastructure,Concept,Core-N
+Namespace (Kubernetes),Virtual cluster within Kubernetes for resource isolation,CLOUD,Infrastructure,Concept,Core-N
+Ingress,Kubernetes resource managing external HTTP/HTTPS access to services,CLOUD,Infrastructure,Technology,Advanced
+ConfigMap,Kubernetes object storing non-sensitive configuration as key-value pairs,CLOUD,Infrastructure,Concept,Core-N
+Secret (Kubernetes),Kubernetes object storing sensitive data like passwords and tokens,CLOUD,Infrastructure,Concept,Core-N
+PVC (Persistent Volume Claim),Request for storage in Kubernetes; abstracts storage provisioning,CLOUD,Infrastructure,Concept,Core-N
+HPA (Horizontal Pod Autoscaler),Kubernetes controller automatically scaling pods based on metrics,CLOUD,Infrastructure,Technology,Advanced
+Multi-Region Deployment,Distributing application across geographic regions for resilience,CLOUD,Resilience,Pattern,Advanced
+Failover,Automatic switching to redundant system when primary fails,CLOUD,Resilience,Practice,Core
+Auto-Scaling,Automatically adjusting compute resources based on demand,CLOUD,Resilience,Technology,Core
+Reserved Instances,Discounted cloud compute with commitment to usage period,CLOUD,Services,Concept,Advanced
+Spot Instances,Discounted cloud compute using spare capacity; can be interrupted,CLOUD,Services,Concept,Advanced
+Tagging Strategy,Systematic approach to labeling cloud resources for cost tracking and governance,CLOUD,Services,Practice,Advanced
+Resource Group,Logical container for grouping related cloud resources,CLOUD,Infrastructure,Concept,Core-N
+Availability Zone,Isolated location within cloud region for fault tolerance,CLOUD,Resilience,Concept,Core
+Region (Cloud),Geographic area containing multiple data centers,CLOUD,Resilience,Concept,Core
+Edge Computing,Processing data near source rather than centralized data center,CLOUD,Infrastructure,Concept,Core
+Cold Storage,Low-cost storage tier for infrequently accessed data,CLOUD,Services,Concept,Advanced
+Hot Storage,High-performance storage tier for frequently accessed data,CLOUD,Services,Concept,Advanced
+Object Storage,Cloud storage for unstructured data accessed via HTTP (S3 Blob),CLOUD,Services,Technology,Core
+Block Storage,Cloud storage providing raw volumes attachable to compute instances,CLOUD,Services,Technology,Core
+Blast Radius,Scope of impact when a component fails or is compromised,CLOUD,Infrastructure,Concept,Advanced
+CaaS (Containers as a Service),Managed container runtime and orchestration by cloud provider,CLOUD,Services,Concept,Core
+CIDR (IP Range Notation),Classless inter-domain routing; subnet notation (e.g. 10.0.0.0/24),CLOUD,Networking,Concept,Core
+Cloud Native,Designed for cloud from the start; containers microservices dynamic orchestration,CLOUD,Infrastructure,Concept,Core
+Cloud Sprawl,Uncontrolled proliferation of cloud resources leading to cost and governance risk,CLOUD,Services,Concept,Advanced
+Control Plane,API layer that manages and provisions cloud resources; distinct from data plane,CLOUD,Infrastructure,Concept,Core
+Data Plane,Path where user and workload traffic flows; distinct from control plane,CLOUD,Infrastructure,Concept,Core
+East-West Traffic,Traffic between resources within the cloud (internal service-to-service),CLOUD,Networking,Concept,Core
+FaaS (Functions as a Service),Event-driven serverless function execution (Lambda Azure Functions),CLOUD,Services,Technology,Core
+Geo-Redundancy,Replication of data or workloads across geographic locations for resilience,CLOUD,Resilience,Concept,Core
+Hub-and-Spoke,Network topology with central hub and connected spoke networks for transit,CLOUD,Networking,Pattern,Core
+Hybrid Cloud,Combination of on-premises or private cloud with public cloud services,CLOUD,Resilience,Concept,Core
+IaaS (Infrastructure as a Service),Cloud provision of VMs storage networking; customer manages OS and above,CLOUD,Services,Concept,Core
+Landing Zone,Secure scalable baseline for cloud accounts governance and compliance,CLOUD,Infrastructure,Concept,Core
+Multi-Cloud,Use of multiple public cloud providers for workload distribution and flexibility,CLOUD,Resilience,Concept,Core
+North-South Traffic,Traffic between external users or networks and cloud boundary,CLOUD,Networking,Concept,Core
+PaaS (Platform as a Service),Cloud platform for developing and running applications; provider manages runtime,CLOUD,Services,Concept,Core
+Shared Responsibility Model,Division of security obligations between cloud provider and customer,CLOUD,Resilience,Concept,Core
+VNet Peering,Direct private connectivity between two virtual networks without public internet,CLOUD,Networking,Technology,Core
+Cloud Governance,Framework of policies controls and compliance for cloud resource use,CLOUD,Services,Practice,Core
+Lift-and-Shift,Rehosting workload to cloud with minimal changes (rehost migration),CLOUD,Infrastructure,Practice,Core
+Private Endpoint,Private IP in VNet for secure PaaS access without public internet,CLOUD,Networking,Technology,Core
+Availability Set,Azure placement of VMs across fault domains to reduce single-point failure,CLOUD,Infrastructure,Concept,Core-N
+Azure App Service,PaaS for web APIs and mobile backends; scaling and deployment slots,CLOUD,Services,Technology,Core-N
+Azure Cosmos DB,Globally distributed multi-model database with tunable consistency levels,CLOUD,Services,Technology,Core-N
+Azure Key Vault,Managed service for secrets certificates and encryption keys,CLOUD,Services,Technology,Core-N
+Azure Monitor,Unified observability for metrics logs and alerts across Azure resources,CLOUD,Services,Technology,Core-N
+Azure Synapse Analytics,Unified analytics (warehouse Spark pipelines) for enterprise data,CLOUD,Services,Technology,Core-N
+Cold Start,Delay when serverless or scaled-down app starts; impacts latency and SLAs,CLOUD,Services,Concept,Core
+Consistency Level,Tradeoff between read consistency and availability/latency (e.g. Cosmos DB),CLOUD,Services,Concept,Advanced
+Deployment Slot,Staging env for App Service; swap with production for zero-downtime deploy,CLOUD,Services,Concept,Core-N
+Managed Identity (Azure),Identity for resources to access other services without storing secrets,CLOUD,Services,Concept,Core-N
+VMSS (Virtual Machine Scale Set),Azure auto-scaling group of identical VMs behind load balancer,CLOUD,Infrastructure,Technology,Core-N
+Azure Blob Storage,Azure object storage for unstructured data; Hot Cool Archive tiers,CLOUD,Services,Technology,Core-N
+Azure Database for PostgreSQL,Managed PostgreSQL on Azure; Flexible Server or single server options,CLOUD,Services,Technology,Core-N
+Azure Files,Managed file shares (SMB/NFS) for lift-and-shift or shared storage,CLOUD,Services,Technology,Core-N
+Azure SQL Database,Managed SQL Server-compatible RDBMS on Azure; PaaS with HA and scaling,CLOUD,Services,Technology,Core-N
+Managed Database,Provider handles patching backup and HA; lower ops burden less control,CLOUD,Services,Concept,Core
+Self-Managed Database,Customer runs DB on VMs or IaaS; full control higher ops and responsibility,CLOUD,Services,Concept,Core
+Accused,Person charged with a criminal offence; also called defendant,JUSTICE,Charges,Concept,Core
+Acquittal,Court finding of not guilty; accused is free without restrictions,JUSTICE,Court,Concept,Core
+Appearance Notice,Document requiring accused to appear in court at set time and place,JUSTICE,Charges,Concept,Core
+Arraignment,Court proceeding where accused is read the charge and enters a plea,JUSTICE,Court,Process,Core
+Arrest,Taking a person into custody by police for a criminal offence,JUSTICE,Policing,Process,Core
+Arrest Warrant,Court order authorizing police to arrest the named person and bring to court,JUSTICE,Policing,Concept,Core
+Bail,Release from custody while awaiting trial or appeal subject to conditions,JUSTICE,Bail,Concept,Core
+Bail Conditions,Terms accused must follow when released on bail (e.g. no contact curfew),JUSTICE,Bail,Concept,Core
+Bail Hearing,Proceeding where judge or JP decides if accused is released or detained,JUSTICE,Bail,Process,Core
+Bench Warrant,Warrant issued when accused fails to appear for court or hearing,JUSTICE,Court,Concept,Core
+Charge,Formal accusation that a person committed a criminal offence,JUSTICE,Charges,Concept,Core
+Crown,Prosecutor representing the state in criminal proceedings (Ontario),JUSTICE,Court,Role,Core
+Detention,Holding a person in custody; can follow arrest or occur without arrest,JUSTICE,Policing,Concept,Core
+Federal Custody,Sentence of two years or more served in federal penitentiary,JUSTICE,Corrections,Concept,Core
+Hybrid Offence,Offence Crown may prosecute as summary or indictable (e.g. assault),JUSTICE,Charges,Concept,Core
+Imprisonment,Custodial sentence served in provincial or federal facility,JUSTICE,Corrections,Concept,Core
+Indictable Offence,Serious offence with higher max sentence; trial options vary,JUSTICE,Charges,Concept,Core
+Information (Criminal),Formal document laying a criminal charge; basis for arrest warrant (not POA),JUSTICE,Charges,Concept,Core
+Judicial Interim Release,Bail; release order pending trial or appeal with conditions,JUSTICE,Bail,Concept,Core
+Justice of the Peace (JP),Judicial officer who may issue warrants and conduct bail hearings,JUSTICE,Court,Role,Core
+Preliminary Hearing,Pre-trial hearing to determine if there is enough evidence to proceed,JUSTICE,Court,Process,Core
+Pre-trial Detention,Custody after arrest while awaiting bail hearing or trial,JUSTICE,Policing,Concept,Core
+Provincial Custody,Sentence under two years served in Ontario correctional facility,JUSTICE,Corrections,Concept,Core
+Recognizance,Promise to appear and comply with conditions; form of release,JUSTICE,Bail,Concept,Core
+Release Order,Current term for bail; court order releasing accused with conditions,JUSTICE,Bail,Concept,Core
+Remand,Detention in custody while awaiting next court date or trial,JUSTICE,Corrections,Concept,Core
+Remand Centre,Provincial facility holding accused in custody awaiting trial or sentencing,JUSTICE,Corrections,Concept,Core
+Sentence,Penalty imposed by court on conviction (e.g. imprisonment fine probation),JUSTICE,Corrections,Concept,Core
+Sentencing,Court proceeding where sentence is imposed after conviction,JUSTICE,Court,Process,Core
+Show Cause Hearing,Bail hearing; Crown or accused shows why accused should be detained or released,JUSTICE,Bail,Concept,Core
+Summary Offence,Less serious offence; max 2 years jail or $5000 fine; no jury trial,JUSTICE,Charges,Concept,Core
+Surety,Person who promises to supervise accused and may pledge money for release,JUSTICE,Bail,Role,Core
+Undertaking,Accused promise to appear in court and comply with conditions,JUSTICE,Charges,Concept,Core
+Warrant of Remand,Order authorizing continued detention until next court date,JUSTICE,Corrections,Concept,Core
+Search Warrant,Court order authorizing police to search a place for evidence,JUSTICE,Policing,Concept,Core
+CSPA (Community Safety and Policing Act),Ontario law setting police service standards and core functions,JUSTICE,Public Safety,Framework,Core
+SOLGEN (Ministry of Solicitor General),Ontario ministry for policing corrections and public safety,JUSTICE,Public Safety,Concept,Core
+Correctional Officer (CO),Staff in provincial facility ensuring security and custody of persons in custody,JUSTICE,Corrections,Role,Core
+CSOI (Corrections Oversight),SOLGEN body for oversight and investigations in correctional services,JUSTICE,Corrections,Concept,Core
+OPP (Ontario Provincial Police),Provincial police service for Ontario; overseen by SOLGEN,JUSTICE,Policing,Concept,Core
+Ontario Parole Board (OPB),Board deciding parole for provincial sentences under two years,JUSTICE,Corrections,Concept,Core
+Parole,Conditional release from institution into community under supervision,JUSTICE,Corrections,Concept,Core
+Person in Custody,Individual held in provincial correctional facility (remand or sentenced),JUSTICE,Corrections,Concept,Core
+PPO (Probation and Parole Officer),Officer supervising probationers and parolees in the community,JUSTICE,Corrections,Role,Core
+Probation,Court-ordered community supervision; max three years in Ontario,JUSTICE,Corrections,Concept,Core
+Act,Law passed by Parliament or legislature; primary legislation (e.g. Criminal Code),JUSTICE,Court,Concept,Core
+Certificate of Offence,POA document laying a provincial offence; Part I ticket or Part II parking,JUSTICE,Charges,Concept,Core
+Charge Package,Crown and police disclosure materials supporting the prosecution (disclosure package),JUSTICE,Charges,Concept,Core
+Correctional Centre,Ontario facility for sentenced offenders 60 days to two years less a day,JUSTICE,Corrections,Concept,Core
+Detention Centre,Ontario regional facility for remand and short sentences (approx 60 days or less),JUSTICE,Corrections,Concept,Core
+Jail,Ontario smaller facility for remand short sentences and transfers; often historic,JUSTICE,Corrections,Concept,Core
+POA (Provincial Offences Act),Ontario statute governing provincial offences and set fines,JUSTICE,Court,Framework,Core
+Regulation,Subordinate law made under authority of an Act; has force of law,JUSTICE,Court,Concept,Core
+Set Fines,Preset penalty amounts for provincial offences under POA; can be paid without trial,JUSTICE,Court,Concept,Core
+Statute,Written law enacted by legislature; often used interchangeably with Act,JUSTICE,Court,Concept,Core
+Treatment Centre,Ontario facility for specialized treatment (e.g. substance abuse sexual harm),JUSTICE,Corrections,Concept,Core

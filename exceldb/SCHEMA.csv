@@ -1,0 +1,34 @@
+Section,Item,Value,Notes
+COLUMN,Term,Text (30),Title case; acronym in parentheses
+COLUMN,Definition,Text (80),Concise phrase; no ending period
+COLUMN,L1_Category,Text (12),UPPERCASE; see L1 values below
+COLUMN,L2_Subcategory,Text (15),Title Case; must match L1
+COLUMN,Resource_Type,Text (12),Title Case; see Type values below
+COLUMN,Priority,Text (10),Knowledge tier; see Priority values below
+L1,DATA,,Data platforms architecture quality processing BI governance streaming
+L1,SOFTWARE,,Software design patterns principles
+L1,CLOUD,,Infrastructure networking services resilience
+L1,DEVOPS,,Deployment observability reliability automation
+L1,SECURITY,,Access encryption testing compliance
+L1,AI/ML,,Models training evaluation operations GenAI
+L1,PM,,Project product agile change stakeholder
+L1,PROGRAMMING,,Data structures algorithms complexity
+L1,BUSINESS,,Finance contracts metrics risk
+L1,JUSTICE,,Public safety corrections policing charges court
+TYPE,Technology,,Tool platform service
+TYPE,Pattern,,Reusable design solution
+TYPE,Practice,,Way of working
+TYPE,Concept,,Idea or principle
+TYPE,Metric,,Measure or KPI
+TYPE,Role,,Job or responsibility
+TYPE,Framework,,Structured approach
+TYPE,Protocol,,Communication standard
+TYPE,Process,,Workflow or procedure
+PRIORITY,Core,,Must know - foundational for competence
+PRIORITY,Advanced,,Learn when needed - specialist depth
+PRIORITY,Core-N,,Must know within niche domain
+PRIORITY,Advanced-N,,Specialist within niche domain
+RULE,Required,All columns,No blank cells allowed
+RULE,Unique,Term column,No duplicate terms
+RULE,Consistency,L1-L2,L2 must be valid for selected L1
+RULE,Sort,L1 → L2 → Term,Alphabetical within each level

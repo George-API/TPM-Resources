@@ -1,0 +1,179 @@
+{
+  "name": "Enterprise Data",
+  "children": [
+    {
+      "name": "Data Fundamentals",
+      "children": [
+        {
+          "name": "Formats",
+          "children": [
+            { "name": "JSON" },
+            { "name": "CSV" },
+            { "name": "Parquet" }
+          ]
+        },
+        {
+          "name": "Spatial",
+          "children": [
+            { "name": "GeoJSON" },
+            { "name": "Polygon" },
+            { "name": "Coordinates" }
+          ]
+        },
+        {
+          "name": "Types",
+          "children": [
+            { "name": "Structured" },
+            { "name": "Semi-Structured" },
+            { "name": "Unstructured" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Management",
+      "children": [
+        {
+          "name": "Lifecycle",
+          "children": [
+            { "name": "Creation" },
+            { "name": "Storage" },
+            { "name": "Archival" }
+          ]
+        },
+        {
+          "name": "Metadata",
+          "children": [
+            { "name": "Technical" },
+            { "name": "Business" },
+            { "name": "Lineage" }
+          ]
+        },
+        {
+          "name": "Catalog",
+          "children": [
+            { "name": "Dictionary" },
+            { "name": "Glossary" },
+            { "name": "Discovery" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Analysis",
+      "children": [
+        {
+          "name": "Statistics",
+          "children": [
+            { "name": "Distribution" },
+            { "name": "Correlation" },
+            { "name": "Regression" }
+          ]
+        },
+        {
+          "name": "Methods",
+          "children": [
+            { "name": "Descriptive" },
+            { "name": "Diagnostic" },
+            { "name": "Predictive" }
+          ]
+        },
+        {
+          "name": "Data Science",
+          "children": [
+            { "name": "Classification" },
+            { "name": "Clustering" },
+            { "name": "Forecasting" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Business Intelligence",
+      "children": [
+        {
+          "name": "Reporting",
+          "children": [
+            { "name": "Dashboards" },
+            { "name": "Scorecards" },
+            { "name": "Ad-hoc" }
+          ]
+        },
+        {
+          "name": "Visualization",
+          "children": [
+            { "name": "Charts" },
+            { "name": "Tables" },
+            { "name": "Maps" }
+          ]
+        },
+        {
+          "name": "Delivery",
+          "children": [
+            { "name": "Self-Service" },
+            { "name": "Scheduled" },
+            { "name": "Embedded" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Quality",
+      "children": [
+        {
+          "name": "Dimensions",
+          "children": [
+            { "name": "Accuracy" },
+            { "name": "Completeness" },
+            { "name": "Consistency" }
+          ]
+        },
+        {
+          "name": "Assessment",
+          "children": [
+            { "name": "Profiling" },
+            { "name": "Validation" },
+            { "name": "Monitoring" }
+          ]
+        },
+        {
+          "name": "Improvement",
+          "children": [
+            { "name": "Cleansing" },
+            { "name": "Enrichment" },
+            { "name": "Standardization" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Governance",
+      "children": [
+        {
+          "name": "Ownership",
+          "children": [
+            { "name": "Data Owner" },
+            { "name": "Data Steward" },
+            { "name": "Accountability" }
+          ]
+        },
+        {
+          "name": "Policies",
+          "children": [
+            { "name": "Access Control" },
+            { "name": "Classification" },
+            { "name": "Retention" }
+          ]
+        },
+        {
+          "name": "Compliance",
+          "children": [
+            { "name": "Audit Trail" },
+            { "name": "Privacy" },
+            { "name": "Security" }
+          ]
+        }
+      ]
+    }
+  ]
+}

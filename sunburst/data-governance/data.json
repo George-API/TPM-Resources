@@ -1,0 +1,121 @@
+{
+  "name": "Data Governance",
+  "children": [
+    {
+      "name": "Data Management",
+      "children": [
+        {
+          "name": "Lifecycle",
+          "children": [
+            { "name": "Creation" },
+            { "name": "Storage" },
+            { "name": "Archival" }
+          ]
+        },
+        {
+          "name": "Metadata",
+          "children": [
+            { "name": "Technical" },
+            { "name": "Business" },
+            { "name": "Lineage" }
+          ]
+        },
+        {
+          "name": "Catalog",
+          "children": [
+            { "name": "Dictionary" },
+            { "name": "Glossary" },
+            { "name": "Discovery" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Analysis",
+      "children": [
+        {
+          "name": "Methods",
+          "children": [
+            { "name": "Descriptive" },
+            { "name": "Diagnostic" },
+            { "name": "Predictive" }
+          ]
+        },
+        {
+          "name": "Measures",
+          "children": [
+            { "name": "Metrics" },
+            { "name": "KPIs" },
+            { "name": "Aggregations" }
+          ]
+        },
+        {
+          "name": "Tools",
+          "children": [
+            { "name": "SQL" },
+            { "name": "Python" },
+            { "name": "Excel" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Business Intelligence",
+      "children": [
+        {
+          "name": "Reporting",
+          "children": [
+            { "name": "Dashboards" },
+            { "name": "Scorecards" },
+            { "name": "Ad-hoc" }
+          ]
+        },
+        {
+          "name": "Visualization",
+          "children": [
+            { "name": "Charts" },
+            { "name": "Tables" },
+            { "name": "Maps" }
+          ]
+        },
+        {
+          "name": "Delivery",
+          "children": [
+            { "name": "Self-Service" },
+            { "name": "Scheduled" },
+            { "name": "Embedded" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data Governance",
+      "children": [
+        {
+          "name": "Ownership",
+          "children": [
+            { "name": "Data Owner" },
+            { "name": "Data Steward" },
+            { "name": "Accountability" }
+          ]
+        },
+        {
+          "name": "Policies",
+          "children": [
+            { "name": "Access Control" },
+            { "name": "Classification" },
+            { "name": "Retention" }
+          ]
+        },
+        {
+          "name": "Compliance",
+          "children": [
+            { "name": "Audit Trail" },
+            { "name": "Privacy" },
+            { "name": "Security" }
+          ]
+        }
+      ]
+    }
+  ]
+}

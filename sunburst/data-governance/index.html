@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Governance Focus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0D0D0D;
+      --text-primary: #FAFAFA;
+      --text-secondary: #A1A1AA;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .diagram-frame {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    #sunburst {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .legend-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      padding: 0.75rem 2rem;
+      max-width: 700px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    .legend-label {
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      font-weight: 400;
+    }
+
+    .export-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .export-btn {
+      padding: 0.6rem 1.5rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      color: #FAFAFA;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .export-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="diagram-frame">
+    <div id="sunburst"></div>
+    <div class="legend-container" id="legend"></div>
+    <div class="export-container">
+      <button class="export-btn" onclick="exportPNG()">Download PNG</button>
+      <button class="export-btn" onclick="exportSVG()">Download SVG</button>
+    </div>
+  </div>
+
+  <script>
+    const data = {
+      "name": "Data Governance",
+      "children": [
+        {
+          "name": "Data Management",
+          "children": [
+            {
+              "name": "Lifecycle",
+              "children": [
+                { "name": "Creation" },
+                { "name": "Storage" },
+                { "name": "Archival" }
+              ]
+            },
+            {
+              "name": "Metadata",
+              "children": [
+                { "name": "Technical" },
+                { "name": "Business" },
+                { "name": "Lineage" }
+              ]
+            },
+            {
+              "name": "Catalog",
+              "children": [
+                { "name": "Dictionary" },
+                { "name": "Glossary" },
+                { "name": "Discovery" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Data Analysis",
+          "children": [
+            {
+              "name": "Methods",
+              "children": [
+                { "name": "Descriptive" },
+                { "name": "Diagnostic" },
+                { "name": "Predictive" }
+              ]
+            },
+            {
+              "name": "Measures",
+              "children": [
+                { "name": "Metrics" },
+                { "name": "KPIs" },
+                { "name": "Aggregations" }
+              ]
+            },
+            {
+              "name": "Tools",
+              "children": [
+                { "name": "SQL" },
+                { "name": "Python" },
+                { "name": "Excel" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Business Intelligence",
+          "children": [
+            {
+              "name": "Reporting",
+              "children": [
+                { "name": "Dashboards" },
+                { "name": "Scorecards" },
+                { "name": "Ad-hoc" }
+              ]
+            },
+            {
+              "name": "Visualization",
+              "children": [
+                { "name": "Charts" },
+                { "name": "Tables" },
+                { "name": "Maps" }
+              ]
+            },
+            {
+              "name": "Delivery",
+              "children": [
+                { "name": "Self-Service" },
+                { "name": "Scheduled" },
+                { "name": "Embedded" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Data Governance",
+          "children": [
+            {
+              "name": "Ownership",
+              "children": [
+                { "name": "Data Owner" },
+                { "name": "Data Steward" },
+                { "name": "Accountability" }
+              ]
+            },
+            {
+              "name": "Policies",
+              "children": [
+                { "name": "Access Control" },
+                { "name": "Classification" },
+                { "name": "Retention" }
+              ]
+            },
+            {
+              "name": "Compliance",
+              "children": [
+                { "name": "Audit Trail" },
+                { "name": "Privacy" },
+                { "name": "Security" }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    const categoryColors = {
+      'Data Management': '#8A8A8A',
+      'Data Analysis': '#8A8A8A',
+      'Business Intelligence': '#8A8A8A',
+      'Data Governance': '#48A8D8'
+    };
+
+    const width = 900;
+    const height = 900;
+    const radius = Math.min(width, height) / 2;
+
+    const centerRadius = 70;
+    const level1Width = 130;
+    const level2Width = 90;
+    const level3Width = 110;
+
+    const svg = d3.select('#sunburst')
+      .append('svg')
+      .attr('viewBox', `0 0 ${width} ${height}`)
+      .attr('width', width)
+      .attr('height', height)
+      .style('font', '10px IBM Plex Sans, sans-serif')
+      .append('g')
+      .attr('transform', `translate(${width / 2},${height / 2})`);
+
+    const partition = d3.partition()
+      .size([2 * Math.PI, radius]);
+
+    const root = d3.hierarchy(data)
+      .sum(d => d.children ? 0 : 1)
+      .sort((a, b) => b.value - a.value);
+
+    partition(root);
+
+    const arc = d3.arc()
+      .startAngle(d => d.x0)
+      .endAngle(d => d.x1)
+      .padAngle(0.002)
+      .padRadius(radius / 4)
+      .innerRadius(d => {
+        if (d.depth === 0) return 0;
+        if (d.depth === 1) return centerRadius;
+        if (d.depth === 2) return centerRadius + level1Width;
+        if (d.depth === 3) return centerRadius + level1Width + level2Width;
+        return d.y0;
+      })
+      .outerRadius(d => {
+        if (d.depth === 0) return centerRadius;
+        if (d.depth === 1) return centerRadius + level1Width;
+        if (d.depth === 2) return centerRadius + level1Width + level2Width;
+        if (d.depth === 3) return centerRadius + level1Width + level2Width + level3Width;
+        return d.y1;
+      });
+
+    function getColor(d) {
+      if (d.depth === 0) return '#1A1A1A';
+      
+      let ancestor = d;
+      while (ancestor.depth > 1) ancestor = ancestor.parent;
+      
+      const baseColor = categoryColors[ancestor.data.name] || '#6A6A6A';
+      const color = d3.color(baseColor);
+      
+      if (d.depth === 1) return baseColor;
+      if (d.depth === 2) return color.darker(0.08).formatHex();
+      if (d.depth === 3) return color.darker(0.18).formatHex();
+      
+      return baseColor;
+    }
+
+    function getOpacity(d) {
+      return 1;
+    }
+
+    svg.selectAll('path')
+      .data(root.descendants())
+      .join('path')
+      .attr('d', arc)
+      .attr('fill', getColor)
+      .attr('fill-opacity', getOpacity)
+      .attr('stroke', '#0D0D0D')
+      .attr('stroke-width', 0.5);
+
+    const centerGroup = svg.append('g').attr('class', 'center-text');
+    
+    // Space reserved for circular logo
+
+    centerGroup.append('text')
+      .attr('x', 0)
+      .attr('y', 8)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', '#FAFAFA')
+      .attr('font-family', 'IBM Plex Sans, sans-serif')
+      .attr('font-size', '12px')
+      .attr('font-weight', '600')
+      .text('Data');
+
+    centerGroup.append('text')
+      .attr('x', 0)
+      .attr('y', 24)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', '#FAFAFA')
+      .attr('font-family', 'IBM Plex Sans, sans-serif')
+      .attr('font-size', '12px')
+      .attr('font-weight', '600')
+      .text('Governance');
+
+    // Labels for Level 1
+    svg.selectAll('.label-level1')
+      .data(root.descendants().filter(d => d.depth === 1))
+      .join('text')
+      .attr('class', 'label-level1')
+      .attr('transform', d => {
+        const angle = (d.x0 + d.x1) / 2;
+        const r = centerRadius + (level1Width / 2);
+        const x = Math.sin(angle) * r;
+        const y = -Math.cos(angle) * r;
+        let rotation = (angle * 180 / Math.PI) - 90;
+        if (rotation > 90) rotation -= 180;
+        return `translate(${x},${y}) rotate(${rotation})`;
+      })
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', '#FAFAFA')
+      .attr('font-size', '11px')
+      .attr('font-weight', '600')
+      .attr('letter-spacing', '0.01em')
+      .text(d => d.data.name);
+
+    // Labels for Level 2
+    svg.selectAll('.label-level2')
+      .data(root.descendants().filter(d => d.depth === 2))
+      .join('text')
+      .attr('class', 'label-level2')
+      .attr('transform', d => {
+        const angle = (d.x0 + d.x1) / 2;
+        const r = centerRadius + level1Width + (level2Width / 2);
+        const x = Math.sin(angle) * r;
+        const y = -Math.cos(angle) * r;
+        let rotation = (angle * 180 / Math.PI) - 90;
+        if (rotation > 90) rotation -= 180;
+        return `translate(${x},${y}) rotate(${rotation})`;
+      })
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', '#FAFAFA')
+      .attr('font-size', '9px')
+      .attr('font-weight', '500')
+      .text(d => d.data.name);
+
+    // Labels for Level 3
+    svg.selectAll('.label-level3')
+      .data(root.descendants().filter(d => d.depth === 3))
+      .join('text')
+      .attr('class', 'label-level3')
+      .attr('transform', d => {
+        const angle = (d.x0 + d.x1) / 2;
+        const r = centerRadius + level1Width + level2Width + (level3Width / 2);
+        const x = Math.sin(angle) * r;
+        const y = -Math.cos(angle) * r;
+        let rotation = (angle * 180 / Math.PI) - 90;
+        if (rotation > 90) rotation -= 180;
+        return `translate(${x},${y}) rotate(${rotation})`;
+      })
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', '#E0E0E0')
+      .attr('font-size', '7.5px')
+      .attr('font-weight', '400')
+      .text(d => d.data.name);
+
+    // Build legend
+    const legend = d3.select('#legend');
+    Object.entries(categoryColors).forEach(([name, color]) => {
+      const item = legend.append('div')
+        .attr('class', 'legend-item');
+      
+      item.append('div')
+        .attr('class', 'legend-color')
+        .style('background', color);
+      
+      item.append('span')
+        .attr('class', 'legend-label')
+        .text(name);
+    });
+
+    // Export functions
+    function exportSVG() {
+      const svgElement = document.querySelector('#sunburst svg');
+      const svgClone = svgElement.cloneNode(true);
+      
+      const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      bg.setAttribute('width', '100%');
+      bg.setAttribute('height', '100%');
+      bg.setAttribute('fill', '#0D0D0D');
+      svgClone.insertBefore(bg, svgClone.firstChild);
+      
+      const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      const style = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+      style.textContent = `
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+        text { font-family: 'IBM Plex Sans', Arial, sans-serif; }
+      `;
+      defs.appendChild(style);
+      svgClone.insertBefore(defs, svgClone.firstChild);
+      
+      const svgData = new XMLSerializer().serializeToString(svgClone);
+      const blob = new Blob([svgData], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Data-Governance-Sunburst.svg';
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function exportPNG() {
+      const svgElement = document.querySelector('#sunburst svg');
+      const svgClone = svgElement.cloneNode(true);
+      
+      const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      bg.setAttribute('width', '100%');
+      bg.setAttribute('height', '100%');
+      bg.setAttribute('fill', '#0D0D0D');
+      svgClone.insertBefore(bg, svgClone.firstChild);
+      
+      const svgData = new XMLSerializer().serializeToString(svgClone);
+      const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+      
+      const img = new Image();
+      img.onload = function() {
+        const scale = 3;
+        const canvas = document.createElement('canvas');
+        canvas.width = width * scale;
+        canvas.height = height * scale;
+        
+        const ctx = canvas.getContext('2d');
+        ctx.scale(scale, scale);
+        ctx.fillStyle = '#0D0D0D';
+        ctx.fillRect(0, 0, width, height);
+        ctx.drawImage(img, 0, 0, width, height);
+        
+        const pngUrl = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = pngUrl;
+        link.download = 'Data-Governance-Sunburst.png';
+        link.click();
+        
+        URL.revokeObjectURL(url);
+      };
+      img.src = url;
+    }
+  </script>
+</body>
+</html>

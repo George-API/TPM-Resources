@@ -8,7 +8,7 @@ Curated IT reference material covering project management, software development,
 
 ## Quick Links
 
-**[Terminology](TERMINOLOGY.md)** — Key terms across all domains
+**[Terminology](TERMINOLOGY.md)** Key terms across all domains
 
 ---
 

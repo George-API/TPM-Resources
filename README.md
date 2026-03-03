@@ -1,6 +1,6 @@
 # Overview
 
-Curated IT reference material covering project management, software development, data engineering, and cloud architecture.
+Curated IT & data reference material covering project management, software development, data management and cloud architecture.
 
 > ⚠️ **Disclaimer**: Contains AI-generated content. Always verify with authoritative sources, enterprise guidance, and vendor documentation.
 

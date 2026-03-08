@@ -61,4 +61,4 @@
 
 ---
 
-> **Related**: [Terminology](terminology.md) · [Resources](resources.md) · [TPM](../tpm/) · [Programming](../programming/) · [Index](../terminology.md)
+> **Related**: [Terminology](terminology.md) · [Resources](resources.md) · [TPM](../tpm/) · [Programming](../programming/)

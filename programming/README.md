@@ -58,4 +58,4 @@
 
 ---
 
-> **Related**: [Terminology](terminology.md) · [Resources](resources.md) · [Index](../terminology.md)
+> **Related**: [Terminology](terminology.md) · [Resources](resources.md)

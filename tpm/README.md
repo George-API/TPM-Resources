@@ -16,4 +16,4 @@
 
 ---
 
-> **Related**: [Terminology](terminology.md) · [Resources](resources.md) · [Data management](../data_management/) · [Programming](../programming/) · [Index](../terminology.md)
+> **Related**: [Terminology](terminology.md) · [Resources](resources.md) · [Data management](../data_management/) · [Programming](../programming/)

@@ -243,7 +243,7 @@
 
 ## 6. Reliability & Data Freshness
 
-> **Note**: For data SLO concepts (what they are, why they matter), see [Data Operations - Reliability](operations.md#8-reliability--data-sre).
+> **Note**: For data SLO concepts (what they are, why they matter), see [Data Operations - Reliability](../core/operations.md#8-reliability--data-sre).
 
 ### Implementing Data SLOs (Azure)
 

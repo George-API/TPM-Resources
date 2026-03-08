@@ -62,7 +62,7 @@
 - Virtual WAN for branch connectivity; hub-spoke for simpler estates
 - **Caching**: Application-level caching (Redis) for read-heavy workloads; CDN for static assets
 
-> **Troubleshooting**: For networking troubleshooting (DNS, routing, private endpoints), see [OSI Model](../../../programming/concepts/osi.md).
+> **Troubleshooting**: For networking troubleshooting (DNS, routing, private endpoints), see [OSI Model](../../../software_engineering/concepts/osi.md).
 
 ---
 
@@ -166,7 +166,7 @@
 
 - Regularly test failover of dependencies (simulate downstream outage)
 
-> **Troubleshooting**: For transport-layer troubleshooting (timeouts, connection pooling, retries), see [OSI Model](../../../programming/concepts/osi.md).
+> **Troubleshooting**: For transport-layer troubleshooting (timeouts, connection pooling, retries), see [OSI Model](../../../software_engineering/concepts/osi.md).
 
 ---
 

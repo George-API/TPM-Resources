@@ -1,4 +1,4 @@
-# Programming
+# Software engineering
 
 **Purpose**: Syntax references and patterns for programming languages and utilities used in IT project management.
 
@@ -58,4 +58,4 @@
 
 ---
 
-> **Related**: [Terminology](terminology.md) · [Resources](resources.md)
+> **Related**: [Terminology](terminology.md) · [Resources](resources.md) · [Data management](../data_management/) · [Project management](../project_management/)

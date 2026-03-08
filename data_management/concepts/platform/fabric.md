@@ -136,7 +136,7 @@
 - **Data plane isolation**: separate subnets for data ingestion vs serving
 - **Egress control**: NAT Gateway for stable outbound IPs (source systems allowlists)
 
-> **Note**: For general networking patterns, see [Cloud Architecture](architecture.md). For OSI troubleshooting, see [OSI Model](../../../programming/concepts/osi.md).
+> **Note**: For general networking patterns, see [Cloud Architecture](architecture.md). For OSI troubleshooting, see [OSI Model](../../../software_engineering/concepts/osi.md).
 
 ---
 

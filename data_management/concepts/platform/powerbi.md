@@ -2,7 +2,7 @@
 
 **Scope**: Optimizing analytics engineering specifically for Power BI reports: data modeling, performance, and best practices.
 
-**Purpose**: Use this when preparing data models and transformations for Power BI consumption. For general analytics engineering patterns, see [Analytics Engineering](../core/analytics_eng.md). For Power BI reporting practices, see [Enterprise Reporting](../../../tpm/concepts/reporting.md).
+**Purpose**: Use this when preparing data models and transformations for Power BI consumption. For general analytics engineering patterns, see [Analytics Engineering](../core/analytics_eng.md). For Power BI reporting practices, see [Enterprise Reporting](../../../project_management/concepts/reporting.md).
 
 ## Table of Contents
 
@@ -318,5 +318,5 @@
 
 ---
 
-> **Note**: For general analytics engineering patterns, see [Analytics Engineering](../core/analytics_eng.md). For Power BI reporting practices, see [Enterprise Reporting](../../../tpm/concepts/reporting.md). For Fabric platform and architecture, see [Fabric](fabric.md).
+> **Note**: For general analytics engineering patterns, see [Analytics Engineering](../core/analytics_eng.md). For Power BI reporting practices, see [Enterprise Reporting](../../../project_management/concepts/reporting.md). For Fabric platform and architecture, see [Fabric](fabric.md).
 

@@ -126,7 +126,7 @@
 - **Network segmentation**: Separate subnets for ingestion vs serving; NSGs (deny by default); Azure Firewall for centralized security
 - **Egress control**: NAT Gateway for stable outbound IPs; monitor outbound traffic for anomalies
 
-> **Note**: For general networking patterns, see [Cloud Architecture](architecture.md). For OSI troubleshooting, see [OSI Model](../../../programming/concepts/osi.md).
+> **Note**: For general networking patterns, see [Cloud Architecture](architecture.md). For OSI troubleshooting, see [OSI Model](../../../software_engineering/concepts/osi.md).
 
 ---
 

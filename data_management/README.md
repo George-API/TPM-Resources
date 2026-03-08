@@ -61,4 +61,4 @@
 
 ---
 
-> **Related**: [Terminology](terminology.md) · [Resources](resources.md) · [TPM](../tpm/) · [Programming](../programming/)
+> **Related**: [Terminology](terminology.md) · [Resources](resources.md) · [Project management](../project_management/) · [Software engineering](../software_engineering/)

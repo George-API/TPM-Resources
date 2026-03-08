@@ -1,4 +1,4 @@
-# TPM (Technical Project Management)
+# Project management
 
 **Purpose**: Project management concepts and methodologies.
 
@@ -16,4 +16,4 @@
 
 ---
 
-> **Related**: [Terminology](terminology.md) · [Resources](resources.md) · [Data management](../data_management/) · [Programming](../programming/)
+> **Related**: [Terminology](terminology.md) · [Resources](resources.md) · [Data management](../data_management/) · [Software engineering](../software_engineering/)

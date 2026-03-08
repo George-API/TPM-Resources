@@ -9,11 +9,9 @@
 ```
 _shared/exceldb/
 ├── README.md           # This file
-├── implementation.md   # Step-by-step build guide (terminology workbook)
-├── reference.md       # Column definitions, L1/L2, rules
-├── excel_functions.md  # Counting and search-bar formulas
-├── data/              # Terminology workbook source
-│   ├── terminology_reference.csv   # Main term data (~957 terms)
+├── reference.md        # Column definitions, L1/L2, rules
+├── terminology/       # Terminology workbook source
+│   ├── terminology_reference.csv   # Main term data
 │   ├── definitions.csv             # L1/L2/Priority definitions
 │   └── schema.csv                  # Column and L1/Type rules
 └── syntax/            # Programming syntax reference
@@ -25,9 +23,9 @@ _shared/exceldb/
 
 ## Quick start
 
-1. **Terminology workbook** - [implementation.md](implementation.md) (start with Iteration 1). Import [data/terminology_reference.csv](data/terminology_reference.csv).
+1. **Terminology workbook** - Import [terminology/terminology_reference.csv](terminology/terminology_reference.csv) into Excel.
 2. **Reference** - [reference.md](reference.md) for columns, categories, and rules.
-3. **Formulas** - [excel_functions.md](excel_functions.md) for counting and search.
+3. **Schema** - Use [terminology/schema.csv](terminology/schema.csv) and [terminology/definitions.csv](terminology/definitions.csv) for L1/L2 and Priority values.
 
 ---
 
@@ -35,11 +33,9 @@ _shared/exceldb/
 
 | File | Purpose |
 |------|---------|
-| [implementation.md](implementation.md) | Build guide: iterations 1–4 for the terminology workbook |
 | [reference.md](reference.md) | Schema, L1/L2, priority, file roles |
-| [excel_functions.md](excel_functions.md) | Excel formulas for the workbook |
-| data/terminology_reference.csv | Source data for the terminology table |
-| data/schema.csv | Column definitions, L1/Type/Priority rules |
-| data/definitions.csv | L1/L2/Priority definitions |
+| terminology/terminology_reference.csv | Source data for the terminology table |
+| terminology/schema.csv | Column definitions, L1/Type/Priority rules |
+| terminology/definitions.csv | L1/L2/Priority definitions |
 | syntax/programming_schema.csv | Schema for programming syntax table |
 | syntax/programming_syntax.csv | Programming syntax reference data |

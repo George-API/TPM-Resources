@@ -2,7 +2,7 @@
 
 **For TPMs, PMs, SWEs, and DMs who aren't quants.** Quick "what to do" guidance. No formulas to memorize. Translates statistical and quantitative insights into practical actions you can take today. Builds on [Integrated Reference](04_shared_systems_thinking.md) and [Quantitative Reasoning](05_shared_quantitative_reasoning.md). For deeper understanding (why + how), see the latter.
 
-> Applies across: [Data Management](../data_management/), [Project Management](../project_management/), [Software Engineering](../software_engineering/).
+> Applies across: [Data Management](../data_management/), [Project Management](../project_management/), [Software Development](../software_development/).
 
 ```
   ┌──────────────────────────────────────────────────────────────┐
@@ -408,7 +408,7 @@ How to frame quantitative insights for different audiences. Lead with the decisi
 7. Little, J.D.C. (1961). "A Proof for the Queuing Formula: L = λW." *Operations Research*, 9(3), 383-387.
 8. Wheeler, D.J. (1993). *Understanding Variation: The Key to Managing Chaos*. SPC Press. ISBN: 978-0-945320-35-8
 9. Deming, W.E. (1986). *Out of the Crisis*. MIT Press. ISBN: 978-0-262-54115-2
-10. Brooks, F.P. (1995). *The Mythical Man-Month: Essays on Software Engineering* (Anniversary ed.). Addison-Wesley. ISBN: 978-0-201-83595-3
+10. Brooks, F.P. (1995). *The Mythical Man-Month: Essays on Software Development* (Anniversary ed.). Addison-Wesley. ISBN: 978-0-201-83595-3
 11. Taleb, N.N. (2007). *The Black Swan: The Impact of the Highly Improbable*. Random House.
 12. Forsgren, N., Humble, J. & Kim, G. (2018). *Accelerate: The Science of Lean Software and DevOps*. IT Revolution Press. ISBN: 978-1-942788-33-1
 13. McGrath, R.G. & MacMillan, I.C. (1995). "Discovery-Driven Planning." *Harvard Business Review*, 73(4), 44-54.

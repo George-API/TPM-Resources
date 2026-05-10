@@ -1,4 +1,4 @@
-# Software Engineering — Systems Thinking Reference
+# Software Development — Systems Thinking Reference
 
 Software is a single system: requirements become code, code becomes deployable artifacts, artifacts become running services, running services generate feedback, feedback shapes new requirements. Every concept in this directory—SOLID, bounded contexts, CI/CD, STRIDE, the testing pyramid—is a tool for making one part of that cycle reliable. They all connect through one lifecycle and four patterns unique to how software behaves.
 

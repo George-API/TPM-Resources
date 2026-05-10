@@ -2,7 +2,7 @@
 
 **Scope**: How complexity arises and compounds in enterprise technical systems, processes, and projects, and practical strategies for navigating it effectively. Draws on systems thinking [1], software engineering research [2][3], organizational design [4][5], and delivery performance science [6].
 
-**Purpose**: Use this when working within or designing for large-scale enterprise environments (public or private sector). Supplements [Critical Thinking](03_shared_critical_thinking.md) with a focused lens on complexity as a systemic force. For domain-specific problem solving, see [Software Engineering](../software_engineering/strategy/critical_thinking.md), [Data Management](../data_management/strategy/critical_thinking.md), or [Project Management](../project_management/strategy/critical_thinking.md).
+**Purpose**: Use this when working within or designing for large-scale enterprise environments (public or private sector). Supplements [Critical Thinking](03_shared_critical_thinking.md) with a focused lens on complexity as a systemic force. For domain-specific problem solving, see [Software Development](../software_development/strategy/critical_thinking.md), [Data Management](../data_management/strategy/critical_thinking.md), or [Project Management](../project_management/strategy/critical_thinking.md).
 
 ## Table of Contents
 
@@ -255,8 +255,8 @@ These four metrics, validated across thousands of organizations [6], are the str
 ## References
 
 1. Jackson, M.C. (2019). *Critical Systems Thinking and the Management of Complexity*. Wiley. ISBN: 978-1-119-11839-8
-2. Brooks, F.P. (1995). *The Mythical Man-Month: Essays on Software Engineering* (Anniversary ed.). Addison-Wesley. ISBN: 978-0-201-83595-3
-3. Brooks, F.P. (1986). "No Silver Bullet: Essence and Accidents of Software Engineering." *Proceedings of the IFIP Tenth World Computing Conference*.
+2. Brooks, F.P. (1995). *The Mythical Man-Month: Essays on Software Development* (Anniversary ed.). Addison-Wesley. ISBN: 978-0-201-83595-3
+3. Brooks, F.P. (1986). "No Silver Bullet: Essence and Accidents of Software Development." *Proceedings of the IFIP Tenth World Computing Conference*.
 4. Meadows, D.H. (2008). *Thinking in Systems: A Primer*. Chelsea Green Publishing. ISBN: 978-1-603-58055-7
 5. Skelton, M. & Pais, M. (2019). *Team Topologies: Organizing Business and Technology Teams for Fast Flow*. IT Revolution Press. ISBN: 978-1-942788-81-2
 6. Forsgren, N., Humble, J. & Kim, G. (2018). *Accelerate: The Science of Lean Software and DevOps*. IT Revolution Press. ISBN: 978-1-942788-33-1
@@ -267,4 +267,4 @@ These four metrics, validated across thousands of organizations [6], are the str
 
 ---
 
-> **Related**: [Critical Thinking](03_shared_critical_thinking.md) · [Learning Approach](01_shared_approach.md) · [Systems Thinking](04_shared_systems_thinking.md) · [Software Engineering](../software_engineering/strategy/critical_thinking.md) · [Data Management](../data_management/strategy/critical_thinking.md) · [Project Management](../project_management/strategy/critical_thinking.md)
+> **Related**: [Critical Thinking](03_shared_critical_thinking.md) · [Learning Approach](01_shared_approach.md) · [Systems Thinking](04_shared_systems_thinking.md) · [Software Development](../software_development/strategy/critical_thinking.md) · [Data Management](../data_management/strategy/critical_thinking.md) · [Project Management](../project_management/strategy/critical_thinking.md)

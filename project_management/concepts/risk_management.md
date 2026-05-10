@@ -2,7 +2,7 @@
 
 **Scope**: Risk identification, analysis, response, monitoring, and governance at the project, program, and portfolio level in enterprise and regulated environments.
 
-**Purpose**: Use this as a reference for building and operating risk management practices in complex enterprise environments. For foundational risk concepts (risk vs issue, basic response strategies), see [Project Management](project_management.md). For IT-specific technical and operational risks, see [ITPM](itpm.md). For cybersecurity risk frameworks, see [Cybersecurity](../../software_engineering/concepts/cybersecurity.md).
+**Purpose**: Use this as a reference for building and operating risk management practices in complex enterprise environments. For foundational risk concepts (risk vs issue, basic response strategies), see [Project Management](project_management.md). For IT-specific technical and operational risks, see [ITPM](itpm.md). For cybersecurity risk frameworks, see [Cybersecurity](../../software_development/concepts/cybersecurity.md).
 
 ## Table of Contents
 
@@ -474,4 +474,4 @@ Project-level risk registers do not simply sum to program risk. Aggregation requ
 
 ---
 
-> **Note**: For foundational project management concepts (risk vs issue, basic response strategies), see [Project Management](project_management.md). For IT-specific technical and operational risks, see [ITPM](itpm.md). For cybersecurity risk frameworks (NIST CSF, ISO 27001), see [Cybersecurity](../../software_engineering/concepts/cybersecurity.md). For risk as a cross-cutting thread in the project lifecycle, see [Systems Thinking](../strategy/systems_thinking.md).
+> **Note**: For foundational project management concepts (risk vs issue, basic response strategies), see [Project Management](project_management.md). For IT-specific technical and operational risks, see [ITPM](itpm.md). For cybersecurity risk frameworks (NIST CSF, ISO 27001), see [Cybersecurity](../../software_development/concepts/cybersecurity.md). For risk as a cross-cutting thread in the project lifecycle, see [Systems Thinking](../strategy/systems_thinking.md).

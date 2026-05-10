@@ -2,7 +2,7 @@
 
 Enterprise technical work is a single continuous cycle. Every concept in this document - learning stages, complexity dynamics, mental models, decision frameworks - is a tool for navigating that cycle. All topics connect through one lifecycle and five repeating patterns. Combines [learning approach](01_shared_approach.md), [complexity at scale](02_shared_complexity.md), and [critical thinking](03_shared_critical_thinking.md) into one systems-oriented reference.
 
-> Applies across all three focus areas: [Data Management](../data_management/), [Project Management](../project_management/), and [Software Engineering](../software_engineering/).
+> Applies across all three focus areas: [Data Management](../data_management/), [Project Management](../project_management/), and [Software Development](../software_development/).
 
 ```
   ┌──────────────────────────────────────────────────────────────┐
@@ -572,7 +572,7 @@ Key failure scenarios traced through the lifecycle and across patterns.
 
 1. Dreyfus, H.L. & Dreyfus, S.E. (1986). *Mind Over Machine: The Power of Human Intuition and Expertise in the Era of the Computer*. Free Press. ISBN: 978-0-029-08060-3
 2. Jackson, M.C. (2019). *Critical Systems Thinking and the Management of Complexity*. Wiley. ISBN: 978-1-119-11839-8
-3. Brooks, F.P. (1995). *The Mythical Man-Month: Essays on Software Engineering* (Anniversary ed.). Addison-Wesley. ISBN: 978-0-201-83595-3
+3. Brooks, F.P. (1995). *The Mythical Man-Month: Essays on Software Development* (Anniversary ed.). Addison-Wesley. ISBN: 978-0-201-83595-3
 4. Skelton, M. & Pais, M. (2019). *Team Topologies: Organizing Business and Technology Teams for Fast Flow*. IT Revolution Press. ISBN: 978-1-942788-81-2
 5. Forsgren, N., Humble, J. & Kim, G. (2018). *Accelerate: The Science of Lean Software and DevOps*. IT Revolution Press. ISBN: 978-1-942788-33-1
 6. Kahneman, D. (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux. ISBN: 978-0-374-27563-1
@@ -587,4 +587,4 @@ Key failure scenarios traced through the lifecycle and across patterns.
 
 ---
 
-> **Detailed versions**: [Learning Approach](01_shared_approach.md) · [Complexity at Scale](02_shared_complexity.md) · [Critical Thinking](03_shared_critical_thinking.md) · [Workplace Performance](05_shared_performance.md) · [Software Engineering](../software_engineering/strategy/critical_thinking.md) · [Data Management](../data_management/strategy/critical_thinking.md) · [Project Management](../project_management/strategy/critical_thinking.md)
+> **Detailed versions**: [Learning Approach](01_shared_approach.md) · [Complexity at Scale](02_shared_complexity.md) · [Critical Thinking](03_shared_critical_thinking.md) · [Workplace Performance](05_shared_performance.md) · [Software Development](../software_development/strategy/critical_thinking.md) · [Data Management](../data_management/strategy/critical_thinking.md) · [Project Management](../project_management/strategy/critical_thinking.md)

@@ -2,7 +2,7 @@
 
 **Scope**: Practical reasoning, trade-off analysis, mental models, and cognitive discipline applicable across all disciplines. Informed by research in cognitive psychology [1][2], naturalistic decision-making [3], and systems thinking [4].
 
-**Purpose**: A general-purpose reference for approaching unfamiliar problems, making decisions under constraints, and developing sound judgment. For domain-specific depth, see [Software Engineering](../software_engineering/strategy/critical_thinking.md), [Data Management](../data_management/strategy/critical_thinking.md), or [Project Management](../project_management/strategy/critical_thinking.md).
+**Purpose**: A general-purpose reference for approaching unfamiliar problems, making decisions under constraints, and developing sound judgment. For domain-specific depth, see [Software Development](../software_development/strategy/critical_thinking.md), [Data Management](../data_management/strategy/critical_thinking.md), or [Project Management](../project_management/strategy/critical_thinking.md).
 
 ## Table of Contents
 
@@ -264,4 +264,4 @@
 
 ---
 
-> **Related**: [Learning Approach](01_shared_approach.md) · [Complexity at Scale](02_shared_complexity.md) · [Systems Thinking](04_shared_systems_thinking.md) · [Software Engineering](../software_engineering/strategy/critical_thinking.md) · [Data Management](../data_management/strategy/critical_thinking.md) · [Project Management](../project_management/strategy/critical_thinking.md)
+> **Related**: [Learning Approach](01_shared_approach.md) · [Complexity at Scale](02_shared_complexity.md) · [Systems Thinking](04_shared_systems_thinking.md) · [Software Development](../software_development/strategy/critical_thinking.md) · [Data Management](../data_management/strategy/critical_thinking.md) · [Project Management](../project_management/strategy/critical_thinking.md)

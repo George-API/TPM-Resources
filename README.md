@@ -12,9 +12,9 @@ Practical guides for learning efficiently, managing complexity, and thinking cle
 |--------|----------|
 | [data_management/](data_management/) | Data concepts, cloud (Fabric, Databricks, ADF), governance, engineering |
 | [project_management/](project_management/) | Project management, methodologies, product management, SDLC, reporting |
-| [software_engineering/](software_engineering/) | Software concepts, languages and utilities (Bicep, Git, Terraform) |
+| [software_development/](software_development/) | Software concepts, languages and utilities (Bicep, Git, Terraform) |
 | [_strategy/](_strategy/) | Shared learning approach, complexity, critical thinking, systems thinking, performance |
-| [_resources/](_resources/) | Research trends, interactive diagrams, Excel IT knowledge database |
+| [_resources/](_resources/) | Industry standards, tools, research trends, Excel IT knowledge database |
 
 Each area has its own concepts, terminology, and resources (see the area README). Each also has a `strategy/` subfolder with area-specific [critical thinking](data_management/strategy/critical_thinking.md) and [systems thinking](data_management/strategy/systems_thinking.md) guides.
 

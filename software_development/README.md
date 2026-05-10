@@ -1,4 +1,4 @@
-# Software engineering
+# Software Development
 
 **Purpose**: Syntax examples, explanations, and patterns for programming languages and utilities for learning and reference, not production use. Always verify against official documentation and authoritative sources.
 
@@ -18,10 +18,6 @@
 [Critical Thinking](strategy/critical_thinking.md) · [Systems Thinking](strategy/systems_thinking.md)
 
 ---
-
-## Resources
-
-[resources.md](resources.md) - Standards, security resources, and tools (References + Tools combined).
 
 ---
 
@@ -63,4 +59,4 @@
 
 ---
 
-> **Related**: [Terminology](terminology.md) · [Resources](resources.md) · [Data management](../data_management/) · [Project management](../project_management/)
+> **Related**: [Terminology](terminology.md) · [Standards](../_resources/standards.md) · [Tools](../_resources/tools.md) · [Data management](../data_management/) · [Project management](../project_management/)

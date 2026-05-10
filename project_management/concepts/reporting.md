@@ -2,7 +2,7 @@
 
 **Scope**: Reporting practices, Power BI dashboards, and best practices for enterprise projects in regulated environments.
 
-**Purpose**: Use this for creating effective reports and dashboards for enterprise stakeholders. For general PM concepts, see [Project Management](project_management.md). For stakeholder engagement, see [Stakeholder Engagement](stakeholders.md).
+**Purpose**: Use this for creating effective reports and dashboards for enterprise stakeholders. For general PM concepts, see [Project Management](project_management.md). For consulting skills and stakeholder engagement, see [Consulting & Engagement](consulting_engagement.md).
 
 ## Table of Contents
 
@@ -200,5 +200,5 @@
 
 ---
 
-> **Note**: For stakeholder engagement, see [Stakeholder Engagement](stakeholders.md). For general PM concepts, see [Project Management](project_management.md). For IT-specific patterns, see [IT Project Management](itpm.md).
+> **Note**: For consulting skills and stakeholder engagement, see [Consulting & Engagement](consulting_engagement.md). For general PM concepts, see [Project Management](project_management.md). For IT-specific patterns, see [IT Project Management](itpm.md).
 

@@ -600,4 +600,4 @@ Product management is the practice of strategically defining, building, and deli
 
 ---
 
-> **Note**: For project execution fundamentals, see [Project Management](project_management.md). For roadmap development patterns, see [Project Roadmap Development](roadmap.md). For methodology frameworks (Agile, Scrum, etc.), see [Project Management Methodologies](methodologies.md). For stakeholder engagement, see [Stakeholder Engagement](stakeholders.md).
+> **Note**: For project execution fundamentals, see [Project Management](project_management.md). For roadmap development patterns, see [Project Roadmap Development](roadmap.md). For methodology frameworks (Agile, Scrum, etc.), see [Project Management Methodologies](methodologies.md). For consulting skills and stakeholder engagement, see [Consulting & Engagement](consulting_engagement.md).

@@ -409,4 +409,4 @@ Code → Pre-commit → Build → Test → Stage → Deploy → Monitor
 
 ---
 
-> **Note**: For CI/CD pipeline patterns and deployment strategies, see [DevOps](devops.md). For Azure DevOps platform-specific security features, see [Azure DevOps](azure_devops.md). For security tools and standards references, see [Resources](../resources.md). For data-layer security and privacy controls, see [Data Security](../../data_management/concepts/core/security.md).
+> **Note**: For CI/CD pipeline patterns and deployment strategies, see [DevOps](devops.md). For Azure DevOps platform-specific security features, see [Azure DevOps](azure_devops.md). For security tools and standards references, see [Standards](../../_resources/standards.md) and [Tools](../../_resources/tools.md). For data-layer security and privacy controls, see [Data Security](../../data_management/concepts/core/security.md).

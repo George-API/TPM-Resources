@@ -1,6 +1,6 @@
 # Programming Terminology
 
-**Related**: [Resources](resources.md) | [Concepts](concepts/)
+**Related**: [Standards](../_resources/standards.md) · [Tools](../_resources/tools.md) | [Concepts](concepts/)
 
 ---
 

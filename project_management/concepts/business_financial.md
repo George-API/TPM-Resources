@@ -532,4 +532,4 @@ In regulated or accountability-driven environments, business cases typically req
 
 ---
 
-> **Note**: For foundational budget and cost management concepts, see [Project Management](project_management.md). For IT-specific project patterns, see [ITPM](itpm.md). For financial reporting formats and dashboards, see [Reporting](reporting.md). For enterprise risk including financial risk, see [Risk Management](risk_management.md).
+> **Note**: For foundational budget and cost management concepts, see [Project Management](project_management.md). For accounting standards, PSAS/IFRS, capital assets, audit, and internal controls, see [Enterprise Financial Standards](enterprise_finance.md). For cloud financial management and FinOps, see [FinOps](finops.md). For IT-specific project patterns, see [ITPM](itpm.md). For financial reporting formats and dashboards, see [Reporting](reporting.md). For enterprise risk including financial risk, see [Risk Management](risk_management.md).

@@ -39,4 +39,4 @@ Cloud architecture, infrastructure, optimization, and data platforms.
 
 ---
 
-> **Related**: [Terminology](terminology.md) · [Resources](resources.md) · [Project management](../project_management/) · [Software engineering](../software_engineering/)
+> **Related**: [Terminology](terminology.md) · [Standards](../_resources/standards.md) · [Tools](../_resources/tools.md) · [Project management](../project_management/) · [Software development](../software_development/)

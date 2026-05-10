@@ -15,4 +15,4 @@ Practical guides for learning efficiently, managing complexity, and thinking cle
 
 **Practical use**: Read 04 first for the big picture. Use 06 for daily decisions (rules, patterns, early warning signs). Go to 05 when you need to understand the reasoning or apply the full methods.
 
-> **Area-specific critical thinking**: [Software Engineering](../software_engineering/strategy/critical_thinking.md) · [Data Management](../data_management/strategy/critical_thinking.md) · [Project Management](../project_management/strategy/critical_thinking.md)
+> **Area-specific critical thinking**: [Software Development](../software_development/strategy/critical_thinking.md) · [Data Management](../data_management/strategy/critical_thinking.md) · [Project Management](../project_management/strategy/critical_thinking.md)

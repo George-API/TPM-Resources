@@ -2,7 +2,7 @@
 
 **Scope**: Organizational change management principles, frameworks, and practices for leading people through change in enterprise and regulated environments. Covers readiness, resistance, communication, sponsorship, measurement, and sustainability — distinct from project-level change control.
 
-**Purpose**: Use this when planning, executing, or sustaining organizational change alongside project delivery. For project-level change control processes (scope, schedule, budget changes), see [Project Management](project_management.md). For stakeholder engagement, see [Stakeholder Engagement](stakeholders.md). For IT-specific project patterns, see [IT Project Management](itpm.md).
+**Purpose**: Use this when planning, executing, or sustaining organizational change alongside project delivery. For project-level change control processes (scope, schedule, budget changes), see [Project Management](project_management.md). For consulting skills and stakeholder engagement, see [Consulting & Engagement](consulting_engagement.md). For IT-specific project patterns, see [IT Project Management](itpm.md).
 
 ## Table of Contents
 
@@ -665,4 +665,4 @@ The chasm between early adopters and early majority is where most technology cha
 
 ---
 
-> **Note**: For project-level change control processes (scope, schedule, budget changes), see [Project Management](project_management.md). For stakeholder engagement, see [Stakeholder Engagement](stakeholders.md). For enterprise risk including change-related risk, see [Risk Management](risk_management.md). For IT-specific project patterns, see [IT Project Management](itpm.md). For critical thinking in ambiguous change situations, see [Critical Thinking](../strategy/critical_thinking.md).
+> **Note**: For project-level change control processes (scope, schedule, budget changes), see [Project Management](project_management.md). For consulting skills and stakeholder engagement, see [Consulting & Engagement](consulting_engagement.md). For enterprise risk including change-related risk, see [Risk Management](risk_management.md). For IT-specific project patterns, see [IT Project Management](itpm.md). For critical thinking in ambiguous change situations, see [Critical Thinking](../strategy/critical_thinking.md).

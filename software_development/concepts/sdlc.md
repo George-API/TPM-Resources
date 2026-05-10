@@ -363,4 +363,4 @@
 
 ---
 
-> **Note**: For design patterns and architectural principles, see [Software Design](../../software_engineering/concepts/design.md). For DevOps practices and CI/CD, see [DevOps](../../software_engineering/concepts/devops.md).
+> **Note**: For design patterns and architectural principles, see [Software Design](../../software_development/concepts/design.md). For DevOps practices and CI/CD, see [DevOps](../../software_development/concepts/devops.md).

@@ -460,4 +460,4 @@ XDR extends EDR by correlating telemetry across endpoints, network, cloud, ident
 
 ---
 
-> **Note**: For embedding security into the development pipeline (SAST, SCA, DAST, secure coding, supply chain, containers, secrets), see [DevSecOps](devsecops.md). For authentication and authorization architecture patterns, see [Architecture](architecture.md). For security standards and tools, see [Resources](../resources.md). For data-layer security, see [Data Security](../../data_management/concepts/core/security.md).
+> **Note**: For embedding security into the development pipeline (SAST, SCA, DAST, secure coding, supply chain, containers, secrets), see [DevSecOps](devsecops.md). For authentication and authorization architecture patterns, see [Architecture](architecture.md). For security standards and tools, see [Standards](../../_resources/standards.md) and [Tools](../../_resources/tools.md). For data-layer security, see [Data Security](../../data_management/concepts/core/security.md).

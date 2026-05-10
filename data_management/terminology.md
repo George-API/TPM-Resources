@@ -1,6 +1,6 @@
 # Data Management Terminology
 
-**Related**: [Resources](resources.md) | [Concepts](concepts/) ([core](concepts/core/) · [platform](concepts/platform/))
+**Related**: [Standards](../_resources/standards.md) · [Tools](../_resources/tools.md) | [Concepts](concepts/) ([core](concepts/core/) · [platform](concepts/platform/))
 
 ---
 

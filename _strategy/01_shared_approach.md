@@ -1,6 +1,6 @@
 # Learning Approach
 
-A dual-purpose approach to building technical understanding across [Data Management](../data_management/), [Project Management](../project_management/), and [Software Engineering](../software_engineering/). The same four stages serve as a **sequential learning path** for long-term expertise development and a **decision-making lens** for practical problem-solving. The progression draws on research in skill acquisition [1], learning science [2], and the psychology of expertise [3].
+A dual-purpose approach to building technical understanding across [Data Management](../data_management/), [Project Management](../project_management/), and [Software Development](../software_development/). The same four stages serve as a **sequential learning path** for long-term expertise development and a **decision-making lens** for practical problem-solving. The progression draws on research in skill acquisition [1], learning science [2], and the psychology of expertise [3].
 
 ---
 
@@ -93,4 +93,4 @@ This repo complements but does not replace official documentation, formal traini
 
 ---
 
-> **Related**: [Data Management](../data_management/) · [Project Management](../project_management/) · [Software Engineering](../software_engineering/) · [Critical Thinking](03_shared_critical_thinking.md)
+> **Related**: [Data Management](../data_management/) · [Project Management](../project_management/) · [Software Development](../software_development/) · [Critical Thinking](03_shared_critical_thinking.md)

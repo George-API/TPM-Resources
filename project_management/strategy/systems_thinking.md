@@ -379,9 +379,9 @@ The same concept manifests differently at each lifecycle phase.
 | Agile, Scrum, Kanban, Waterfall, hybrid, scaling frameworks, Lean | [Methodologies](../concepts/methodologies.md) |
 | Product strategy, discovery, roadmapping, metrics, prioritization | [Product Management](../concepts/product_management.md) |
 | SDLC phases, requirements, testing, deployment, maintenance | [SDLC](../concepts/sdlc.md) |
-| Stakeholder identification, engagement, regulated environment considerations | [Stakeholders](../concepts/stakeholders.md) |
+| Consulting, stakeholder engagement, facilitation, negotiation, influence | [Consulting & Engagement](../concepts/consulting_engagement.md) |
 | Roadmap types, development process, stakeholder communication | [Roadmap](../concepts/roadmap.md) |
 | Reporting types, Power BI, dashboards, update frequencies | [Reporting](../concepts/reporting.md) |
-| PM tools, resources, templates, tool selection | [Tools & Resources](../concepts/tools_resources.md) |
+| Industry standards, frameworks, legislation, certifications | [Standards](../../_resources/standards.md) |
 
 > **Strategy docs**: [Approach](../../_strategy/01_shared_approach.md) · [Complexity](../../_strategy/02_shared_complexity.md) · [Critical Thinking](../../_strategy/03_shared_critical_thinking.md) · [Systems Thinking](../../_strategy/04_shared_systems_thinking.md)

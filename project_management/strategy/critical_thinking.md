@@ -317,5 +317,5 @@
 
 ---
 
-> **Note**: For general PM fundamentals, see [Project Management](../concepts/project_management.md). For IT-specific patterns, see [IT Project Management](../concepts/itpm.md). For methodology frameworks, see [Methodologies](../concepts/methodologies.md). For stakeholder engagement, see [Stakeholders](../concepts/stakeholders.md).
+> **Note**: For general PM fundamentals, see [Project Management](../concepts/project_management.md). For IT-specific patterns, see [IT Project Management](../concepts/itpm.md). For methodology frameworks, see [Methodologies](../concepts/methodologies.md). For consulting skills and stakeholder engagement, see [Consulting & Engagement](../concepts/consulting_engagement.md).
 

@@ -1,4 +1,4 @@
-# Critical Thinking in Software Engineering
+# Critical Thinking in Software Development
 
 **Scope**: Practical reasoning frameworks, debugging methodology, trade-off analysis, and cognitive discipline for engineering work.
 

@@ -2,7 +2,7 @@
 
 **Statistical foundations and methods.** Part I: why complex systems behave the way they do. Part II: how to apply that understanding. Quick reference: [Quantitative Reference](06_shared_quantitative_reference.md).
 
-> Applies across: [Data Management](../data_management/), [Project Management](../project_management/), [Software Engineering](../software_engineering/).
+> Applies across: [Data Management](../data_management/), [Project Management](../project_management/), [Software Development](../software_development/).
 
 **Part I** reveals the mathematical structures behind the five patterns in [Integrated Reference](04_shared_systems_thinking.md). Each section explains a statistical phenomenon, why it arises, and what it means for decisions, forecasts, and risk.
 
@@ -1241,4 +1241,4 @@ The protocol's value is not in any individual method - each is documented elsewh
 >
 > **Quick reference**: [Quantitative Reference](06_shared_quantitative_reference.md) â€” decision protocols, diagnostic tools, and applied scenarios that operationalize these patterns
 >
-> **Related**: [Learning Approach](01_shared_approach.md) Â· [Complexity at Scale](02_shared_complexity.md) Â· [Critical Thinking](03_shared_critical_thinking.md) Â· [Software Engineering](../software_engineering/strategy/critical_thinking.md) Â· [Data Management](../data_management/strategy/critical_thinking.md) Â· [Project Management](../project_management/strategy/critical_thinking.md)
+> **Related**: [Learning Approach](01_shared_approach.md) Â· [Complexity at Scale](02_shared_complexity.md) Â· [Critical Thinking](03_shared_critical_thinking.md) Â· [Software Development](../software_development/strategy/critical_thinking.md) Â· [Data Management](../data_management/strategy/critical_thinking.md) Â· [Project Management](../project_management/strategy/critical_thinking.md)

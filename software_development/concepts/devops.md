@@ -156,7 +156,7 @@
 - **Cloud-native tools**: Best for single-cloud environments, native integration
 - **Ansible**: Best for configuration management and orchestration
 
-> **Note**: For detailed Azure IaC syntax and examples, see [Bicep Syntax Reference](../languages/bicep/bicep.md) and [Terraform Syntax Reference](../languages/terraform/terraform.md).
+> **Note**: For detailed Azure IaC syntax and examples, see [Bicep Syntax Reference](../programming/bicep/bicep.md) and [Terraform Syntax Reference](../programming/terraform/terraform.md).
 
 ### IaC Best Practices
 
